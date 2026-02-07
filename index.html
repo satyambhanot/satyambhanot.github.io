@@ -1,63 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satyam Bhanot | CS Student & Developer</title>
+    <meta name="description" content="Portfolio of Satyam Bhanot — Computer Science Honours student, data enthusiast, and software developer at the University of Manitoba.">
+    <meta name="author" content="Satyam Bhanot">
+    <meta property="og:title" content="Satyam Bhanot — Portfolio">
+    <meta property="og:description" content="CS Honours student at UofM. Explore my projects, skills, and experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://satyambhanot.github.io">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo">&lt;SB/&gt;</div>
+            <div class="loader-bar">
+                <div class="loader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#hero" class="nav-logo">&lt;S/&gt;</a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#hero" class="nav-logo">&lt;SB/&gt;</a>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="resume.pdf" class="nav-resume-btn" download>
+                            Resume
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-bg">
-            <div class="hero-orb hero-orb-1"></div>
-            <div class="hero-orb hero-orb-2"></div>
-            <div class="hero-orb hero-orb-3"></div>
-        </div>
         <div class="hero-content">
-            <p class="hero-greeting">Hi there, I'm</p>
-            <h1 class="hero-name">Satyam Bhanot</h1>
-            <div class="hero-typing-wrapper">
+            <div class="hero-badge animate-on-scroll">
+                <span class="badge-dot"></span>
+                Open to opportunities
+            </div>
+            <h1 class="hero-name animate-on-scroll">
+                <span class="hero-line">Hi, I'm</span>
+                <span class="hero-line hero-name-highlight">Satyam Bhanot</span>
+            </h1>
+            <div class="hero-typing-wrapper animate-on-scroll">
                 <span class="hero-prefix">I </span>
                 <span class="hero-typed" id="typedText"></span>
                 <span class="hero-cursor">|</span>
             </div>
-            <p class="hero-description">
+            <p class="hero-description animate-on-scroll">
                 Fourth-year Computer Science Honours student at the University of Manitoba
                 with a Minor in Mathematics & Statistics — passionate about using technology
                 and data to solve real-world problems.
             </p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
+            <div class="hero-buttons animate-on-scroll">
+                <a href="#projects" class="btn btn-primary">
+                    <span>View My Work</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
                 <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                <a href="resume.pdf" class="btn btn-ghost" download>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Resume</span>
+                </a>
             </div>
-            <div class="hero-scroll-indicator">
-                <div class="scroll-mouse">
-                    <div class="scroll-dot"></div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>SCROLL</span>
+        </div>
+    </section>
+
+    <!-- Stats Counter -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="8">0</span>
+                    <span class="stat-label">Projects Completed</span>
                 </div>
-                <span>Scroll to explore</span>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="15000">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Lines of Code</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="4">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Years of Coding</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="200">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">GitHub Contributions</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number" data-target="30">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Students Mentored</span>
+                </div>
             </div>
         </div>
     </section>
@@ -66,9 +140,21 @@
     <section class="section about" id="about">
         <div class="container">
             <h2 class="section-title animate-on-scroll">
-                <span class="title-accent">01.</span> About Me
+                <span class="title-number">01</span>
+                <span class="title-text">About Me</span>
+                <span class="title-line"></span>
             </h2>
             <div class="about-grid">
+                <div class="about-photo-wrapper animate-on-scroll">
+                    <div class="about-photo">
+                        <div class="photo-placeholder">
+                            <span>SB</span>
+                        </div>
+                        <!-- Replace the div above with: <img src="your-photo.jpg" alt="Satyam Bhanot"> -->
+                        <div class="photo-border"></div>
+                    </div>
+                    <div class="about-photo-decoration"></div>
+                </div>
                 <div class="about-text animate-on-scroll">
                     <p>
                         I'm a fourth-year <strong>Computer Science Honours</strong> student at the
@@ -88,34 +174,22 @@
                         for the UM Statistics Club. I'm particularly interested in <strong>data science,
                         software engineering, and artificial intelligence</strong>.
                     </p>
-                </div>
-                <div class="about-details animate-on-scroll">
-                    <div class="detail-card">
-                        <div class="detail-icon">🎓</div>
-                        <div>
-                            <h4>Education</h4>
-                            <p>B.Sc. CS Honours<br>Minor: Math & Statistics</p>
+                    <div class="about-details-row">
+                        <div class="detail-chip">
+                            <span class="chip-icon">🎓</span>
+                            <span>CS Honours, UofM</span>
                         </div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="detail-icon">💼</div>
-                        <div>
-                            <h4>Current Role</h4>
-                            <p>Tech Support Specialist<br>Rogers Communications</p>
+                        <div class="detail-chip">
+                            <span class="chip-icon">💼</span>
+                            <span>Rogers Communications</span>
                         </div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="detail-icon">🏆</div>
-                        <div>
-                            <h4>Achievement</h4>
-                            <p>Dean's Honour List<br>GPA 3.75+</p>
+                        <div class="detail-chip">
+                            <span class="chip-icon">🏆</span>
+                            <span>Dean's Honour List</span>
                         </div>
-                    </div>
-                    <div class="detail-card">
-                        <div class="detail-icon">💡</div>
-                        <div>
-                            <h4>Interests</h4>
-                            <p>Data Science, AI<br>Software Engineering</p>
+                        <div class="detail-chip">
+                            <span class="chip-icon">📊</span>
+                            <span>Math & Stats Minor</span>
                         </div>
                     </div>
                 </div>
@@ -127,50 +201,99 @@
     <section class="section skills" id="skills">
         <div class="container">
             <h2 class="section-title animate-on-scroll">
-                <span class="title-accent">02.</span> Skills & Technologies
+                <span class="title-number">02</span>
+                <span class="title-text">Skills & Technologies</span>
+                <span class="title-line"></span>
             </h2>
-            <div class="skills-grid">
-                <div class="skill-category animate-on-scroll">
-                    <h3 class="skill-category-title">Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">C/C++</span>
+            <div class="skills-layout">
+                <div class="skills-bars animate-on-scroll">
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Java</span>
+                            <span class="skill-bar-percent">90%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Python</span>
+                            <span class="skill-bar-percent">85%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">JavaScript</span>
+                            <span class="skill-bar-percent">75%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">HTML / CSS</span>
+                            <span class="skill-bar-percent">80%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">SQL</span>
+                            <span class="skill-bar-percent">80%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">C / C++</span>
+                            <span class="skill-bar-percent">65%</span>
+                        </div>
+                        <div class="skill-bar-track">
+                            <div class="skill-bar-fill" data-width="65"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-category animate-on-scroll">
-                    <h3 class="skill-category-title">Frameworks & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Android SDK</span>
-                        <span class="skill-tag">Git / GitHub</span>
-                        <span class="skill-tag">JUnit</span>
-                        <span class="skill-tag">Gradle</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Node.js</span>
+                <div class="skills-categories">
+                    <div class="skill-category animate-on-scroll">
+                        <h3 class="skill-category-title">Frameworks & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Android SDK</span>
+                            <span class="skill-tag">Git / GitHub</span>
+                            <span class="skill-tag">JUnit</span>
+                            <span class="skill-tag">Gradle</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-category animate-on-scroll">
-                    <h3 class="skill-category-title">Data & Analytics</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Statistical Analysis</span>
-                        <span class="skill-tag">Data Visualization</span>
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Pandas / NumPy</span>
-                        <span class="skill-tag">R</span>
+                    <div class="skill-category animate-on-scroll">
+                        <h3 class="skill-category-title">Data & Analytics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Statistical Analysis</span>
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Pandas / NumPy</span>
+                            <span class="skill-tag">R</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-category animate-on-scroll">
-                    <h3 class="skill-category-title">Concepts & Soft Skills</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Agile / Scrum</span>
-                        <span class="skill-tag">OOP</span>
-                        <span class="skill-tag">Troubleshooting</span>
-                        <span class="skill-tag">Mentoring</span>
-                        <span class="skill-tag">Leadership</span>
-                        <span class="skill-tag">Financial Planning</span>
+                    <div class="skill-category animate-on-scroll">
+                        <h3 class="skill-category-title">Concepts & Soft Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Agile / Scrum</span>
+                            <span class="skill-tag">OOP</span>
+                            <span class="skill-tag">Troubleshooting</span>
+                            <span class="skill-tag">Mentoring</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Financial Planning</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,15 +304,15 @@
     <section class="section projects" id="projects">
         <div class="container">
             <h2 class="section-title animate-on-scroll">
-                <span class="title-accent">03.</span> Featured Projects
+                <span class="title-number">03</span>
+                <span class="title-text">Featured Projects</span>
+                <span class="title-line"></span>
             </h2>
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card animate-on-scroll">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <span>🐾</span>
-                        </div>
+                        <div class="project-placeholder"><span>🐾</span></div>
                         <div class="project-overlay">
                             <a href="#" class="project-link" title="View on GitHub">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -200,6 +323,7 @@
                         </div>
                     </div>
                     <div class="project-info">
+                        <span class="project-label">Featured Project</span>
                         <h3 class="project-title">PetObject</h3>
                         <p class="project-desc">
                             A full-featured Android app for virtual pet management built as a team project.
@@ -219,24 +343,23 @@
                 <!-- Project 2 -->
                 <div class="project-card animate-on-scroll">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <span>🌐</span>
-                        </div>
+                        <div class="project-placeholder"><span>🌐</span></div>
                         <div class="project-overlay">
-                            <a href="#" class="project-link" title="View on GitHub">
+                            <a href="https://github.com/satyambhanot/satyambhanot.github.io" class="project-link" title="View on GitHub">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                             </a>
-                            <a href="#" class="project-link" title="Live Demo">
+                            <a href="https://satyambhanot.github.io" class="project-link" title="Live Site">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             </a>
                         </div>
                     </div>
                     <div class="project-info">
+                        <span class="project-label">Personal</span>
                         <h3 class="project-title">Portfolio Website</h3>
                         <p class="project-desc">
-                            This personal portfolio website, built from scratch with pure HTML, CSS, and
-                            JavaScript. Features scroll animations, typing effects, responsive design,
-                            and hosted on GitHub Pages.
+                            This personal portfolio — built from scratch with pure HTML, CSS, and
+                            JavaScript. Features particle effects, dark/light mode, scroll animations,
+                            typing effects, and responsive design.
                         </p>
                         <div class="project-tech">
                             <span>HTML</span>
@@ -247,12 +370,10 @@
                     </div>
                 </div>
 
-                <!-- Project 3 - Placeholder -->
+                <!-- Project 3 -->
                 <div class="project-card animate-on-scroll">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <span>🚀</span>
-                        </div>
+                        <div class="project-placeholder"><span>🚀</span></div>
                         <div class="project-overlay">
                             <a href="#" class="project-link" title="View on GitHub">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -263,7 +384,8 @@
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Coming Soon</h3>
+                        <span class="project-label">Coming Soon</span>
+                        <h3 class="project-title">Next Project</h3>
                         <p class="project-desc">
                             More exciting projects are in the works! I'm always exploring new
                             technologies and building things that challenge me to grow as a developer.
@@ -282,7 +404,9 @@
     <section class="section experience" id="experience">
         <div class="container">
             <h2 class="section-title animate-on-scroll">
-                <span class="title-accent">04.</span> Experience & Education
+                <span class="title-number">04</span>
+                <span class="title-text">Experience & Education</span>
+                <span class="title-line"></span>
             </h2>
             <div class="timeline">
                 <div class="timeline-item animate-on-scroll">
@@ -338,7 +462,9 @@
     <section class="section contact" id="contact">
         <div class="container">
             <h2 class="section-title animate-on-scroll">
-                <span class="title-accent">05.</span> Get In Touch
+                <span class="title-number">05</span>
+                <span class="title-text">Get In Touch</span>
+                <span class="title-line"></span>
             </h2>
             <div class="contact-wrapper animate-on-scroll">
                 <div class="contact-text">
@@ -372,7 +498,7 @@
                         <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">
-                        Send Message
+                        <span>Send Message</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                     </button>
                 </form>
@@ -384,9 +510,14 @@
     <footer class="footer">
         <div class="container">
             <p>Designed & Built by <strong>Satyam Bhanot</strong> &copy; 2025</p>
-            <p class="footer-note">Built with HTML, CSS & JavaScript</p>
+            <p class="footer-note">Built with HTML, CSS & JavaScript — no frameworks, just passion.</p>
         </div>
     </footer>
+
+    <!-- Easter Egg Notification -->
+    <div class="easter-egg-toast" id="easterEggToast">
+        🎮 You found the secret! — Konami Code activated!
+    </div>
 
     <script src="script.js"></script>
 </body>
