@@ -15,7 +15,7 @@
     --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Dark Theme (Default) — Deep charcoal with white-to-purple gradient */
+/* Dark Theme (Default) — Multi-color accents on dark charcoal */
 [data-theme="dark"] {
     --bg-primary: #141414;
     --bg-secondary: #1a1a1a;
@@ -27,15 +27,35 @@
     --text-secondary: #a1a1a6;
     --text-muted: #6e6e73;
 
-    --accent: #f5f5f7;
-    --accent-hover: #a78bfa;
-    --accent-subtle: rgba(167, 139, 250, 0.06);
-    --accent-border: rgba(167, 139, 250, 0.12);
-    --accent-glow: rgba(167, 139, 250, 0.15);
+    /* Primary accent (blue) */
+    --accent: #3b82f6;
+    --accent-hover: #60a5fa;
+    --accent-subtle: rgba(59, 130, 246, 0.08);
+    --accent-border: rgba(59, 130, 246, 0.15);
+    --accent-glow: rgba(59, 130, 246, 0.2);
 
-    --gradient-accent: linear-gradient(135deg, #f5f5f7, #a78bfa);
-    --gradient-text: linear-gradient(135deg, #ffffff, #a78bfa);
-    --gradient-btn: linear-gradient(135deg, #f5f5f7, #c4b5fd);
+    /* Multi-color palette */
+    --color-blue: #3b82f6;
+    --color-green: #10b981;
+    --color-pink: #ec4899;
+    --color-violet: #a855f7;
+    --color-teal: #14b8a6;
+    --color-coral: #f472b6;
+
+    /* Section-specific accents */
+    --section-hero: #3b82f6;
+    --section-about: #ec4899;
+    --section-education: #10b981;
+    --section-experience: #3b82f6;
+    --section-projects: #a855f7;
+    --section-skills: #14b8a6;
+    --section-contact: #f472b6;
+
+    /* Gradients */
+    --gradient-accent: linear-gradient(135deg, #3b82f6, #10b981);
+    --gradient-text: linear-gradient(135deg, #3b82f6, #10b981, #ec4899);
+    --gradient-btn: linear-gradient(135deg, #3b82f6, #6366f1);
+    --gradient-hero: linear-gradient(135deg, #3b82f6, #10b981, #ec4899);
 
     --border: rgba(255, 255, 255, 0.07);
     --border-hover: rgba(255, 255, 255, 0.14);
@@ -43,37 +63,53 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
     --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
     --shadow-lg: 0 16px 50px rgba(0, 0, 0, 0.6);
-    --shadow-accent: 0 4px 25px rgba(167, 139, 250, 0.15);
+    --shadow-accent: 0 4px 25px rgba(59, 130, 246, 0.15);
 
     --nav-bg: rgba(20, 20, 20, 0.8);
     --loader-bg: #141414;
 
-    --particle-color: 167, 139, 250;
+    --particle-color: 59, 130, 246;
     --skill-bar-bg: rgba(255, 255, 255, 0.07);
-    --cursor-color: rgba(167, 139, 250, 0.35);
+    --cursor-color: rgba(59, 130, 246, 0.35);
 }
 
-/* Light Theme — Apple-inspired clean white */
+/* Light Theme — Clean white with colorful accents */
 [data-theme="light"] {
     --bg-primary: #ffffff;
-    --bg-secondary: #f5f5f7;
+    --bg-secondary: #f8f9fa;
     --bg-card: #ffffff;
-    --bg-card-hover: #f5f5f7;
+    --bg-card-hover: #f3f4f6;
     --bg-elevated: rgba(255, 255, 255, 0.9);
 
-    --text-primary: #1d1d1f;
-    --text-secondary: #6e6e73;
-    --text-muted: #a1a1a6;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
 
-    --accent: #1d1d1f;
-    --accent-hover: #2563eb;
-    --accent-subtle: rgba(29, 29, 31, 0.04);
-    --accent-border: rgba(29, 29, 31, 0.1);
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-subtle: rgba(37, 99, 235, 0.05);
+    --accent-border: rgba(37, 99, 235, 0.12);
     --accent-glow: rgba(37, 99, 235, 0.1);
 
-    --gradient-accent: linear-gradient(135deg, #1d1d1f, #2563eb);
-    --gradient-text: linear-gradient(135deg, #1d1d1f, #3b82f6);
-    --gradient-btn: linear-gradient(135deg, #1d1d1f, #374151);
+    --color-blue: #2563eb;
+    --color-green: #059669;
+    --color-pink: #db2777;
+    --color-violet: #7c3aed;
+    --color-teal: #0d9488;
+    --color-coral: #e11d48;
+
+    --section-hero: #2563eb;
+    --section-about: #db2777;
+    --section-education: #059669;
+    --section-experience: #2563eb;
+    --section-projects: #7c3aed;
+    --section-skills: #0d9488;
+    --section-contact: #e11d48;
+
+    --gradient-accent: linear-gradient(135deg, #2563eb, #059669);
+    --gradient-text: linear-gradient(135deg, #2563eb, #059669, #db2777);
+    --gradient-btn: linear-gradient(135deg, #2563eb, #4f46e5);
+    --gradient-hero: linear-gradient(135deg, #2563eb, #059669, #db2777);
 
     --border: rgba(0, 0, 0, 0.06);
     --border-hover: rgba(0, 0, 0, 0.12);
@@ -161,12 +197,13 @@ img { max-width: 100%; display: block; }
     font-family: var(--font-mono);
     font-size: 2rem;
     font-weight: 500;
-    background: var(--gradient-text);
+    background: var(--gradient-hero);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 16px;
-    animation: pulse 1.5s ease-in-out infinite;
+    animation: pulse 1.5s ease-in-out infinite, gradientShift 4s ease-in-out infinite;
 }
 
 .loader-percent {
@@ -193,7 +230,8 @@ img { max-width: 100%; display: block; }
 .loader-bar-fill {
     height: 100%;
     width: 0%;
-    background: var(--gradient-accent);
+    background: var(--gradient-hero);
+    background-size: 200% 100%;
     border-radius: 3px;
     transition: width 0.1s linear;
 }
@@ -369,7 +407,10 @@ body.loaded .cursor-dot.hovering {
     font-family: var(--font-mono);
     font-size: 1.2rem;
     font-weight: 500;
-    color: var(--accent);
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     transition: var(--transition);
     cursor: none;
 }
@@ -417,9 +458,9 @@ body.loaded .cursor-dot.hovering {
 }
 
 .nav-resume-btn:hover {
-    background: var(--accent) !important;
-    color: var(--bg-primary) !important;
-    border-color: var(--accent) !important;
+    background: var(--color-blue, var(--accent)) !important;
+    color: #fff !important;
+    border-color: var(--color-blue, var(--accent)) !important;
 }
 
 /* Theme Toggle */
@@ -530,11 +571,17 @@ body.loaded .cursor-dot.hovering {
     font-size: clamp(2.8rem, 8vw, 5.5rem);
     color: var(--text-primary);
     letter-spacing: -3px;
-    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.8s both;
-    background: var(--gradient-text);
+    background: var(--gradient-hero);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.8s both, gradientShift 6s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 @keyframes fadeUp {
@@ -699,7 +746,7 @@ body.loaded .cursor-dot.hovering {
 }
 
 .tab-btn.active {
-    color: var(--bg-primary);
+    color: #fff;
     background: var(--gradient-btn);
     border-color: transparent;
 }
@@ -818,6 +865,76 @@ body.loaded .cursor-dot.hovering {
     background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
 }
 
+/* Section-specific accent colors */
+.about { --section-accent: var(--section-about); }
+.education { --section-accent: var(--section-education); }
+.experience { --section-accent: var(--section-experience); }
+.projects { --section-accent: var(--section-projects); }
+.skills { --section-accent: var(--section-skills); }
+.contact { --section-accent: var(--section-contact); }
+
+.section .title-text {
+    background: none;
+    -webkit-text-fill-color: unset;
+    color: var(--text-primary);
+}
+
+.section .title-line {
+    background: linear-gradient(90deg, transparent, var(--section-accent, var(--accent)));
+}
+
+.section .title-line:last-child {
+    background: linear-gradient(90deg, var(--section-accent, var(--accent)), transparent);
+}
+
+/* Section-colored timeline markers */
+.experience .timeline-marker { border-color: var(--section-experience); }
+.experience .timeline-item:hover .timeline-marker { background: var(--section-experience); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); }
+.experience .timeline-date { color: var(--section-experience); }
+.experience .timeline-place { color: var(--section-experience); }
+.experience .timeline-points li::before { background: var(--section-experience); }
+
+/* Section-colored tab active state per section */
+.experience .tab-btn.active { background: var(--section-experience); border-color: transparent; color: #fff; }
+.experience .tab-btn:hover:not(.active) { color: var(--section-experience); border-color: var(--section-experience); }
+.projects .tab-btn.active { background: var(--section-projects); border-color: transparent; color: #fff; }
+.projects .tab-btn:hover:not(.active) { color: var(--section-projects); border-color: var(--section-projects); }
+.education .tab-btn.active { background: var(--section-education); border-color: transparent; color: #fff; }
+.education .tab-btn:hover:not(.active) { color: var(--section-education); border-color: var(--section-education); }
+
+/* Section-colored project cards */
+.projects .project-card:hover { border-color: rgba(168, 85, 247, 0.3); }
+.projects .project-label { color: var(--section-projects); }
+.projects .project-tech span { color: var(--section-projects); background: rgba(168, 85, 247, 0.08); }
+
+/* Education card accents */
+.education .edu-school { color: var(--section-education); }
+.education .edu-date { color: var(--section-education); }
+.education .edu-achievement { border-color: rgba(16, 185, 129, 0.2); background: rgba(16, 185, 129, 0.05); }
+.education .skill-tag { color: var(--section-education); border-color: rgba(16, 185, 129, 0.2); background: rgba(16, 185, 129, 0.06); }
+.education .skill-tag:hover { background: rgba(16, 185, 129, 0.12); }
+
+/* About section accents */
+.about .detail-chip { color: var(--section-about); border-color: rgba(236, 72, 153, 0.2); background: rgba(236, 72, 153, 0.06); }
+.about .detail-chip:hover { background: rgba(236, 72, 153, 0.12); }
+.about .photo-border { border-color: rgba(236, 72, 153, 0.3); }
+.about .about-photo-decoration { border-color: rgba(236, 72, 153, 0.2); }
+
+/* Skills section accents */
+.skills .skill-bar-fill { background: linear-gradient(90deg, var(--color-teal), var(--color-blue)); }
+.skills .skill-bar-percent { color: var(--section-skills); }
+.skills .skill-category:hover { border-color: rgba(20, 184, 166, 0.3); }
+.skills .skill-category-title { color: var(--section-skills); }
+.skills .skill-tag { color: var(--section-skills); border-color: rgba(20, 184, 166, 0.2); background: rgba(20, 184, 166, 0.06); }
+.skills .skill-tag:hover { background: rgba(20, 184, 166, 0.12); }
+
+/* Contact section accents */
+.contact .contact-link-item svg { color: var(--section-contact); }
+.contact .contact-link-item:hover { background: rgba(244, 114, 182, 0.06); color: var(--section-contact); }
+.contact .form-group input:focus,
+.contact .form-group textarea:focus { border-color: var(--section-contact); box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.15); }
+.contact .btn-primary { background: linear-gradient(135deg, var(--color-pink), var(--color-violet)); }
+
 .section-title {
     display: flex;
     align-items: center;
@@ -881,7 +998,7 @@ body.loaded .cursor-dot.hovering {
 }
 
 .tab-btn.active {
-    color: var(--bg-primary);
+    color: #fff;
     background: var(--gradient-btn);
     border-color: transparent;
 }
@@ -1639,7 +1756,7 @@ body.loaded .cursor-dot.hovering {
     color: var(--text-muted);
 }
 
-.footer strong { color: var(--accent); }
+.footer strong { color: var(--color-blue, var(--accent)); }
 
 .footer-note {
     font-size: 0.78rem;
