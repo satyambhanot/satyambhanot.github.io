@@ -1,12 +1,36 @@
 /* ===================================
-   Page Loader
+   Page Loader with Percentage Counter
    =================================== */
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.getElementById('pageLoader').classList.add('hidden');
-        document.body.classList.add('loaded');
-    }, 1800);
-});
+(function() {
+    const loaderPercent = document.getElementById('loaderPercent');
+    const loaderBarFill = document.getElementById('loaderBarFill');
+    const pageLoader = document.getElementById('pageLoader');
+    let progress = 0;
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function updateLoader(currentTime) {
+        const elapsed = currentTime - startTime;
+        const rawProgress = Math.min(elapsed / duration, 1);
+        // Ease out cubic for natural feel
+        progress = Math.floor((1 - Math.pow(1 - rawProgress, 3)) * 100);
+        loaderPercent.textContent = progress + '%';
+        loaderBarFill.style.width = progress + '%';
+
+        if (rawProgress < 1) {
+            requestAnimationFrame(updateLoader);
+        } else {
+            loaderPercent.textContent = '100%';
+            loaderBarFill.style.width = '100%';
+            setTimeout(() => {
+                pageLoader.classList.add('hidden');
+                document.body.classList.add('loaded');
+            }, 300);
+        }
+    }
+
+    requestAnimationFrame(updateLoader);
+})();
 
 /* ===================================
    Particle System (Blue/Cyan on Dark)
@@ -259,34 +283,43 @@ document.querySelectorAll('.skills-bars').forEach(el => {
 });
 
 /* ===================================
-   Stats Counter Animation
+   Stats Counter — Smooth Odometer Ticker
    =================================== */
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const counters = entry.target.querySelectorAll('.stat-number');
-            counters.forEach(counter => {
+            counters.forEach((counter, idx) => {
                 const target = parseInt(counter.getAttribute('data-target'));
-                const duration = 2000;
+                const duration = 2200 + idx * 200; // Stagger each counter
                 const startTime = performance.now();
+                let lastValue = -1;
 
                 function updateCounter(currentTime) {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
-                    // Ease out cubic
-                    const eased = 1 - Math.pow(1 - progress, 3);
+                    // Ease out expo for odometer feel — fast start, smooth stop
+                    const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
                     const current = Math.floor(eased * target);
 
-                    counter.textContent = current.toLocaleString();
+                    if (current !== lastValue) {
+                        counter.textContent = current.toLocaleString();
+                        // Subtle scale bump on digit change
+                        counter.style.transform = 'scale(1.02)';
+                        setTimeout(() => { counter.style.transform = 'scale(1)'; }, 60);
+                        lastValue = current;
+                    }
 
                     if (progress < 1) {
                         requestAnimationFrame(updateCounter);
                     } else {
                         counter.textContent = target.toLocaleString();
+                        counter.style.transform = 'scale(1)';
                     }
                 }
 
-                requestAnimationFrame(updateCounter);
+                // Stagger start of each counter
+                setTimeout(() => requestAnimationFrame(updateCounter), idx * 100);
             });
             statsObserver.unobserve(entry.target);
         }
@@ -437,6 +470,9 @@ function activateEasterEgg() {
         document.documentElement.style.setProperty('--accent-border', `hsla(${hue}, 80%, 60%, 0.2)`);
         document.documentElement.style.setProperty('--accent-glow', `hsla(${hue}, 80%, 60%, 0.3)`);
         document.documentElement.style.setProperty('--shadow-accent', `0 4px 25px hsla(${hue}, 80%, 60%, 0.25)`);
+        document.documentElement.style.setProperty('--gradient-accent', `linear-gradient(135deg, hsl(${hue}, 80%, 85%), hsl(${(hue + 60) % 360}, 80%, 60%))`);
+        document.documentElement.style.setProperty('--gradient-text', `linear-gradient(135deg, #ffffff, hsl(${hue}, 80%, 65%))`);
+        document.documentElement.style.setProperty('--gradient-btn', `linear-gradient(135deg, hsl(${hue}, 80%, 80%), hsl(${(hue + 60) % 360}, 80%, 60%))`);
         document.documentElement.style.setProperty('--particle-color',
             `${Math.round(128 + 127 * Math.cos(hue * Math.PI / 180))}, ${Math.round(128 + 127 * Math.cos((hue - 120) * Math.PI / 180))}, ${Math.round(128 + 127 * Math.cos((hue - 240) * Math.PI / 180))}`
         );
@@ -449,7 +485,70 @@ function activateEasterEgg() {
     setTimeout(() => {
         clearInterval(rainbow);
         // Reset to theme defaults
-        const props = ['--accent', '--accent-hover', '--accent-subtle', '--accent-border', '--accent-glow', '--shadow-accent', '--particle-color'];
+        const props = ['--accent', '--accent-hover', '--accent-subtle', '--accent-border', '--accent-glow', '--shadow-accent', '--particle-color', '--gradient-accent', '--gradient-text', '--gradient-btn'];
         props.forEach(p => document.documentElement.style.removeProperty(p));
     }, 10000);
 }
+
+/* ===================================
+   Back to Top Button
+   =================================== */
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ===================================
+   Magnetic Buttons
+   =================================== */
+document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        // Pull button toward cursor by 30% of distance
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+        btn.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease';
+    });
+
+    btn.addEventListener('mouseenter', () => {
+        btn.style.transition = 'background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease';
+    });
+});
+
+/* ===================================
+   Parallax Scrolling
+   =================================== */
+const heroContent = document.querySelector('.hero-content');
+const particleCanvas = document.getElementById('particleCanvas');
+
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    // Only apply parallax in hero area for performance
+    if (scrollY < windowHeight * 1.5) {
+        // Hero content moves up faster than scroll
+        if (heroContent) {
+            heroContent.style.transform = `translateY(${scrollY * 0.35}px)`;
+            heroContent.style.opacity = 1 - (scrollY / windowHeight) * 0.8;
+        }
+        // Particles move slower — creates depth
+        if (particleCanvas) {
+            particleCanvas.style.transform = `translateY(${scrollY * 0.15}px)`;
+        }
+    }
+}, { passive: true });
