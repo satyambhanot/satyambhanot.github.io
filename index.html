@@ -24,29 +24,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-content">
             <div class="loader-logo">&lt;SB/&gt;</div>
             <div class="loader-percent" id="loaderPercent">0%</div>
-            <div class="loader-bar">
-                <div class="loader-bar-fill" id="loaderBarFill"></div>
-            </div>
+            <div class="loader-bar"><div class="loader-bar-fill" id="loaderBarFill"></div></div>
         </div>
     </div>
-
-    <!-- Noise/Grain Overlay -->
     <div class="noise-overlay"></div>
-
-    <!-- Custom Cursor -->
     <div class="cursor-glow" id="cursorGlow"></div>
     <div class="cursor-dot" id="cursorDot"></div>
-
-    <!-- Particle Canvas -->
     <canvas id="particleCanvas"></canvas>
 
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">&lt;SB/&gt;</a>
@@ -55,11 +44,7 @@
                     <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
-                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
@@ -67,18 +52,12 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li>
-                        <a href="resume.pdf" class="nav-resume-btn" download>
-                            Resume
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        </a>
-                    </li>
+                    <li><a href="resume.pdf" class="nav-resume-btn" download>Resume <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- ========== HERO ========== -->
     <section class="hero" id="hero">
         <div class="hero-content">
             <h1 class="hero-name animate-on-scroll">
@@ -86,138 +65,112 @@
                 <span class="hero-line hero-name-highlight">Satyam Bhanot</span>
             </h1>
             <div class="hero-typing-wrapper animate-on-scroll">
-                <span class="hero-prefix">I </span>
-                <span class="hero-typed" id="typedText"></span>
-                <span class="hero-cursor">|</span>
+                <span class="hero-prefix">I </span><span class="hero-typed" id="typedText"></span><span class="hero-cursor">|</span>
             </div>
-            <p class="hero-description animate-on-scroll">
-                Fourth-year Computer Science Honours student at the University of Manitoba
-                with a Minor in Mathematics & Statistics — passionate about using technology
-                and data to solve real-world problems.
-            </p>
+            <p class="hero-description animate-on-scroll">Fourth-year Computer Science Honours student at the University of Manitoba with a Minor in Mathematics & Statistics — passionate about using technology and data to solve real-world problems.</p>
             <div class="hero-buttons animate-on-scroll">
-                <a href="#projects" class="btn btn-primary">
-                    <span>View My Work</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+                <a href="#projects" class="btn btn-primary"><span>View My Work</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 <a href="#contact" class="btn btn-outline">Get In Touch</a>
-                <a href="resume.pdf" class="btn btn-ghost" download>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    <span>Resume</span>
-                </a>
+                <a href="resume.pdf" class="btn btn-ghost" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Resume</span></a>
             </div>
         </div>
-        <div class="hero-scroll-indicator">
-            <div class="scroll-line"></div>
-            <span>SCROLL</span>
-        </div>
+        <div class="hero-scroll-indicator"><div class="scroll-line"></div><span>SCROLL</span></div>
     </section>
 
-    <!-- ========== 01. ABOUT ========== -->
+    <!-- ABOUT -->
     <section class="section about" id="about">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">
-                <span class="title-line"></span>
-                <span class="title-text">About Me</span>
-                <span class="title-line"></span>
-            </h2>
+            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">About Me</span><span class="title-line"></span></h2>
             <div class="about-grid">
                 <div class="about-photo-wrapper animate-on-scroll">
-                    <div class="about-photo">
-                        <div class="photo-placeholder">
-                            <span>SB</span>
-                        </div>
-                        <div class="photo-border"></div>
-                    </div>
+                    <div class="about-photo"><div class="photo-placeholder"><span>SB</span></div><div class="photo-border"></div></div>
                     <div class="about-photo-decoration"></div>
                 </div>
                 <div class="about-text animate-on-scroll">
-                    <p>
-                        I'm a fourth-year <strong>Computer Science Honours</strong> student at the
-                        <strong>University of Manitoba</strong> with a Minor in <strong>Mathematics & Statistics</strong>.
-                        I'm passionate about using technology and data to solve real-world problems.
-                    </p>
-                    <p>
-                        With a strong foundation in programming, algorithms, and statistical analysis,
-                        I've developed both technical and interpersonal skills through academic projects
-                        and professional roles. Currently, I work as a <strong>Tech Support Specialist at
-                        Rogers Communications</strong>, where I troubleshoot complex issues and deliver
-                        solutions that keep customers connected.
-                    </p>
-                    <p>
-                        Beyond academics, I serve as a <strong>Mentor</strong> with the UofM Science Students'
-                        Association and the International Centre, and previously served as <strong>Treasurer</strong>
-                        for the UM Statistics Club. I'm particularly interested in <strong>data science,
-                        software engineering, and artificial intelligence</strong>.
-                    </p>
+                    <p>I'm a fourth-year <strong>Computer Science Honours</strong> student at the <strong>University of Manitoba</strong> with a Minor in <strong>Mathematics & Statistics</strong>. I'm passionate about using technology and data to solve real-world problems.</p>
+                    <p>With a strong foundation in programming, algorithms, and statistical analysis, I've developed both technical and interpersonal skills through academic projects and professional roles. Currently, I work as a <strong>Tech Support Specialist at Rogers Communications</strong>, where I troubleshoot complex issues and deliver solutions that keep customers connected.</p>
+                    <p>Beyond academics, I serve as a <strong>Mentor</strong> with the UofM Science Students' Association and the International Centre, and previously served as <strong>Treasurer</strong> for the UM Statistics Club. I'm particularly interested in <strong>data science, software engineering, and artificial intelligence</strong>.</p>
                     <div class="about-details-row">
-                        <div class="detail-chip">
-                            <span class="chip-icon">🎓</span>
-                            <span>CS Honours, UofM</span>
-                        </div>
-                        <div class="detail-chip">
-                            <span class="chip-icon">💼</span>
-                            <span>Rogers Communications</span>
-                        </div>
-                        <div class="detail-chip">
-                            <span class="chip-icon">🏆</span>
-                            <span>Dean's Honour List</span>
-                        </div>
-                        <div class="detail-chip">
-                            <span class="chip-icon">📊</span>
-                            <span>Math & Stats Minor</span>
-                        </div>
+                        <div class="detail-chip"><span class="chip-icon">🎓</span><span>CS Honours, UofM</span></div>
+                        <div class="detail-chip"><span class="chip-icon">💼</span><span>Rogers Communications</span></div>
+                        <div class="detail-chip"><span class="chip-icon">🏆</span><span>Dean's Honour List</span></div>
+                        <div class="detail-chip"><span class="chip-icon">📊</span><span>Math & Stats Minor</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== 02. EDUCATION ========== -->
+    <!-- EDUCATION -->
     <section class="section education" id="education">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">
-                <span class="title-line"></span>
-                <span class="title-text">Education</span>
-                <span class="title-line"></span>
-            </h2>
+            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">Education</span><span class="title-line"></span></h2>
             <div class="education-card animate-on-scroll">
                 <div class="edu-header">
                     <div class="edu-icon">🎓</div>
-                    <div>
-                        <h3>Bachelor of Science — Computer Science Honours</h3>
-                        <p class="edu-school">University of Manitoba</p>
-                    </div>
-                    <span class="edu-date">2021 — Apr 2026 (Expected)</span>
+                    <div><h3>Bachelor of Science — Computer Science Honours</h3><p class="edu-school">University of Manitoba</p></div>
+                    <span class="edu-date">Expected Apr 2026</span>
                 </div>
                 <div class="edu-body">
                     <p class="edu-minor">Minor: Mathematics & Statistics</p>
                     <div class="edu-achievements">
-                        <div class="edu-achievement">
-                            <span class="achievement-badge">🏆</span>
-                            <div>
-                                <strong>Dean's Honour List</strong>
-                                <p>Fall 2024 — GPA 3.75+ with 15 credit hours</p>
-                            </div>
-                        </div>
-                        <div class="edu-achievement">
-                            <span class="achievement-badge">🏆</span>
-                            <div>
-                                <strong>University 1 Honour List</strong>
-                                <p>Winter 2021 — GPA 3.75+ with 12 credit hours</p>
-                            </div>
-                        </div>
+                        <div class="edu-achievement"><span class="achievement-badge">🏆</span><div><strong>Dean's Honour List</strong><p>Fall 2024 — GPA 3.90 with 15 credit hours</p></div></div>
+                        <div class="edu-achievement"><span class="achievement-badge">🏆</span><div><strong>University 1 Honour List</strong><p>Winter 2021 — GPA 3.83 with 12 credit hours</p></div></div>
                     </div>
                     <div class="edu-coursework">
                         <span class="coursework-label">Relevant Coursework:</span>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Software Engineering</span>
-                            <span class="skill-tag">Data Structures</span>
-                            <span class="skill-tag">Algorithms</span>
-                            <span class="skill-tag">Databases</span>
-                            <span class="skill-tag">Operating Systems</span>
-                            <span class="skill-tag">HCI</span>
-                            <span class="skill-tag">Statistics</span>
+                        <div class="tab-buttons tab-buttons-sm" id="courseworkTabs">
+                            <button class="tab-btn tab-btn-sm active" data-tab="courses-comp">Computer Science</button>
+                            <button class="tab-btn tab-btn-sm" data-tab="courses-math">Mathematics</button>
+                            <button class="tab-btn tab-btn-sm" data-tab="courses-stat">Statistics</button>
+                        </div>
+                        <div class="tab-content active" id="tab-courses-comp">
+                            <div class="skill-tags">
+                                <span class="skill-tag">COMP 1010 · Intro to CS 1</span>
+                                <span class="skill-tag">COMP 1020 · Intro to CS 2</span>
+                                <span class="skill-tag">COMP 2080 · Analysis of Algorithms</span>
+                                <span class="skill-tag">COMP 2140 · Data Structures & Algorithms</span>
+                                <span class="skill-tag">COMP 2150 · Object Orientation</span>
+                                <span class="skill-tag">COMP 2160 · Programming Practices</span>
+                                <span class="skill-tag">COMP 2280 · Intro to Computer Systems</span>
+                                <span class="skill-tag">COMP 3030 · Automata Theory & Formal Languages</span>
+                                <span class="skill-tag">COMP 3170 · Analysis of Algorithms & DS</span>
+                                <span class="skill-tag">COMP 3190 · Intro to Artificial Intelligence</span>
+                                <span class="skill-tag">COMP 3350 · Software Engineering 1 *</span>
+                                <span class="skill-tag">COMP 3370 · Computer Organization</span>
+                                <span class="skill-tag">COMP 3380 · Databases Concepts & Usage</span>
+                                <span class="skill-tag">COMP 3430 · Operating Systems</span>
+                                <span class="skill-tag">COMP 4062 · Natural Language Processing</span>
+                                <span class="skill-tag">COMP 4360 · Machine Learning *</span>
+                                <span class="skill-tag">COMP 4380 · Databases Implementation</span>
+                                <span class="skill-tag">COMP 4620 · Professional Practice in CS *</span>
+                                <span class="skill-tag">COMP 4710 · Intro to Data Mining</span>
+                                <span class="skill-tag">COMP 4XXX · Computer & Network Security</span>
+                                <span class="skill-tag">COMP 4XXX · Computer Networks</span>
+                            </div>
+                            <p class="courses-note">* Currently in progress (Winter 2026)</p>
+                        </div>
+                        <div class="tab-content" id="tab-courses-math">
+                            <div class="skill-tags">
+                                <span class="skill-tag">MATH 1240 · Elementary Discrete Mathematics</span>
+                                <span class="skill-tag">MATH 1300 · Vector Geometry & Linear Algebra</span>
+                                <span class="skill-tag">MATH 1500 · Introduction to Calculus</span>
+                                <span class="skill-tag">MATH 1700 · Calculus 2</span>
+                                <span class="skill-tag">MATH 2150 · Multivariable Calculus</span>
+                                <span class="skill-tag">MATH 2740 · Mathematics of Data Science</span>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="tab-courses-stat">
+                            <div class="skill-tags">
+                                <span class="skill-tag">STAT 1000 · Basic Statistical Analysis 1</span>
+                                <span class="skill-tag">STAT 1150 · Intro to Statistics & Computing</span>
+                                <span class="skill-tag">STAT 2000 · Basic Statistical Analysis 2</span>
+                                <span class="skill-tag">STAT 2150 · Statistics and Computing</span>
+                                <span class="skill-tag">STAT 2300 · Principles of Data Collection</span>
+                                <span class="skill-tag">STAT 2400 · Introduction to Probability 1</span>
+                                <span class="skill-tag">STAT 3000 · Applied Linear Statistical Models</span>
+                                <span class="skill-tag">STAT 4000 · Applied Statistical Modelling</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,23 +178,16 @@
         </div>
     </section>
 
-    <!-- ========== 03. EXPERIENCE ========== -->
+    <!-- EXPERIENCE -->
     <section class="section experience" id="experience">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">
-                <span class="title-line"></span>
-                <span class="title-text">Experience</span>
-                <span class="title-line"></span>
-            </h2>
-
-            <!-- Tab Buttons -->
+            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">Experience</span><span class="title-line"></span></h2>
             <div class="tab-buttons animate-on-scroll" id="experienceTabs">
                 <button class="tab-btn active" data-tab="work">Work</button>
                 <button class="tab-btn" data-tab="volunteering">Volunteering</button>
                 <button class="tab-btn" data-tab="leadership">Leadership</button>
             </div>
 
-            <!-- Work Tab -->
             <div class="tab-content active" id="tab-work">
                 <div class="timeline">
                     <div class="timeline-item animate-on-scroll">
@@ -250,40 +196,31 @@
                             <span class="timeline-date">May 2023 — Present</span>
                             <h3>Tech Support Specialist</h3>
                             <p class="timeline-place">Rogers Communications · Remote</p>
-                            <p>Resolve 50+ incidents and service requests weekly. Perform detailed issue identification, logging, and categorization. Collaborate with cross-functional teams and maintain 200+ IT asset records monthly.</p>
+                            <ul class="timeline-points">
+                                <li>Resolve 50+ technical incidents and service requests weekly across hardware, software, and network systems, ensuring minimal downtime for enterprise and consumer clients.</li>
+                                <li>Perform detailed issue identification, logging, and categorization using ticketing systems, maintaining thorough documentation to support knowledge base development and trend analysis.</li>
+                                <li>Collaborate with cross-functional teams including network engineering and field operations to escalate and resolve complex multi-tier issues within established SLA timelines.</li>
+                                <li>Maintain and audit 200+ IT asset records monthly, tracking device lifecycles, warranty statuses, and deployment histories to support procurement and inventory planning.</li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-volunteering">
+                <div class="timeline">
                     <div class="timeline-item animate-on-scroll">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
                             <span class="timeline-date">Sep 2023 — Aug 2025</span>
                             <h3>Peer Tutor</h3>
                             <p class="timeline-place">UofM Science Students' Association · Nimbus Learning</p>
-                            <p>Provided personalized tutoring in computer science, mathematics, and statistics. Helped students master complex concepts while upholding academic integrity standards.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Volunteering Tab -->
-            <div class="tab-content" id="tab-volunteering">
-                <div class="timeline">
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">Sep 2025 — Present</span>
-                            <h3>Mentor</h3>
-                            <p class="timeline-place">UofM Science Students' Association</p>
-                            <p>Provide personalized mentorship including biweekly check-ins, campus tours, and introductions to student resources. Build strong mentor-mentee relationships in a supportive environment.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">Aug 2025 — Present</span>
-                            <h3>Welcome Mentor — International Centre</h3>
-                            <p class="timeline-place">University of Manitoba</p>
-                            <p>Guide international students through academic and cultural transitions. Foster meaningful connections through regular check-ins, active listening, and intercultural communication.</p>
+                            <ul class="timeline-points">
+                                <li>Delivered personalized one-on-one and group tutoring sessions in computer science, mathematics, and statistics courses, adapting teaching strategies to diverse learning styles.</li>
+                                <li>Developed and shared supplementary study materials including practice problems, concept maps, and step-by-step solution guides to reinforce understanding of complex topics.</li>
+                                <li>Mentored students through challenging coursework such as data structures, calculus, and probability, resulting in measurable improvements in academic performance and confidence.</li>
+                                <li>Upheld academic integrity standards by guiding students toward independent problem-solving rather than providing direct answers, fostering critical thinking and self-reliance.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="timeline-item animate-on-scroll">
@@ -292,7 +229,12 @@
                             <span class="timeline-date">Aug 2025 — Sep 2025</span>
                             <h3>Orientation Ambassador — International Centre</h3>
                             <p class="timeline-place">University of Manitoba</p>
-                            <p>Assisted with coordination and delivery of International Student Orientation. Supported event logistics and created an inclusive environment for incoming students.</p>
+                            <ul class="timeline-points">
+                                <li>Coordinated and facilitated international student orientation sessions, guiding groups of 20+ incoming students through campus resources, academic expectations, and cultural integration.</li>
+                                <li>Managed event logistics including room bookings, signage, information packages, and volunteer scheduling to ensure smooth execution of multi-day orientation programming.</li>
+                                <li>Created an inclusive and welcoming environment by proactively engaging with students from diverse cultural backgrounds, addressing language barriers, and offering personalized support.</li>
+                                <li>Collaborated with International Centre staff to collect post-event feedback and identify areas for improvement, contributing to enhanced orientation delivery in subsequent sessions.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="timeline-item animate-on-scroll">
@@ -301,22 +243,59 @@
                             <span class="timeline-date">Aug 2024 — Sep 2024</span>
                             <h3>Orientation Volunteer</h3>
                             <p class="timeline-place">University of Manitoba</p>
-                            <p>Welcomed new students and shared first-year experiences. Provided campus tours, directions, and helped organize orientation events.</p>
+                            <ul class="timeline-points">
+                                <li>Welcomed and supported over 100 new students during fall orientation week, providing campus tours, directions, and introductions to key academic and social resources.</li>
+                                <li>Shared first-year experiences and practical advice on course selection, study habits, and campus life, helping incoming students feel prepared and connected.</li>
+                                <li>Assisted with the setup and facilitation of orientation events including icebreaker activities, resource fairs, and faculty-specific information sessions.</li>
+                                <li>Demonstrated strong interpersonal and communication skills by engaging with diverse groups of students and parents, ensuring a positive and memorable first impression of the university.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Leadership Tab -->
             <div class="tab-content" id="tab-leadership">
                 <div class="timeline">
                     <div class="timeline-item animate-on-scroll">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
+                            <span class="timeline-date">Sep 2025 — Present</span>
+                            <h3>Mentor — Science Students' Association</h3>
+                            <p class="timeline-place">University of Manitoba</p>
+                            <ul class="timeline-points">
+                                <li>Provide personalized academic and social mentorship to incoming Science students through structured biweekly check-ins, campus tours, and tailored resource introductions.</li>
+                                <li>Develop individualized support plans based on each mentee's academic goals, challenges, and interests, fostering a strong and trusting mentor-mentee relationship.</li>
+                                <li>Organize and lead group mentorship events including study sessions, networking workshops, and peer support circles to build community among first-year students.</li>
+                                <li>Serve as a liaison between students and faculty resources, proactively connecting mentees with academic advising, tutoring services, and mental health support as needed.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Aug 2025 — Present</span>
+                            <h3>Welcome Mentor — International Centre</h3>
+                            <p class="timeline-place">University of Manitoba</p>
+                            <ul class="timeline-points">
+                                <li>Guide international students through academic and cultural transitions by providing ongoing support with course registration, campus navigation, and community integration.</li>
+                                <li>Conduct regular one-on-one check-ins to monitor mentee well-being, address concerns, and celebrate milestones, building meaningful connections grounded in active listening.</li>
+                                <li>Facilitate intercultural communication and understanding by organizing social events and cultural exchange activities that promote inclusivity and belonging on campus.</li>
+                                <li>Collaborate with the International Centre team to identify at-risk students early and connect them with appropriate support services including counseling and academic accommodations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
                             <span class="timeline-date">Sep 2024 — Aug 2025</span>
-                            <h3>Treasurer</h3>
-                            <p class="timeline-place">University of Manitoba Statistics Club</p>
-                            <p>Managed the club's annual budget, led financial planning and reporting, and collaborated with the executive team to plan academic events fostering engagement in data science and statistics.</p>
+                            <h3>Treasurer — Statistics Club</h3>
+                            <p class="timeline-place">University of Manitoba</p>
+                            <ul class="timeline-points">
+                                <li>Managed the club's annual budget of $2,000+, overseeing all financial transactions, reimbursements, and expense tracking to ensure transparent and responsible fiscal management.</li>
+                                <li>Prepared monthly financial reports and presented budget summaries to the executive team, enabling data-driven decision-making for event planning and resource allocation.</li>
+                                <li>Collaborated with the executive team to plan and fund academic events including guest lectures, data science workshops, and networking sessions that boosted club membership by 20%.</li>
+                                <li>Negotiated sponsorship deals and coordinated with university administration to secure funding for club initiatives, strengthening the club's financial sustainability for future terms.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -324,304 +303,89 @@
         </div>
     </section>
 
-    <!-- ========== 04. PROJECTS ========== -->
+    <!-- PROJECTS -->
     <section class="section projects" id="projects">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">
-                <span class="title-line"></span>
-                <span class="title-text">Projects</span>
-                <span class="title-line"></span>
-            </h2>
-
-            <!-- Tab Buttons -->
+            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">Projects</span><span class="title-line"></span></h2>
             <div class="tab-buttons animate-on-scroll" id="projectTabs">
                 <button class="tab-btn active" data-tab="academic">Academic</button>
                 <button class="tab-btn" data-tab="personal">Personal</button>
             </div>
-
-            <!-- Academic Tab -->
             <div class="tab-content active" id="tab-academic">
                 <div class="projects-grid">
                     <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🐾</span></div>
-                            <div class="project-overlay">
-                                <a href="#" class="project-link" title="View on GitHub">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                </a>
-                                <a href="#" class="project-link" title="Live Demo">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-label">COMP3350 · Team Project</span>
-                            <h3 class="project-title">PetObject</h3>
-                            <p class="project-desc">
-                                A full-featured Android app for virtual pet management. Features include
-                                form validation, bottom navigation, pet editing, and a clean multi-fragment architecture.
-                            </p>
-                            <div class="project-tech">
-                                <span>Java</span>
-                                <span>Android</span>
-                                <span>HSQLDB</span>
-                                <span>JUnit</span>
-                                <span>Git</span>
-                            </div>
-                        </div>
+                        <div class="project-image"><div class="project-placeholder"><span>🐾</span></div><div class="project-overlay"><a href="#" class="project-link" title="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></div></div>
+                        <div class="project-info"><span class="project-label">COMP 3350 · Team Project</span><h3 class="project-title">PetObject</h3><p class="project-desc">A full-featured Android app for virtual pet management. Features include form validation, bottom navigation, pet editing, and a clean multi-fragment architecture.</p><div class="project-tech"><span>Java</span><span>Android</span><span>HSQLDB</span><span>JUnit</span><span>Git</span></div></div>
                     </div>
-
                     <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🚀</span></div>
-                            <div class="project-overlay">
-                                <a href="#" class="project-link" title="View on GitHub">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-label">Coming Soon</span>
-                            <h3 class="project-title">Next Academic Project</h3>
-                            <p class="project-desc">
-                                More exciting academic projects are in the works! Stay tuned for updates.
-                            </p>
-                            <div class="project-tech">
-                                <span>???</span>
-                                <span>Stay Tuned</span>
-                            </div>
-                        </div>
+                        <div class="project-image"><div class="project-placeholder"><span>🚀</span></div></div>
+                        <div class="project-info"><span class="project-label">Coming Soon</span><h3 class="project-title">Next Academic Project</h3><p class="project-desc">More exciting academic projects are in the works! Stay tuned for updates.</p><div class="project-tech"><span>???</span><span>Stay Tuned</span></div></div>
                     </div>
                 </div>
             </div>
-
-            <!-- Personal Tab -->
             <div class="tab-content" id="tab-personal">
                 <div class="projects-grid">
                     <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🌐</span></div>
-                            <div class="project-overlay">
-                                <a href="https://github.com/satyambhanot/satyambhanot.github.io" class="project-link" title="View on GitHub">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                </a>
-                                <a href="https://satyambhanot.github.io" class="project-link" title="Live Site">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-label">Personal</span>
-                            <h3 class="project-title">Portfolio Website</h3>
-                            <p class="project-desc">
-                                This personal portfolio — built from scratch with pure HTML, CSS, and
-                                JavaScript. Features particle effects, dark/light mode, scroll animations,
-                                typing effects, and responsive design.
-                            </p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                                <span>GitHub Pages</span>
-                            </div>
-                        </div>
+                        <div class="project-image"><div class="project-placeholder"><span>🌐</span></div><div class="project-overlay"><a href="https://github.com/satyambhanot/satyambhanot.github.io" class="project-link" title="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a><a href="https://satyambhanot.github.io" class="project-link" title="Live Site"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></div>
+                        <div class="project-info"><span class="project-label">Personal</span><h3 class="project-title">Portfolio Website</h3><p class="project-desc">This personal portfolio — built from scratch with pure HTML, CSS, and JavaScript. Features particle effects, dark/light mode, scroll animations, typing effects, and responsive design.</p><div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div></div>
                     </div>
-
                     <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🚀</span></div>
-                            <div class="project-overlay">
-                                <a href="#" class="project-link" title="View on GitHub">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-label">Coming Soon</span>
-                            <h3 class="project-title">Next Personal Project</h3>
-                            <p class="project-desc">
-                                More personal projects are in the works! I'm always exploring new technologies.
-                            </p>
-                            <div class="project-tech">
-                                <span>???</span>
-                                <span>Stay Tuned</span>
-                            </div>
-                        </div>
+                        <div class="project-image"><div class="project-placeholder"><span>🚀</span></div></div>
+                        <div class="project-info"><span class="project-label">Coming Soon</span><h3 class="project-title">Next Personal Project</h3><p class="project-desc">More personal projects are in the works! I'm always exploring new technologies.</p><div class="project-tech"><span>???</span><span>Stay Tuned</span></div></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== 05. SKILLS ========== -->
+    <!-- SKILLS -->
     <section class="section skills" id="skills">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">
-                <span class="title-line"></span>
-                <span class="title-text">Skills & Technologies</span>
-                <span class="title-line"></span>
-            </h2>
+            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">Skills & Technologies</span><span class="title-line"></span></h2>
             <div class="skills-layout">
                 <div class="skills-bars animate-on-scroll">
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-header">
-                            <span class="skill-bar-name">Java</span>
-                            <span class="skill-bar-percent">90%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-fill" data-width="90"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-header">
-                            <span class="skill-bar-name">Python</span>
-                            <span class="skill-bar-percent">85%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-fill" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-header">
-                            <span class="skill-bar-name">JavaScript</span>
-                            <span class="skill-bar-percent">75%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-fill" data-width="75"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-header">
-                            <span class="skill-bar-name">HTML / CSS</span>
-                            <span class="skill-bar-percent">80%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-fill" data-width="80"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-header">
-                            <span class="skill-bar-name">SQL</span>
-                            <span class="skill-bar-percent">80%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-fill" data-width="80"></div>
-                        </div>
-                    </div>
-                    <div class="skill-bar-item">
-                        <div class="skill-bar-header">
-                            <span class="skill-bar-name">C / C++</span>
-                            <span class="skill-bar-percent">65%</span>
-                        </div>
-                        <div class="skill-bar-track">
-                            <div class="skill-bar-fill" data-width="65"></div>
-                        </div>
-                    </div>
+                    <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Java</span><span class="skill-bar-percent">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
+                    <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Python</span><span class="skill-bar-percent">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
+                    <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">JavaScript</span><span class="skill-bar-percent">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></div>
+                    <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">HTML / CSS</span><span class="skill-bar-percent">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
+                    <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">SQL</span><span class="skill-bar-percent">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
+                    <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">C / C++</span><span class="skill-bar-percent">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div></div>
                 </div>
                 <div class="skills-categories">
-                    <div class="skill-category animate-on-scroll">
-                        <h3 class="skill-category-title">Frameworks & Tools</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Android SDK</span>
-                            <span class="skill-tag">Git / GitHub</span>
-                            <span class="skill-tag">JUnit</span>
-                            <span class="skill-tag">Gradle</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                        </div>
-                    </div>
-                    <div class="skill-category animate-on-scroll">
-                        <h3 class="skill-category-title">Data & Analytics</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Statistical Analysis</span>
-                            <span class="skill-tag">Data Visualization</span>
-                            <span class="skill-tag">Machine Learning</span>
-                            <span class="skill-tag">Pandas / NumPy</span>
-                            <span class="skill-tag">R</span>
-                        </div>
-                    </div>
-                    <div class="skill-category animate-on-scroll">
-                        <h3 class="skill-category-title">Concepts & Soft Skills</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Agile / Scrum</span>
-                            <span class="skill-tag">OOP</span>
-                            <span class="skill-tag">Troubleshooting</span>
-                            <span class="skill-tag">Mentoring</span>
-                            <span class="skill-tag">Leadership</span>
-                            <span class="skill-tag">Financial Planning</span>
-                        </div>
-                    </div>
+                    <div class="skill-category animate-on-scroll"><h3 class="skill-category-title">Frameworks & Tools</h3><div class="skill-tags"><span class="skill-tag">Android SDK</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">JUnit</span><span class="skill-tag">Gradle</span><span class="skill-tag">React</span><span class="skill-tag">Node.js</span></div></div>
+                    <div class="skill-category animate-on-scroll"><h3 class="skill-category-title">Data & Analytics</h3><div class="skill-tags"><span class="skill-tag">Statistical Analysis</span><span class="skill-tag">Data Visualization</span><span class="skill-tag">Machine Learning</span><span class="skill-tag">Pandas / NumPy</span><span class="skill-tag">R</span></div></div>
+                    <div class="skill-category animate-on-scroll"><h3 class="skill-category-title">Concepts & Soft Skills</h3><div class="skill-tags"><span class="skill-tag">Agile / Scrum</span><span class="skill-tag">OOP</span><span class="skill-tag">Troubleshooting</span><span class="skill-tag">Mentoring</span><span class="skill-tag">Leadership</span><span class="skill-tag">Financial Planning</span></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== 06. CONTACT ========== -->
+    <!-- CONTACT -->
     <section class="section contact" id="contact">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">
-                <span class="title-line"></span>
-                <span class="title-text">Get In Touch</span>
-                <span class="title-line"></span>
-            </h2>
+            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">Get In Touch</span><span class="title-line"></span></h2>
             <div class="contact-wrapper animate-on-scroll">
                 <div class="contact-text">
-                    <p>
-                        I'm always open to new opportunities, collaborations, or just a friendly chat
-                        about technology. Feel free to reach out!
-                    </p>
+                    <p>I'm always open to new opportunities, collaborations, or just a friendly chat about technology. Feel free to reach out!</p>
                     <div class="contact-links">
-                        <a href="mailto:satyambhanot@gmail.com" class="contact-link-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <span>satyambhanot@gmail.com</span>
-                        </a>
-                        <a href="https://github.com/satyambhanot" target="_blank" class="contact-link-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://linkedin.com/in/satyam-bhanot" target="_blank" class="contact-link-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                            <span>LinkedIn</span>
-                        </a>
+                        <a href="mailto:satyambhanot@gmail.com" class="contact-link-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>satyambhanot@gmail.com</span></a>
+                        <a href="https://github.com/satyambhanot" target="_blank" class="contact-link-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
+                        <a href="https://linkedin.com/in/satyam-bhanot" target="_blank" class="contact-link-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><span>LinkedIn</span></a>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">
-                        <span>Send Message</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                    </button>
+                    <div class="form-group"><input type="text" id="name" name="name" placeholder="Your Name" required></div>
+                    <div class="form-group"><input type="email" id="email" name="email" placeholder="Your Email" required></div>
+                    <div class="form-group"><textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea></div>
+                    <button type="submit" class="btn btn-primary btn-full"><span>Send Message</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Designed & Built by <strong>Satyam Bhanot</strong> &copy; 2025</p>
-            <p class="footer-note">Built with HTML, CSS & JavaScript — no frameworks, just passion.</p>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-    </button>
-
-    <!-- Easter Egg Notification -->
-    <div class="easter-egg-toast" id="easterEggToast">
-        🎮 You found the secret! — Konami Code activated!
-    </div>
-
+    <footer class="footer"><div class="container"><p>Designed & Built by <strong>Satyam Bhanot</strong> &copy; 2025</p><p class="footer-note">Built with HTML, CSS & JavaScript — no frameworks, just passion.</p></div></footer>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+    <div class="easter-egg-toast" id="easterEggToast">🎮 You found the secret! — Konami Code activated!</div>
     <script src="script.js"></script>
 </body>
 </html>
