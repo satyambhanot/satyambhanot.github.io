@@ -62,9 +62,10 @@
                 </button>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
                         <a href="resume.pdf" class="nav-resume-btn" download>
@@ -77,13 +78,9 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ========== HERO ========== -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <div class="hero-badge animate-on-scroll">
-                <span class="badge-dot"></span>
-                Open to opportunities
-            </div>
             <h1 class="hero-name animate-on-scroll">
                 <span class="hero-line">Hi, I'm</span>
                 <span class="hero-line hero-name-highlight">Satyam Bhanot</span>
@@ -116,43 +113,11 @@
         </div>
     </section>
 
-    <!-- Stats Counter -->
-    <section class="stats" id="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number" data-target="8">0</span>
-                    <span class="stat-label">Projects Completed</span>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number" data-target="15000">0</span>
-                    <span class="stat-suffix">+</span>
-                    <span class="stat-label">Lines of Code</span>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number" data-target="4">0</span>
-                    <span class="stat-suffix">+</span>
-                    <span class="stat-label">Years of Coding</span>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number" data-target="200">0</span>
-                    <span class="stat-suffix">+</span>
-                    <span class="stat-label">GitHub Contributions</span>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number" data-target="30">0</span>
-                    <span class="stat-suffix">+</span>
-                    <span class="stat-label">Students Mentored</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
+    <!-- ========== 01. ABOUT ========== -->
     <section class="section about" id="about">
         <div class="container">
             <h2 class="section-title animate-on-scroll">
-                <span class="title-number">01</span>
+                <span class="title-line"></span>
                 <span class="title-text">About Me</span>
                 <span class="title-line"></span>
             </h2>
@@ -162,7 +127,6 @@
                         <div class="photo-placeholder">
                             <span>SB</span>
                         </div>
-                        <!-- Replace the div above with: <img src="your-photo.jpg" alt="Satyam Bhanot"> -->
                         <div class="photo-border"></div>
                     </div>
                     <div class="about-photo-decoration"></div>
@@ -209,11 +173,291 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- ========== 02. EDUCATION ========== -->
+    <section class="section education" id="education">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="title-line"></span>
+                <span class="title-text">Education</span>
+                <span class="title-line"></span>
+            </h2>
+            <div class="education-card animate-on-scroll">
+                <div class="edu-header">
+                    <div class="edu-icon">🎓</div>
+                    <div>
+                        <h3>Bachelor of Science — Computer Science Honours</h3>
+                        <p class="edu-school">University of Manitoba</p>
+                    </div>
+                    <span class="edu-date">2021 — Apr 2026 (Expected)</span>
+                </div>
+                <div class="edu-body">
+                    <p class="edu-minor">Minor: Mathematics & Statistics</p>
+                    <div class="edu-achievements">
+                        <div class="edu-achievement">
+                            <span class="achievement-badge">🏆</span>
+                            <div>
+                                <strong>Dean's Honour List</strong>
+                                <p>Fall 2024 — GPA 3.75+ with 15 credit hours</p>
+                            </div>
+                        </div>
+                        <div class="edu-achievement">
+                            <span class="achievement-badge">🏆</span>
+                            <div>
+                                <strong>University 1 Honour List</strong>
+                                <p>Winter 2021 — GPA 3.75+ with 12 credit hours</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="edu-coursework">
+                        <span class="coursework-label">Relevant Coursework:</span>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Software Engineering</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">Algorithms</span>
+                            <span class="skill-tag">Databases</span>
+                            <span class="skill-tag">Operating Systems</span>
+                            <span class="skill-tag">HCI</span>
+                            <span class="skill-tag">Statistics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 03. EXPERIENCE ========== -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="title-line"></span>
+                <span class="title-text">Experience</span>
+                <span class="title-line"></span>
+            </h2>
+
+            <!-- Tab Buttons -->
+            <div class="tab-buttons animate-on-scroll" id="experienceTabs">
+                <button class="tab-btn active" data-tab="work">Work</button>
+                <button class="tab-btn" data-tab="volunteering">Volunteering</button>
+                <button class="tab-btn" data-tab="leadership">Leadership</button>
+            </div>
+
+            <!-- Work Tab -->
+            <div class="tab-content active" id="tab-work">
+                <div class="timeline">
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">May 2023 — Present</span>
+                            <h3>Tech Support Specialist</h3>
+                            <p class="timeline-place">Rogers Communications · Remote</p>
+                            <p>Resolve 50+ incidents and service requests weekly. Perform detailed issue identification, logging, and categorization. Collaborate with cross-functional teams and maintain 200+ IT asset records monthly.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Sep 2023 — Aug 2025</span>
+                            <h3>Peer Tutor</h3>
+                            <p class="timeline-place">UofM Science Students' Association · Nimbus Learning</p>
+                            <p>Provided personalized tutoring in computer science, mathematics, and statistics. Helped students master complex concepts while upholding academic integrity standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volunteering Tab -->
+            <div class="tab-content" id="tab-volunteering">
+                <div class="timeline">
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Sep 2025 — Present</span>
+                            <h3>Mentor</h3>
+                            <p class="timeline-place">UofM Science Students' Association</p>
+                            <p>Provide personalized mentorship including biweekly check-ins, campus tours, and introductions to student resources. Build strong mentor-mentee relationships in a supportive environment.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Aug 2025 — Present</span>
+                            <h3>Welcome Mentor — International Centre</h3>
+                            <p class="timeline-place">University of Manitoba</p>
+                            <p>Guide international students through academic and cultural transitions. Foster meaningful connections through regular check-ins, active listening, and intercultural communication.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Aug 2025 — Sep 2025</span>
+                            <h3>Orientation Ambassador — International Centre</h3>
+                            <p class="timeline-place">University of Manitoba</p>
+                            <p>Assisted with coordination and delivery of International Student Orientation. Supported event logistics and created an inclusive environment for incoming students.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Aug 2024 — Sep 2024</span>
+                            <h3>Orientation Volunteer</h3>
+                            <p class="timeline-place">University of Manitoba</p>
+                            <p>Welcomed new students and shared first-year experiences. Provided campus tours, directions, and helped organize orientation events.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leadership Tab -->
+            <div class="tab-content" id="tab-leadership">
+                <div class="timeline">
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Sep 2024 — Aug 2025</span>
+                            <h3>Treasurer</h3>
+                            <p class="timeline-place">University of Manitoba Statistics Club</p>
+                            <p>Managed the club's annual budget, led financial planning and reporting, and collaborated with the executive team to plan academic events fostering engagement in data science and statistics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 04. PROJECTS ========== -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="title-line"></span>
+                <span class="title-text">Projects</span>
+                <span class="title-line"></span>
+            </h2>
+
+            <!-- Tab Buttons -->
+            <div class="tab-buttons animate-on-scroll" id="projectTabs">
+                <button class="tab-btn active" data-tab="academic">Academic</button>
+                <button class="tab-btn" data-tab="personal">Personal</button>
+            </div>
+
+            <!-- Academic Tab -->
+            <div class="tab-content active" id="tab-academic">
+                <div class="projects-grid">
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">
+                            <div class="project-placeholder"><span>🐾</span></div>
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" title="View on GitHub">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                </a>
+                                <a href="#" class="project-link" title="Live Demo">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-label">COMP3350 · Team Project</span>
+                            <h3 class="project-title">PetObject</h3>
+                            <p class="project-desc">
+                                A full-featured Android app for virtual pet management. Features include
+                                form validation, bottom navigation, pet editing, and a clean multi-fragment architecture.
+                            </p>
+                            <div class="project-tech">
+                                <span>Java</span>
+                                <span>Android</span>
+                                <span>HSQLDB</span>
+                                <span>JUnit</span>
+                                <span>Git</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">
+                            <div class="project-placeholder"><span>🚀</span></div>
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" title="View on GitHub">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-label">Coming Soon</span>
+                            <h3 class="project-title">Next Academic Project</h3>
+                            <p class="project-desc">
+                                More exciting academic projects are in the works! Stay tuned for updates.
+                            </p>
+                            <div class="project-tech">
+                                <span>???</span>
+                                <span>Stay Tuned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Tab -->
+            <div class="tab-content" id="tab-personal">
+                <div class="projects-grid">
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">
+                            <div class="project-placeholder"><span>🌐</span></div>
+                            <div class="project-overlay">
+                                <a href="https://github.com/satyambhanot/satyambhanot.github.io" class="project-link" title="View on GitHub">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                </a>
+                                <a href="https://satyambhanot.github.io" class="project-link" title="Live Site">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-label">Personal</span>
+                            <h3 class="project-title">Portfolio Website</h3>
+                            <p class="project-desc">
+                                This personal portfolio — built from scratch with pure HTML, CSS, and
+                                JavaScript. Features particle effects, dark/light mode, scroll animations,
+                                typing effects, and responsive design.
+                            </p>
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>GitHub Pages</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">
+                            <div class="project-placeholder"><span>🚀</span></div>
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" title="View on GitHub">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-label">Coming Soon</span>
+                            <h3 class="project-title">Next Personal Project</h3>
+                            <p class="project-desc">
+                                More personal projects are in the works! I'm always exploring new technologies.
+                            </p>
+                            <div class="project-tech">
+                                <span>???</span>
+                                <span>Stay Tuned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 05. SKILLS ========== -->
     <section class="section skills" id="skills">
         <div class="container">
             <h2 class="section-title animate-on-scroll">
-                <span class="title-number">02</span>
+                <span class="title-line"></span>
                 <span class="title-text">Skills & Technologies</span>
                 <span class="title-line"></span>
             </h2>
@@ -312,169 +556,11 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="section projects" id="projects">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">
-                <span class="title-number">03</span>
-                <span class="title-text">Featured Projects</span>
-                <span class="title-line"></span>
-            </h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <div class="project-placeholder"><span>🐾</span></div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" title="View on GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            </a>
-                            <a href="#" class="project-link" title="Live Demo">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-label">Featured Project</span>
-                        <h3 class="project-title">PetObject</h3>
-                        <p class="project-desc">
-                            A full-featured Android app for virtual pet management built as a team project.
-                            Features include form validation, bottom navigation, pet editing, and a
-                            clean multi-fragment architecture.
-                        </p>
-                        <div class="project-tech">
-                            <span>Java</span>
-                            <span>Android</span>
-                            <span>HSQLDB</span>
-                            <span>JUnit</span>
-                            <span>Git</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <div class="project-placeholder"><span>🌐</span></div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/satyambhanot/satyambhanot.github.io" class="project-link" title="View on GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            </a>
-                            <a href="https://satyambhanot.github.io" class="project-link" title="Live Site">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-label">Personal</span>
-                        <h3 class="project-title">Portfolio Website</h3>
-                        <p class="project-desc">
-                            This personal portfolio — built from scratch with pure HTML, CSS, and
-                            JavaScript. Features particle effects, dark/light mode, scroll animations,
-                            typing effects, and responsive design.
-                        </p>
-                        <div class="project-tech">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>GitHub Pages</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <div class="project-placeholder"><span>🚀</span></div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" title="View on GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            </a>
-                            <a href="#" class="project-link" title="Live Demo">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-label">Coming Soon</span>
-                        <h3 class="project-title">Next Project</h3>
-                        <p class="project-desc">
-                            More exciting projects are in the works! I'm always exploring new
-                            technologies and building things that challenge me to grow as a developer.
-                        </p>
-                        <div class="project-tech">
-                            <span>???</span>
-                            <span>Stay Tuned</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience / Timeline Section -->
-    <section class="section experience" id="experience">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">
-                <span class="title-number">04</span>
-                <span class="title-text">Experience & Education</span>
-                <span class="title-line"></span>
-            </h2>
-            <div class="timeline">
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">May 2023 — Present</span>
-                        <h3>Tech Support Specialist</h3>
-                        <p class="timeline-place">Rogers Communications · Remote</p>
-                        <p>Resolve 50+ incidents and service requests weekly. Perform detailed issue identification, logging, and categorization. Collaborate with cross-functional teams and maintain 200+ IT asset records monthly.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Sep 2025 — Present</span>
-                        <h3>Mentor</h3>
-                        <p class="timeline-place">UofM Science Students' Association & International Centre</p>
-                        <p>Provide personalized mentorship to incoming and international students through biweekly check-ins, campus tours, and resource introductions. Guide students through academic and cultural transitions.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Sep 2024 — Aug 2025</span>
-                        <h3>Treasurer</h3>
-                        <p class="timeline-place">University of Manitoba Statistics Club</p>
-                        <p>Managed the club's annual budget, led financial planning and reporting, and collaborated with the executive team to plan academic events fostering engagement in data science and statistics.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Sep 2023 — Aug 2025</span>
-                        <h3>Peer Tutor</h3>
-                        <p class="timeline-place">UofM Science Students' Association · Nimbus Learning</p>
-                        <p>Provided personalized tutoring in computer science, mathematics, and statistics. Helped students master complex concepts while upholding academic integrity standards.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2021 — Apr 2026 (Expected)</span>
-                        <h3>B.Sc. Computer Science Honours</h3>
-                        <p class="timeline-place">University of Manitoba · Minor: Mathematics & Statistics</p>
-                        <p>Dean's Honour List (Fall 2024) and University 1 Honour List (Winter 2021). Coursework includes Software Engineering, Data Structures, Algorithms, Databases, and more.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
+    <!-- ========== 06. CONTACT ========== -->
     <section class="section contact" id="contact">
         <div class="container">
             <h2 class="section-title animate-on-scroll">
-                <span class="title-number">05</span>
+                <span class="title-line"></span>
                 <span class="title-text">Get In Touch</span>
                 <span class="title-line"></span>
             </h2>
