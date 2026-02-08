@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const themeToggle = document.getElementById('themeToggle');
 const root = document.documentElement;
 
-// Check for saved preference
+// Check for saved preference — default is dark
 const savedTheme = localStorage.getItem('theme') || 'dark';
 root.setAttribute('data-theme', savedTheme);
 
@@ -283,51 +283,31 @@ document.querySelectorAll('.skills-bars').forEach(el => {
 });
 
 /* ===================================
-   Stats Counter — Smooth Odometer Ticker
+   Tab Switching System
    =================================== */
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const counters = entry.target.querySelectorAll('.stat-number');
-            counters.forEach((counter, idx) => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const duration = 2200 + idx * 200; // Stagger each counter
-                const startTime = performance.now();
-                let lastValue = -1;
+document.querySelectorAll('.tab-buttons').forEach(tabGroup => {
+    const buttons = tabGroup.querySelectorAll('.tab-btn');
+    const section = tabGroup.closest('.section');
 
-                function updateCounter(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    // Ease out expo for odometer feel — fast start, smooth stop
-                    const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                    const current = Math.floor(eased * target);
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Deactivate all tabs in this group
+            buttons.forEach(b => b.classList.remove('active'));
+            section.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
 
-                    if (current !== lastValue) {
-                        counter.textContent = current.toLocaleString();
-                        // Subtle scale bump on digit change
-                        counter.style.transform = 'scale(1.02)';
-                        setTimeout(() => { counter.style.transform = 'scale(1)'; }, 60);
-                        lastValue = current;
-                    }
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.textContent = target.toLocaleString();
-                        counter.style.transform = 'scale(1)';
-                    }
-                }
-
-                // Stagger start of each counter
-                setTimeout(() => requestAnimationFrame(updateCounter), idx * 100);
-            });
-            statsObserver.unobserve(entry.target);
-        }
+            // Activate clicked tab
+            btn.classList.add('active');
+            const tabId = 'tab-' + btn.getAttribute('data-tab');
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                // Re-trigger scroll animations for newly visible content
+                targetContent.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
+                    scrollObserver.observe(el);
+                });
+            }
+        });
     });
-}, { threshold: 0.4 });
-
-document.querySelectorAll('.stats-grid').forEach(el => {
-    statsObserver.observe(el);
 });
 
 /* ===================================
@@ -356,6 +336,37 @@ navToggle.addEventListener('click', () => {
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
+    });
+});
+
+/* ===================================
+   Tab Switching (Experience & Projects)
+   =================================== */
+document.querySelectorAll('.tab-buttons').forEach(tabGroup => {
+    const buttons = tabGroup.querySelectorAll('.tab-btn');
+    const section = tabGroup.closest('.section');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabName = btn.getAttribute('data-tab');
+
+            // Update active button
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Switch content
+            section.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            const target = section.querySelector(`#tab-${tabName}`);
+            if (target) {
+                target.classList.add('active');
+                // Re-trigger scroll animations for newly visible content
+                target.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
+                    scrollObserver.observe(el);
+                });
+            }
+        });
     });
 });
 
