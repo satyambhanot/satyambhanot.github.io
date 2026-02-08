@@ -260,29 +260,6 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
 });
 
 /* ===================================
-   Animated Skill Bars
-   =================================== */
-const skillBarObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const fills = entry.target.querySelectorAll('.skill-bar-fill');
-            fills.forEach((fill, i) => {
-                setTimeout(() => {
-                    const targetWidth = fill.getAttribute('data-width');
-                    fill.style.width = targetWidth + '%';
-                    fill.classList.add('animated');
-                }, i * 150);
-            });
-            skillBarObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.3 });
-
-document.querySelectorAll('.skills-bars').forEach(el => {
-    skillBarObserver.observe(el);
-});
-
-/* ===================================
    Tab Switching System
    =================================== */
 document.querySelectorAll('.tab-buttons').forEach(tabGroup => {
