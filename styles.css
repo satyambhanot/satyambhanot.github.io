@@ -46,13 +46,20 @@
     --shadow-accent: 0 4px 25px rgba(59, 130, 246, 0.12);
 
     --nav-bg: rgba(20, 20, 20, 0.8);
-    --nav-solid: #1c1c1e;
-    --nav-text: #f5f5f7;
+    --nav-solid: #f5f5f7;
+    --nav-text: #111827;
+    --nav-border: rgba(0, 0, 0, 0.08);
+    --nav-link: rgba(0, 0, 0, 0.5);
+    --nav-link-hover: #111827;
+    --nav-toggle-bg: rgba(0, 0, 0, 0.05);
+    --nav-toggle-border: rgba(0, 0, 0, 0.1);
+    --nav-toggle-color: rgba(0, 0, 0, 0.5);
+    --nav-resume-border: rgba(0, 0, 0, 0.2);
     --loader-bg: #141414;
 
-    --contact-bg: #0f1729;
-    --contact-card-bg: rgba(59, 130, 246, 0.06);
-    --contact-border: rgba(59, 130, 246, 0.12);
+    --contact-bg: #1e1145;
+    --contact-card-bg: rgba(255, 255, 255, 0.06);
+    --contact-border: rgba(255, 255, 255, 0.1);
 
     --particle-color: 59, 130, 246;
     --skill-bar-bg: rgba(255, 255, 255, 0.06);
@@ -90,8 +97,15 @@
     --shadow-accent: 0 4px 25px rgba(37, 99, 235, 0.08);
 
     --nav-bg: rgba(255, 255, 255, 0.8);
-    --nav-solid: #141414;
+    --nav-solid: #1c1c1e;
     --nav-text: #f5f5f7;
+    --nav-border: rgba(255, 255, 255, 0.06);
+    --nav-link: rgba(255, 255, 255, 0.6);
+    --nav-link-hover: #ffffff;
+    --nav-toggle-bg: rgba(255, 255, 255, 0.08);
+    --nav-toggle-border: rgba(255, 255, 255, 0.12);
+    --nav-toggle-color: rgba(255, 255, 255, 0.7);
+    --nav-resume-border: rgba(255, 255, 255, 0.25);
     --loader-bg: #ffffff;
 
     --contact-bg: #1e1145;
@@ -349,12 +363,12 @@ body.loaded .cursor-dot.hovering {
     right: 0;
     z-index: 1000;
     background: var(--nav-solid);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--nav-border);
     transition: var(--transition);
 }
 
 .navbar.scrolled {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .nav-container {
@@ -396,14 +410,14 @@ body.loaded .cursor-dot.hovering {
     padding: 8px 14px;
     font-size: 0.88rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--nav-link);
     border-radius: var(--radius-sm);
     transition: var(--transition);
     cursor: none;
 }
 
 .nav-links a:hover {
-    color: #ffffff;
+    color: var(--nav-link-hover);
     background: var(--accent-subtle);
 }
 
@@ -412,9 +426,9 @@ body.loaded .cursor-dot.hovering {
     align-items: center;
     gap: 6px;
     padding: 8px 16px !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    border: 1.5px solid var(--nav-resume-border);
     border-radius: var(--radius-full) !important;
-    color: #ffffff !important;
+    color: var(--nav-text) !important;
     font-family: var(--font-mono);
     font-size: 0.82rem !important;
 }
@@ -432,18 +446,18 @@ body.loaded .cursor-dot.hovering {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--nav-toggle-bg);
+    border: 1px solid var(--nav-toggle-border);
     border-radius: 50%;
     cursor: none;
     transition: var(--transition);
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--nav-toggle-color);
 }
 
 .theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--nav-toggle-border);
     transform: rotate(30deg);
-    color: #ffffff;
+    color: var(--nav-text);
 }
 
 [data-theme="dark"] .icon-sun { display: block; }
@@ -465,7 +479,7 @@ body.loaded .cursor-dot.hovering {
 .nav-toggle span {
     width: 22px;
     height: 2px;
-    background: var(--text-primary);
+    background: var(--nav-text);
     border-radius: 2px;
     transition: var(--transition);
 }
@@ -698,6 +712,142 @@ body.loaded .cursor-dot.hovering {
 
 .section .title-line:last-child {
     background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+/* ===================================
+   Floating Orbs — Per Section Backgrounds
+   =================================== */
+.section {
+    overflow: hidden;
+}
+
+.section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* About — top-right warm orb */
+.about::after {
+    width: 400px;
+    height: 400px;
+    background: var(--accent);
+    top: -100px;
+    right: -100px;
+    animation: floatOrb1 20s ease-in-out infinite;
+}
+
+/* Education — bottom-left orb */
+.education::after {
+    width: 350px;
+    height: 350px;
+    background: var(--accent);
+    bottom: -80px;
+    left: -80px;
+    animation: floatOrb2 25s ease-in-out infinite;
+}
+
+/* Experience — center-right orb */
+.experience::after {
+    width: 450px;
+    height: 450px;
+    background: var(--accent);
+    top: 50%;
+    right: -150px;
+    transform: translateY(-50%);
+    animation: floatOrb3 22s ease-in-out infinite;
+}
+
+/* Projects — top-left orb */
+.projects::after {
+    width: 380px;
+    height: 380px;
+    background: var(--accent);
+    top: -60px;
+    left: -120px;
+    animation: floatOrb1 18s ease-in-out infinite reverse;
+}
+
+/* Skills — bottom-right orb */
+.skills::after {
+    width: 320px;
+    height: 320px;
+    background: var(--accent);
+    bottom: -100px;
+    right: -60px;
+    animation: floatOrb2 24s ease-in-out infinite reverse;
+}
+
+/* Second orb per section using a pseudo on the container */
+.about .container,
+.education .container,
+.experience .container,
+.projects .container,
+.skills .container {
+    position: relative;
+}
+
+.about .container::before,
+.experience .container::before,
+.skills .container::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.about .container::before {
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    bottom: -50px;
+    left: 10%;
+    animation: floatOrb3 28s ease-in-out infinite;
+}
+
+.experience .container::before {
+    width: 280px;
+    height: 280px;
+    background: var(--accent);
+    top: 10%;
+    left: -100px;
+    animation: floatOrb1 26s ease-in-out infinite;
+}
+
+.skills .container::before {
+    width: 350px;
+    height: 350px;
+    background: var(--accent);
+    top: -80px;
+    left: 30%;
+    animation: floatOrb2 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb1 {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(30px, -20px); }
+    50% { transform: translate(-15px, 25px); }
+    75% { transform: translate(20px, 15px); }
+}
+
+@keyframes floatOrb2 {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-25px, 15px); }
+    50% { transform: translate(20px, -30px); }
+    75% { transform: translate(-10px, -20px); }
+}
+
+@keyframes floatOrb3 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(25px, 20px); }
+    66% { transform: translate(-20px, -15px); }
 }
 
 .section-title {
@@ -1486,7 +1636,7 @@ body.loaded .cursor-dot.hovering {
         background: var(--nav-solid);
         flex-direction: column;
         padding: 16px 24px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid var(--nav-border);
         box-shadow: var(--shadow-md);
     }
 
