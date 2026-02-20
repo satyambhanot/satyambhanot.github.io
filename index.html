@@ -339,47 +339,56 @@
     <section class="section skills" id="skills">
         <div class="container">
             <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">Skills & Technologies</span><span class="title-line"></span></h2>
-            <div class="skills-layout">
-                <div class="skills-hex-grid animate-on-scroll">
-                    <div class="skill-hex"><span class="skill-hex-icon">☕</span><span class="skill-hex-name">Java</span></div>
-                    <div class="skill-hex"><span class="skill-hex-icon">🐍</span><span class="skill-hex-name">Python</span></div>
-                    <div class="skill-hex"><span class="skill-hex-icon">⚡</span><span class="skill-hex-name">JavaScript</span></div>
-                    <div class="skill-hex"><span class="skill-hex-icon">🌐</span><span class="skill-hex-name">HTML / CSS</span></div>
-                    <div class="skill-hex"><span class="skill-hex-icon">🗃️</span><span class="skill-hex-name">SQL</span></div>
-                    <div class="skill-hex"><span class="skill-hex-icon">⚙️</span><span class="skill-hex-name">C / C++</span></div>
-                    <div class="skill-hex"><span class="skill-hex-icon">📊</span><span class="skill-hex-name">R</span></div>
+
+            <div class="tab-buttons animate-on-scroll" id="skillsTabs">
+                <button class="tab-btn active" data-tab="languages">Programming Languages</button>
+                <button class="tab-btn" data-tab="frameworks">Frameworks</button>
+                <button class="tab-btn" data-tab="devtools">Developer Tools</button>
+            </div>
+
+            <div class="tab-content active" id="tab-languages">
+                <div class="skill-tags-grid animate-on-scroll">
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">SQL (Postgres)</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">LC3 Assembly</span>
+                    <span class="skill-tag">Rmd</span>
+                    <span class="skill-tag">LaTeX</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
                 </div>
-                <div class="skills-categories-grid">
-                    <div class="skill-category animate-on-scroll">
-                        <h3 class="skill-category-title">Frameworks & Tools</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Android SDK</span>
-                            <span class="skill-tag">Git / GitHub</span>
-                            <span class="skill-tag">JUnit</span>
-                            <span class="skill-tag">Gradle</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                        </div>
-                    </div>
-                    <div class="skill-category animate-on-scroll">
-                        <h3 class="skill-category-title">Data & Analytics</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Statistical Analysis</span>
-                            <span class="skill-tag">Data Visualization</span>
-                            <span class="skill-tag">Machine Learning</span>
-                            <span class="skill-tag">Pandas / NumPy</span>
-                        </div>
-                    </div>
-                    <div class="skill-category animate-on-scroll">
-                        <h3 class="skill-category-title">Concepts & Soft Skills</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Agile / Scrum</span>
-                            <span class="skill-tag">OOP</span>
-                            <span class="skill-tag">Troubleshooting</span>
-                            <span class="skill-tag">Mentoring</span>
-                            <span class="skill-tag">Leadership</span>
-                        </div>
-                    </div>
+            </div>
+
+            <div class="tab-content" id="tab-frameworks">
+                <div class="skill-tags-grid animate-on-scroll">
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Tailwind</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">FastAPI</span>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-devtools">
+                <div class="skill-tags-grid animate-on-scroll">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Parcel</span>
+                    <span class="skill-tag">Webpack</span>
+                    <span class="skill-tag">Jupyter Lab</span>
+                    <span class="skill-tag">Vim</span>
+                    <span class="skill-tag">lldb</span>
+                    <span class="skill-tag">gdb</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Linux OS</span>
                 </div>
             </div>
         </div>
