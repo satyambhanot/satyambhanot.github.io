@@ -105,11 +105,16 @@
         initParticles();
     });
 
+    /**
+     * Represents a single particle in the background particle system.
+     * Each particle has position, size, speed, and opacity properties.
+     */
     class Particle {
         constructor() {
             this.reset();
         }
 
+        /** Randomise every property to initial values. */
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
@@ -119,6 +124,7 @@
             this.opacity = Math.random() * 0.5 + 0.1;
         }
 
+        /** Move the particle and apply mouse-repulsion interaction. */
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
@@ -139,6 +145,7 @@
             if (this.y > canvas.height) this.y = 0;
         }
 
+        /** Render the particle as a filled circle on the canvas. */
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -219,15 +226,6 @@
         animateCursor();
     }
 
-    // Hover effect on interactive elements
-    document.addEventListener('DOMContentLoaded', () => {
-        const hoverTargets = document.querySelectorAll('a, button, input, textarea, .project-card, .skill-tag, .detail-chip');
-        hoverTargets.forEach(el => {
-            el.addEventListener('mouseenter', () => cursorDot.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovering'));
-        });
-    });
-
     /* ===================================
        Dark / Light Theme Toggle
        =================================== */
@@ -286,7 +284,18 @@
         setTimeout(typeEffect, typeSpeed);
     }
 
+    /* ===================================
+       DOMContentLoaded — Cursor Hover & Typing
+       =================================== */
     document.addEventListener('DOMContentLoaded', () => {
+        // Hover effect on interactive elements
+        const hoverTargets = document.querySelectorAll('a, button, input, textarea, .project-card, .skill-tag, .detail-chip');
+        hoverTargets.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorDot.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovering'));
+        });
+
+        // Typing animation
         if (!prefersReducedMotion) {
             setTimeout(typeEffect, TYPING_INITIAL_DELAY_MS);
         } else {
