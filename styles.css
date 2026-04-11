@@ -532,12 +532,85 @@ body.loaded .cursor-dot.hovering {
     position: relative;
     overflow: hidden;
 }
-.btn-primary { background: var(--gradient-btn); color: #fff; border-color: transparent; }
-.btn-primary:hover { opacity: 0.85; transform: translateY(-3px); box-shadow: var(--shadow-accent); }
-.btn-outline { background: transparent; color: var(--accent); border-color: var(--accent-border); }
-.btn-outline:hover { background: var(--accent-subtle); border-color: var(--accent); transform: translateY(-3px); }
-.btn-ghost { background: transparent; color: var(--text-secondary); border-color: var(--border); }
-.btn-ghost:hover { color: var(--accent); border-color: var(--accent-border); background: var(--accent-subtle); transform: translateY(-3px); }
+.btn-primary {
+    background: var(--accent);
+    color: #f5f5f7;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 200ms ease-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: scale(1.02);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 200ms ease-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-outline:hover {
+    background: rgba(233, 116, 81, 0.1);
+    border-color: var(--accent);
+}
+
+.btn-outline:active {
+    background: rgba(233, 116, 81, 0.15);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid rgba(233, 116, 81, 0.3);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 200ms ease-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-ghost:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.btn-ghost:active {
+    background: rgba(233, 116, 81, 0.08);
+}
 .btn-full { width: 100%; justify-content: center; }
 /* Hero Scroll Indicator */
 .hero-scroll-indicator {
