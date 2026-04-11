@@ -1,0 +1,30 @@
+<h2>Section Transitions & Final Design Direction</h2>
+<p class="subtitle">Confirm the full vision before we implement</p>
+
+<div class="section">
+<h3>Transition Approach</h3>
+<p>For the editorial feel, I'm proposing <strong>staggered fade-in animations</strong> as sections come into view:</p>
+<ul style="color: #d1d5db; line-height: 1.8;">
+  <li><strong>Section title</strong> fades in first (200ms)</li>
+  <li><strong>Content blocks</strong> stagger in with slight delay between each (100ms offset)</li>
+  <li>No bounce or elastic effects — pure, intentional fade</li>
+  <li>Scroll-triggered via Intersection Observer (already in your code)</li>
+  <li>Happens once per section on first scroll into view</li>
+</ul>
+</div>
+
+<h3 style="margin-top: 32px;">Design System Summary</h3>
+
+<div style="background: #1a1a1a; border-left: 3px solid #f43f5e; padding: 20px 24px; margin-top: 16px; font-size: 13px; color: #d1d5db; line-height: 1.8; font-family: 'Courier New', monospace;">
+<div style="margin-bottom: 16px;"><strong style="color: #f43f5e;">Accent Color:</strong> Rose (#f43f5e)</div>
+<div style="margin-bottom: 16px;"><strong style="color: #f43f5e;">Display Font:</strong> Keep Syne (or switch to monospace for all headings)</div>
+<div style="margin-bottom: 16px;"><strong style="color: #f43f5e;">Monospace Usage:</strong> Logo, labels, buttons, small accents</div>
+<div style="margin-bottom: 16px;"><strong style="color: #f43f5e;">Hero:</strong> Centered, &lt;SB/&gt; logo prominent, monospace headings, rose accent</div>
+<div style="margin-bottom: 16px;"><strong style="color: #f43f5e;">Navbar:</strong> Keep current style (familiar, functional)</div>
+<div style="margin-bottom: 16px;"><strong style="color: #f43f5e;">Project Cards:</strong> Keep current style (hover interactions, rounded, badges)</div>
+<div><strong style="color: #f43f5e;">Skills:</strong> Keep icon grid (visual, approachable)</div>
+</div>
+
+<div style="margin-top: 32px; padding: 20px 24px; background: rgba(244, 63, 94, 0.08); border-radius: 4px;">
+<p style="margin: 0; color: #d1d5db; font-size: 13px;"><strong style="color: #f43f5e;">What changes:</strong> Rose accent throughout, refined hero with large centered monospace headings, staggered fade-in transitions. Everything else preserved.</p>
+</div>

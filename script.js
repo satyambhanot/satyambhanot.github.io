@@ -15,7 +15,7 @@
     const PARTICLE_MOUSE_DRIFT = 0.008;
     const PARTICLE_LINE_DISTANCE = 130;
     const PARTICLE_LINE_ALPHA = 0.15;
-    const PARTICLE_DEFAULT_COLOR = '59, 130, 246';
+    const PARTICLE_DEFAULT_COLOR = '233, 116, 81'; // Terracotta
 
     const CURSOR_SMOOTH_FACTOR = 0.12;
     const MAGNETIC_PULL = 0.3;
@@ -23,11 +23,11 @@
     const NAVBAR_SCROLL_THRESHOLD = 50;
     const BACK_TO_TOP_THRESHOLD = 600;
 
-    const TYPING_SPEED = 80;
-    const TYPING_DELETE_SPEED = 35;
-    const TYPING_PAUSE_MS = 2200;
-    const TYPING_NEXT_PHRASE_DELAY = 400;
-    const TYPING_INITIAL_DELAY_MS = 2000;
+    // const TYPING_SPEED = 80;
+    // const TYPING_DELETE_SPEED = 35;
+    // const TYPING_PAUSE_MS = 2200;
+    // const TYPING_NEXT_PHRASE_DELAY = 400;
+    // const TYPING_INITIAL_DELAY_MS = 2000;
 
     const PARALLAX_HERO_SPEED = 0.35;
     const PARALLAX_PARTICLE_SPEED = 0.15;
@@ -245,44 +245,44 @@
     });
 
     /* ===================================
-       Typing Animation
+       Typing Animation — DISABLED
        =================================== */
-    const typedElement = document.getElementById('typedText');
-    const phrases = [
-        'build Android apps.',
-        'analyze data with Python.',
-        'solve real-world problems.',
-        'write clean, maintainable code.',
-        'love mentoring students.',
-        'explore AI & data science.'
-    ];
-
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typeSpeed = TYPING_SPEED;
-
-    function typeEffect() {
-        const currentPhrase = phrases[phraseIndex];
-        if (isDeleting) {
-            typedElement.textContent = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
-            typeSpeed = TYPING_DELETE_SPEED;
-        } else {
-            typedElement.textContent = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
-            typeSpeed = TYPING_SPEED;
-        }
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            typeSpeed = TYPING_PAUSE_MS;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            typeSpeed = TYPING_NEXT_PHRASE_DELAY;
-        }
-        setTimeout(typeEffect, typeSpeed);
-    }
+    // const typedElement = document.getElementById('typedText');
+    // const phrases = [
+    //     'build Android apps.',
+    //     'analyze data with Python.',
+    //     'solve real-world problems.',
+    //     'write clean, maintainable code.',
+    //     'love mentoring students.',
+    //     'explore AI & data science.'
+    // ];
+    //
+    // let phraseIndex = 0;
+    // let charIndex = 0;
+    // let isDeleting = false;
+    // let typeSpeed = TYPING_SPEED;
+    //
+    // function typeEffect() {
+    //     const currentPhrase = phrases[phraseIndex];
+    //     if (isDeleting) {
+    //         typedElement.textContent = currentPhrase.substring(0, charIndex - 1);
+    //         charIndex--;
+    //         typeSpeed = TYPING_DELETE_SPEED;
+    //     } else {
+    //         typedElement.textContent = currentPhrase.substring(0, charIndex + 1);
+    //         charIndex++;
+    //         typeSpeed = TYPING_SPEED;
+    //     }
+    //     if (!isDeleting && charIndex === currentPhrase.length) {
+    //         typeSpeed = TYPING_PAUSE_MS;
+    //         isDeleting = true;
+    //     } else if (isDeleting && charIndex === 0) {
+    //         isDeleting = false;
+    //         phraseIndex = (phraseIndex + 1) % phrases.length;
+    //         typeSpeed = TYPING_NEXT_PHRASE_DELAY;
+    //     }
+    //     setTimeout(typeEffect, typeSpeed);
+    // }
 
     /* ===================================
        DOMContentLoaded — Cursor Hover & Typing
@@ -295,13 +295,13 @@
             el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovering'));
         });
 
-        // Typing animation
-        if (!prefersReducedMotion) {
-            setTimeout(typeEffect, TYPING_INITIAL_DELAY_MS);
-        } else {
-            // Show first phrase immediately without animation
-            typedElement.textContent = phrases[0];
-        }
+        // Typing animation — DISABLED
+        // if (!prefersReducedMotion) {
+        //     setTimeout(typeEffect, TYPING_INITIAL_DELAY_MS);
+        // } else {
+        //     // Show first phrase immediately without animation
+        //     typedElement.textContent = phrases[0];
+        // }
     });
 
     /* ===================================
