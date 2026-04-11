@@ -12,9 +12,18 @@
     --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-/* Dark Theme (Default) — Minimal dark with electric blue accent */
 [data-theme="dark"] {
-    --bg-primary: #141414;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-full: 100px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --bg-primary: #0f0f0f;
     --bg-secondary: #1a1a1a;
     --bg-card: rgba(255, 255, 255, 0.03);
     --bg-card-hover: rgba(255, 255, 255, 0.06);
@@ -22,20 +31,20 @@
     --text-primary: #f5f5f7;
     --text-secondary: #a1a1a6;
     --text-muted: #6e6e73;
-    --accent: #3b82f6;
-    --accent-hover: #60a5fa;
-    --accent-subtle: rgba(59, 130, 246, 0.06);
-    --accent-border: rgba(59, 130, 246, 0.12);
-    --accent-glow: rgba(59, 130, 246, 0.15);
-    --gradient-accent: linear-gradient(135deg, #3b82f6, #2563eb);
-    --gradient-text: linear-gradient(135deg, #f5f5f7, #3b82f6);
-    --gradient-btn: linear-gradient(135deg, #3b82f6, #2563eb);
+    --accent: #E97451;
+    --accent-hover: #F08968;
+    --accent-subtle: rgba(233, 116, 81, 0.12);
+    --accent-border: rgba(233, 116, 81, 0.2);
+    --accent-glow: rgba(233, 116, 81, 0.15);
+    --gradient-accent: linear-gradient(135deg, #E97451, #D56437);
+    --gradient-text: linear-gradient(135deg, #f5f5f7, #E97451);
+    --gradient-btn: linear-gradient(135deg, #E97451, #D56437);
     --border: rgba(255, 255, 255, 0.06);
     --border-hover: rgba(255, 255, 255, 0.12);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
     --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
     --shadow-lg: 0 16px 50px rgba(0, 0, 0, 0.6);
-    --shadow-accent: 0 4px 25px rgba(59, 130, 246, 0.12);
+    --shadow-accent: 0 4px 25px rgba(233, 116, 81, 0.12);
     --nav-bg: rgba(20, 20, 20, 0.8);
     --nav-solid: #f5f5f7;
     --nav-text: #111827;
@@ -46,38 +55,37 @@
     --nav-toggle-border: rgba(0, 0, 0, 0.1);
     --nav-toggle-color: rgba(0, 0, 0, 0.5);
     --nav-resume-border: rgba(0, 0, 0, 0.2);
-    --loader-bg: #141414;
-    --contact-bg: #1e1145;
+    --loader-bg: #0f0f0f;
+    --contact-bg: #1a0f1f;
     --contact-card-bg: rgba(255, 255, 255, 0.06);
     --contact-border: rgba(255, 255, 255, 0.1);
-    --particle-color: 59, 130, 246;
+    --particle-color: 233, 116, 81;
     --skill-bar-bg: rgba(255, 255, 255, 0.06);
-    --cursor-color: rgba(59, 130, 246, 0.3);
+    --cursor-color: rgba(233, 116, 81, 0.3);
 }
-/* Light Theme — Clean white with blue accent */
 [data-theme="light"] {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
+    --bg-primary: #faf9f7;
+    --bg-secondary: #f5f3f0;
     --bg-card: rgba(0, 0, 0, 0.02);
     --bg-card-hover: rgba(0, 0, 0, 0.04);
     --bg-elevated: rgba(255, 255, 255, 0.9);
-    --text-primary: #111827;
-    --text-secondary: #4b5563;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6b6b6b;
     --text-muted: #9ca3af;
-    --accent: #2563eb;
-    --accent-hover: #3b82f6;
-    --accent-subtle: rgba(37, 99, 235, 0.04);
-    --accent-border: rgba(37, 99, 235, 0.1);
-    --accent-glow: rgba(37, 99, 235, 0.08);
-    --gradient-accent: linear-gradient(135deg, #2563eb, #1d4ed8);
-    --gradient-text: linear-gradient(135deg, #111827, #2563eb);
-    --gradient-btn: linear-gradient(135deg, #2563eb, #1d4ed8);
+    --accent: #E97451;
+    --accent-hover: #D86643;
+    --accent-subtle: rgba(233, 116, 81, 0.08);
+    --accent-border: rgba(233, 116, 81, 0.15);
+    --accent-glow: rgba(233, 116, 81, 0.08);
+    --gradient-accent: linear-gradient(135deg, #E97451, #D56437);
+    --gradient-text: linear-gradient(135deg, #1a1a1a, #E97451);
+    --gradient-btn: linear-gradient(135deg, #E97451, #D56437);
     --border: rgba(0, 0, 0, 0.06);
     --border-hover: rgba(0, 0, 0, 0.1);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 16px 50px rgba(0, 0, 0, 0.08);
-    --shadow-accent: 0 4px 25px rgba(37, 99, 235, 0.08);
+    --shadow-accent: 0 4px 25px rgba(233, 116, 81, 0.08);
     --nav-bg: rgba(255, 255, 255, 0.8);
     --nav-solid: #1c1c1e;
     --nav-text: #f5f5f7;
@@ -88,13 +96,13 @@
     --nav-toggle-border: rgba(255, 255, 255, 0.12);
     --nav-toggle-color: rgba(255, 255, 255, 0.7);
     --nav-resume-border: rgba(255, 255, 255, 0.25);
-    --loader-bg: #ffffff;
-    --contact-bg: #1e1145;
-    --contact-card-bg: rgba(255, 255, 255, 0.06);
-    --contact-border: rgba(255, 255, 255, 0.1);
-    --particle-color: 37, 99, 235;
+    --loader-bg: #faf9f7;
+    --contact-bg: #1a0f1f;
+    --contact-card-bg: rgba(233, 116, 81, 0.04);
+    --contact-border: rgba(233, 116, 81, 0.1);
+    --particle-color: 233, 116, 81;
     --skill-bar-bg: rgba(0, 0, 0, 0.05);
-    --cursor-color: rgba(37, 99, 235, 0.2);
+    --cursor-color: rgba(233, 116, 81, 0.2);
 }
 /* Light Theme — Contact Section Overrides */
 [data-theme="light"] .contact .section-title .title-text {
