@@ -15,7 +15,7 @@
     const PARTICLE_MOUSE_DRIFT = 0.008;
     const PARTICLE_LINE_DISTANCE = 130;
     const PARTICLE_LINE_ALPHA = 0.15;
-    const PARTICLE_DEFAULT_COLOR = '59, 130, 246';
+    const PARTICLE_DEFAULT_COLOR = '233, 116, 81'; // Terracotta
 
     const CURSOR_SMOOTH_FACTOR = 0.12;
     const MAGNETIC_PULL = 0.3;
