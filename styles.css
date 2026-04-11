@@ -324,6 +324,7 @@ body.loaded .cursor-dot.hovering {
         cursor: auto;
     }
 }
+
 .animate-on-scroll {
     animation: fadeInUp 0.6s ease-out forwards;
     opacity: 0;
@@ -1031,6 +1032,12 @@ body.loaded .cursor-dot.hovering {
     .edu-date { margin-left: 0; }
     .education-card { padding: 24px; }
     .hero-buttons { flex-direction: column; align-items: center; }
+
+    .skills-hex-grid { gap: 10px; }
+    .skill-hex { width: 80px; height: 80px; }
+    .skill-hex-icon { font-size: 1.3rem; }
+    .skill-hex-name { font-size: 0.6rem; }
+    .skills-categories-grid { grid-template-columns: 1fr; }
 }
 /* ===================================
    Reduced Motion
