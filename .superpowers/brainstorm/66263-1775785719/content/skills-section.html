@@ -1,0 +1,83 @@
+<h2>Skills Section Treatment</h2>
+<p class="subtitle">Replace icon grid with typographic list — which grouping approach?</p>
+
+<div class="cards">
+  <div class="card" data-choice="skills-categories" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #1a1a1a; padding: 40px; border-left: 3px solid #f43f5e;">
+      <div style="margin-bottom: 28px;">
+        <div style="font-family: 'Courier New', monospace; font-size: 11px; color: #f43f5e; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;">Languages</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">JavaScript</span>
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">Python</span>
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">Java</span>
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">C++</span>
+        </div>
+      </div>
+      <div style="margin-bottom: 28px;">
+        <div style="font-family: 'Courier New', monospace; font-size: 11px; color: #f43f5e; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;">Frontend</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">React</span>
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">TypeScript</span>
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">Tailwind CSS</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Courier New', monospace; font-size: 11px; color: #f43f5e; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;">Tools &amp; Platforms</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">Git</span>
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">Docker</span>
+          <span style="font-family: system-ui, -apple-system; font-size: 14px; color: #d1d5db;">AWS</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Categorical List</h3>
+      <p>Categories as monospace labels (LANGUAGES, FRONTEND, TOOLS), skills as readable prose list below. Clean, organized, editorial.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="skills-inline" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #1a1a1a; padding: 40px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 14px; line-height: 1.8; color: #d1d5db; font-family: system-ui, -apple-system;">
+        <div>
+          <span style="color: #f43f5e; font-weight: 600;">Languages:</span> JavaScript, Python, Java, C++
+        </div>
+        <div>
+          <span style="color: #f43f5e; font-weight: 600;">Frontend:</span> React, TypeScript, Tailwind
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <span style="color: #f43f5e; font-weight: 600;">Tools:</span> Git, Docker, AWS, Linux, PostgreSQL
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Inline Categories</h3>
+      <p>Category label in rose, skills inline. Compact, modern, reads naturally. Two-column layout on desktop.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="skills-current" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #1a1a1a; padding: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center;">
+      <div style="padding: 16px; border: 1px solid #333; border-radius: 8px;">
+        <div style="font-size: 24px; margin-bottom: 8px;">⚛️</div>
+        <div style="font-size: 12px; color: #a1a1a1;">React</div>
+      </div>
+      <div style="padding: 16px; border: 1px solid #333; border-radius: 8px;">
+        <div style="font-size: 24px; margin-bottom: 8px;">🐍</div>
+        <div style="font-size: 12px; color: #a1a1a1;">Python</div>
+      </div>
+      <div style="padding: 16px; border: 1px solid #333; border-radius: 8px;">
+        <div style="font-size: 24px; margin-bottom: 8px;">☁️</div>
+        <div style="font-size: 12px; color: #a1a1a1;">AWS</div>
+      </div>
+      <div style="padding: 16px; border: 1px solid #333; border-radius: 8px;">
+        <div style="font-size: 24px; margin-bottom: 8px;">🔧</div>
+        <div style="font-size: 12px; color: #a1a1a1;">Git</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Icon Grid (Current)</h3>
+      <p>Icon cards with labels. Familiar and visual. Safe but less editorial.</p>
+    </div>
+  </div>
+</div>
