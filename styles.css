@@ -501,6 +501,7 @@ body.loaded .cursor-dot.hovering {
     to { opacity: 1; transform: translateY(0); }
 }
 .hero-typing-wrapper {
+    display: none; /* Hide typing effect entirely */
     font-family: var(--font-mono);
     font-size: clamp(0.95rem, 2.5vw, 1.25rem);
     color: var(--text-muted);
