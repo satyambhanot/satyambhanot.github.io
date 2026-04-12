@@ -466,18 +466,31 @@ body.loaded .cursor-dot.hovering {
     text-align: center;
     padding: 120px 24px 80px;
 }
-.hero-name { margin-bottom: 16px; }
+.hero-kicker {
+    margin-bottom: 18px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+.hero-name {
+    margin-bottom: 18px;
+}
 .hero-line {
     display: block;
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -1px;
-    line-height: 1.15;
-    color: var(--text-muted);
-    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    letter-spacing: -1.4px;
+    line-height: 1.08;
+    color: var(--text-secondary);
+    font-size: clamp(2rem, 5vw, 3.6rem);
     animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both;
 }
 .hero-name-highlight {
+    display: block;
+    margin-top: 8px;
     font-size: clamp(2.8rem, 8vw, 5.5rem);
     color: var(--text-primary);
     letter-spacing: -3px;
@@ -514,12 +527,20 @@ body.loaded .cursor-dot.hovering {
 .hero-cursor { color: var(--accent); animation: blink 1s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-description {
-    max-width: 560px;
-    margin: 0 auto 36px;
+    max-width: 680px;
+    margin: 0 auto 18px;
     font-size: 1.02rem;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     line-height: 1.8;
     animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.1s both;
+}
+.hero-note {
+    max-width: 620px;
+    margin: 0 auto 36px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.18s both;
 }
 .hero-buttons {
     display: flex;
@@ -785,9 +806,7 @@ body.loaded .cursor-dot.hovering {
 .about-grid { display: grid; grid-template-columns: auto 1fr; gap: 60px; align-items: start; }
 .about-photo-wrapper { position: relative; }
 .about-photo { position: relative; width: 240px; height: 280px; border-radius: var(--radius-lg); overflow: hidden; }
-.photo-placeholder { width: 100%; height: 100%; background: var(--bg-card); display: flex; align-items: center; justify-content: center; }
-.photo-placeholder span { font-family: var(--font-display); font-size: 3rem; font-weight: 800; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; filter: saturate(1.02) contrast(1.02); }
 .photo-border { position: absolute; inset: -1px; border-radius: var(--radius-lg); border: 2px solid var(--accent-border); pointer-events: none; }
 .about-photo-decoration { position: absolute; width: 240px; height: 280px; border: 2px solid var(--accent-border); border-radius: var(--radius-lg); top: 16px; left: 16px; z-index: -1; transition: var(--transition); }
 .about-photo-wrapper:hover .about-photo-decoration { top: 12px; left: 12px; }
@@ -1032,6 +1051,8 @@ body.loaded .cursor-dot.hovering {
     .edu-date { margin-left: 0; }
     .education-card { padding: 24px; }
     .hero-buttons { flex-direction: column; align-items: center; }
+    .hero-kicker { letter-spacing: 1.2px; }
+    .hero-note { font-size: 0.92rem; }
 
     .skills-hex-grid { gap: 10px; }
     .skill-hex { width: 80px; height: 80px; }
