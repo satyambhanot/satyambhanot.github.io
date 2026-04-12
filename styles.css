@@ -102,7 +102,7 @@
     --particle-color: 233, 116, 81;
     --skill-bar-bg: rgba(0, 0, 0, 0.05);
 }
-/* Light Theme — Contact Section Overrides */
+/* Light Theme Contact Section Overrides */
 [data-theme="light"] .contact .section-title .title-text {
     color: #f5f5f7;
 }
@@ -637,7 +637,7 @@ img {
 .section .title-line { background: linear-gradient(90deg, transparent, var(--accent)); }
 .section .title-line:last-child { background: linear-gradient(90deg, var(--accent), transparent); }
 /* ===================================
-   Floating Orbs — Per Section Backgrounds
+   Floating Orbs Per Section Backgrounds
    =================================== */
 .section { overflow: hidden; }
 .section::after {
@@ -757,7 +757,7 @@ img {
 .detail-chip:hover { background: var(--accent-border); transform: translateY(-2px); }
 .chip-icon { font-size: 0.9rem; }
 /* ===================================
-   Skills Section — Icon Cards
+   Skills Section Icon Cards
    =================================== */
 .skill-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
 .skill-card {
@@ -918,7 +918,7 @@ img {
 .timeline-points li:last-child { margin-bottom: 0; }
 .timeline-points li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-hover); }
 /* ===================================
-   Contact Section — Distinct Background
+   Contact Section Distinct Background
    =================================== */
 .contact { background: var(--contact-bg); border-radius: 0; margin: 0 -9999px; padding: 110px 9999px; }
 .contact .section-title .title-text { color: #f5f5f7; }
