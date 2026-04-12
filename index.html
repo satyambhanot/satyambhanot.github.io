@@ -411,22 +411,11 @@
                         <div class="project-info"><span class="project-label">Personal</span>
                             <h3 class="project-title">Portfolio Website</h3>
                             <p class="project-problem"><strong>Problem:</strong> Generic templates make it impossible to show who you really are. Recruiters see the same layouts everywhere.</p>
-                            <p class="project-desc">Built from scratch with pure HTML, CSS, and JavaScript. Fast, accessible, and designed to feel like me instead of a generic portfolio template.</p>
-                            <p class="project-impact"><strong>Result:</strong> A living example of the principle: solve real problems, even small ones. This site shows how I think.</p>
+                            <p class="project-desc">I built this site from scratch with HTML, CSS, and JavaScript so I could control the writing, layout, motion, and overall tone. It gave me room to make something that feels personal instead of assembled from a starter template.</p>
+                            <p class="project-impact"><strong>Result:</strong> The site works as both a portfolio and a design exercise. It shows how I write, how I organize information, and how I think about details.</p>
                             <div class="project-tech">
                                 <span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🚀</span></div>
-                        </div>
-                        <div class="project-info"><span class="project-label">Coming Soon</span>
-                            <h3 class="project-title">Next Personal Project</h3>
-                            <p class="project-desc">More personal projects are in the works! I'm always exploring new
-                                technologies.</p>
-                            <div class="project-tech"><span>???</span><span>Stay Tuned</span></div>
                         </div>
                     </div>
                 </div>
@@ -444,8 +433,8 @@
                         <div class="project-info"><span class="project-label">COMP 2160 · Systems Programming</span>
                             <h3 class="project-title">Garbage Collector</h3>
                             <p class="project-problem"><strong>Problem:</strong> Manual memory management is error-prone. Programs crash, leak memory, run out of resources.</p>
-                            <p class="project-desc">A rudimentary memory manager in C implementing garbage collection using the famous mark and sweep algorithm. Efficiently tracks and reclaims unused memory allocations at runtime.</p>
-                            <p class="project-impact"><strong>Result:</strong> Programs stay stable. Memory stays clean. Developers focus on logic, not cleanup.</p>
+                            <p class="project-desc">I built a basic mark and sweep garbage collector in C to track allocations and reclaim memory that was no longer being used. It was a good exercise in understanding what higher-level tools usually hide.</p>
+                            <p class="project-impact"><strong>Result:</strong> The project gave me a much better feel for memory management and the tradeoffs involved in keeping low-level programs stable.</p>
                             <div class="project-tech">
                                 <span>C</span><span>Makefile</span><span>Valgrind</span><span>lldb</span>
                             </div>
@@ -458,14 +447,14 @@
                         <div class="project-info"><span class="project-label">COMP 3430 · Operating Systems</span>
                             <h3 class="project-title">ExFAT Shell</h3>
                             <p class="project-problem"><strong>Problem:</strong> File systems are opaque. Users need a way to interact with their files securely.</p>
-                            <p class="project-desc">A custom shell for the ExFAT file system in C that supports basic UNIX operations and the ability to run executables.</p>
+                            <p class="project-desc">I built a custom shell in C for the ExFAT file system with support for common UNIX-style commands and executable handling. The project pushed me to think carefully about parsing, process behavior, and predictable system interaction.</p>
                             <ul class="project-features">
                                 <li>Supports cd, pwd, ls, redirection, and piping</li>
                                 <li>Launches secure independent processes for executables from mounted file system</li>
                                 <li>Supports POSIX-like error codes and shell features</li>
                                 <li>Designed for ExFAT file system only</li>
                             </ul>
-                            <p class="project-impact"><strong>Result:</strong> Users interact with files the way they expect. The system is predictable and secure.</p>
+                            <p class="project-impact"><strong>Result:</strong> I came away with a stronger understanding of shells, file systems, and what it takes to make low-level tools feel reliable.</p>
                             <div class="project-tech">
                                 <span>C</span><span>Makefile</span><span>lldb</span><span>gdb</span><span>Valgrind</span><span>Linux</span>
                             </div>
@@ -478,14 +467,14 @@
                         <div class="project-info"><span class="project-label">COMP 3430 · Operating Systems</span>
                             <h3 class="project-title">Cooperative Threads Library</h3>
                             <p class="project-problem"><strong>Problem:</strong> Concurrency is hard to reason about. Programs stall, deadlock, or run unpredictably when threads compete.</p>
-                            <p class="project-desc">A multithreading library for single-core cooperative systems that recreates the popular pthreads library in C, supporting concurrency with and without mutexes.</p>
+                            <p class="project-desc">I built a thread library in C for a single-core cooperative system, modeled loosely on pthreads. It includes mutex support and multiple scheduling policies, which made it a solid way to learn where concurrency becomes hard to control.</p>
                             <ul class="project-features">
                                 <li>Supports up to 1,000 threads per process</li>
                                 <li>Enables preemptive scheduling of threads</li>
                                 <li>Mutex support included with the library</li>
                                 <li>4 scheduling policies: FIFO, 2-Thread, Round Robin, and MLFQ</li>
                             </ul>
-                            <p class="project-impact"><strong>Result:</strong> Programs run concurrently without chaos. Developers have predictable control over execution order.</p>
+                            <p class="project-impact"><strong>Result:</strong> The project made scheduling and synchronization feel much more concrete. It also forced me to be precise about edge cases instead of hand-waving them away.</p>
                             <p class="project-note">Published under a restrictive license. Source code available upon request.</p>
                             <div class="project-tech">
                                 <span>C</span><span>Makefile</span><span>lldb</span><span>gdb</span><span>Atomics</span><span>Valgrind</span><span>Linux</span>
@@ -511,22 +500,11 @@
                         <div class="project-info"><span class="project-label">COMP 3350 · Team Project</span>
                             <h3 class="project-title">PetObject</h3>
                             <p class="project-problem"><strong>Problem:</strong> Managing state in a mobile app is hard. Users expect clean validation, intuitive navigation, and reliable data persistence. Teams struggle to build maintainable architecture.</p>
-                            <p class="project-desc">A full-featured Android app for virtual pet management. Features include form validation, bottom navigation, pet editing, and a clean multi-fragment architecture.</p>
-                            <p class="project-impact"><strong>Result:</strong> Every component has a clear responsibility. Testable. Maintainable. A demonstration that good structure enables good features.</p>
+                            <p class="project-desc">PetObject is an Android app built as a team project for managing a virtual pet. We focused on validation, navigation, editing flows, and a structure that stayed manageable as the app grew.</p>
+                            <p class="project-impact"><strong>Result:</strong> It was a useful lesson in collaborative development. Good structure made the app easier to test, easier to extend, and easier for teammates to work on without stepping on each other.</p>
                             <div class="project-tech">
                                 <span>Java</span><span>Android</span><span>HSQLDB</span><span>JUnit</span><span>Git</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🚀</span></div>
-                        </div>
-                        <div class="project-info"><span class="project-label">Coming Soon</span>
-                            <h3 class="project-title">Next Group Project</h3>
-                            <p class="project-desc">More exciting group projects are in the works! Stay tuned for
-                                updates.</p>
-                            <div class="project-tech"><span>???</span><span>Stay Tuned</span></div>
                         </div>
                     </div>
                 </div>
