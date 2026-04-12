@@ -17,9 +17,6 @@
     const PARTICLE_LINE_ALPHA = 0.15;
     const PARTICLE_DEFAULT_COLOR = '233, 116, 81'; // Terracotta
 
-    const CURSOR_SMOOTH_FACTOR = 0.12;
-    const MAGNETIC_PULL = 0.3;
-
     const NAVBAR_SCROLL_THRESHOLD = 50;
     const BACK_TO_TOP_THRESHOLD = 600;
 
@@ -32,11 +29,6 @@
     const PARALLAX_HERO_SPEED = 0.35;
     const PARALLAX_PARTICLE_SPEED = 0.15;
     const PARALLAX_FADE_FACTOR = 0.8;
-
-    const EASTER_EGG_HUE_STEP = 3;
-    const EASTER_EGG_INTERVAL_MS = 50;
-    const EASTER_EGG_TOAST_MS = 4000;
-    const EASTER_EGG_DURATION_MS = 10000;
 
     const CONTACT_EMAIL = 'satyambhanot@gmail.com';
     const FORM_SUCCESS_DISPLAY_MS = 3000;
@@ -196,35 +188,10 @@
         animateParticles();
     }
 
-    /* ===================================
-       Custom Cursor (Glowing Dot)
-       =================================== */
-    const cursorGlow = document.getElementById('cursorGlow');
-    const cursorDot = document.getElementById('cursorDot');
-
-    let cursorX = 0, cursorY = 0;
-    let glowX = 0, glowY = 0;
-
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-        cursorDot.style.left = cursorX + 'px';
-        cursorDot.style.top = cursorY + 'px';
     });
-
-    // Smooth glow follow
-    function animateCursor() {
-        glowX += (cursorX - glowX) * CURSOR_SMOOTH_FACTOR;
-        glowY += (cursorY - glowY) * CURSOR_SMOOTH_FACTOR;
-        cursorGlow.style.left = glowX + 'px';
-        cursorGlow.style.top = glowY + 'px';
-        requestAnimationFrame(animateCursor);
-    }
-    if (!prefersReducedMotion) {
-        animateCursor();
-    }
 
     /* ===================================
        Dark / Light Theme Toggle
@@ -285,16 +252,9 @@
     // }
 
     /* ===================================
-       DOMContentLoaded — Cursor Hover & Typing
+       DOMContentLoaded
        =================================== */
     document.addEventListener('DOMContentLoaded', () => {
-        // Hover effect on interactive elements
-        const hoverTargets = document.querySelectorAll('a, button, input, textarea, .project-card, .skill-tag, .detail-chip');
-        hoverTargets.forEach(el => {
-            el.addEventListener('mouseenter', () => cursorDot.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => cursorDot.classList.remove('hovering'));
-        });
-
         // Typing animation — DISABLED
         // if (!prefersReducedMotion) {
         //     setTimeout(typeEffect, TYPING_INITIAL_DELAY_MS);
@@ -466,94 +426,11 @@
     });
 
     /* ===================================
-       Konami Code Easter Egg
-       ↑ ↑ ↓ ↓ ← → ← → B A
-       =================================== */
-    const konamiCode = [
-        'ArrowUp', 'ArrowUp',
-        'ArrowDown', 'ArrowDown',
-        'ArrowLeft', 'ArrowRight',
-        'ArrowLeft', 'ArrowRight',
-        'KeyB', 'KeyA'
-    ];
-    let konamiIndex = 0;
-
-    document.addEventListener('keydown', (e) => {
-        if (e.code === konamiCode[konamiIndex]) {
-            konamiIndex++;
-            if (konamiIndex === konamiCode.length) {
-                activateEasterEgg();
-                konamiIndex = 0;
-            }
-        } else {
-            konamiIndex = 0;
-        }
-    });
-
-    function activateEasterEgg() {
-        const toast = document.getElementById('easterEggToast');
-        toast.classList.add('show');
-
-        // Rainbow mode — cycle accent colors
-        document.body.style.transition = 'none';
-        let hue = 0;
-        const rainbow = setInterval(() => {
-            hue = (hue + EASTER_EGG_HUE_STEP) % 360;
-            document.documentElement.style.setProperty('--accent', `hsl(${hue}, 80%, 60%)`);
-            document.documentElement.style.setProperty('--accent-hover', `hsl(${hue}, 80%, 70%)`);
-            document.documentElement.style.setProperty('--accent-subtle', `hsla(${hue}, 80%, 60%, 0.1)`);
-            document.documentElement.style.setProperty('--accent-border', `hsla(${hue}, 80%, 60%, 0.2)`);
-            document.documentElement.style.setProperty('--accent-glow', `hsla(${hue}, 80%, 60%, 0.3)`);
-            document.documentElement.style.setProperty('--shadow-accent', `0 4px 25px hsla(${hue}, 80%, 60%, 0.25)`);
-            document.documentElement.style.setProperty('--gradient-accent', `linear-gradient(135deg, hsl(${hue}, 80%, 85%), hsl(${(hue + 60) % 360}, 80%, 60%))`);
-            document.documentElement.style.setProperty('--gradient-text', `linear-gradient(135deg, #ffffff, hsl(${hue}, 80%, 65%))`);
-            document.documentElement.style.setProperty('--gradient-btn', `linear-gradient(135deg, hsl(${hue}, 80%, 80%), hsl(${(hue + 60) % 360}, 80%, 60%))`);
-            document.documentElement.style.setProperty('--particle-color',
-                `${Math.round(128 + 127 * Math.cos(hue * Math.PI / 180))}, ${Math.round(128 + 127 * Math.cos((hue - 120) * Math.PI / 180))}, ${Math.round(128 + 127 * Math.cos((hue - 240) * Math.PI / 180))}`
-            );
-        }, EASTER_EGG_INTERVAL_MS);
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, EASTER_EGG_TOAST_MS);
-
-        setTimeout(() => {
-            clearInterval(rainbow);
-            // Reset to theme defaults
-            const props = ['--accent', '--accent-hover', '--accent-subtle', '--accent-border', '--accent-glow', '--shadow-accent', '--particle-color', '--gradient-accent', '--gradient-text', '--gradient-btn'];
-            props.forEach(p => document.documentElement.style.removeProperty(p));
-        }, EASTER_EGG_DURATION_MS);
-    }
-
-    /* ===================================
        Back to Top Button
        =================================== */
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    /* ===================================
-       Magnetic Buttons
-       =================================== */
-    if (!prefersReducedMotion) {
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * MAGNETIC_PULL}px, ${y * MAGNETIC_PULL}px)`;
-            });
-
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translate(0, 0)';
-                btn.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease';
-            });
-
-            btn.addEventListener('mouseenter', () => {
-                btn.style.transition = 'background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease';
-            });
-        });
-    }
 
     /* ===================================
        Parallax Scrolling
