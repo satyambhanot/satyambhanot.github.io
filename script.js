@@ -1,7 +1,7 @@
 'use strict';
 
 /* ===================================
-   Portfolio — Main Script (IIFE)
+   Portfolio Main Script (IIFE)
    =================================== */
 (function () {
 
@@ -121,7 +121,7 @@
             this.x += this.speedX;
             this.y += this.speedY;
 
-            // Mouse interaction — particles gently drift away
+            // Mouse interaction: particles gently drift away
             const dx = mouseX - this.x;
             const dy = mouseY - this.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
@@ -199,7 +199,7 @@
     const themeToggle = document.getElementById('themeToggle');
     const root = document.documentElement;
 
-    // Check for saved preference — default is dark
+    // Check for saved preference. Default is dark.
     const savedTheme = localStorage.getItem('theme') || 'dark';
     root.setAttribute('data-theme', savedTheme);
 
@@ -212,7 +212,7 @@
     });
 
     /* ===================================
-       Typing Animation — DISABLED
+       Typing Animation Disabled
        =================================== */
     // const typedElement = document.getElementById('typedText');
     // const phrases = [
@@ -255,7 +255,7 @@
        DOMContentLoaded
        =================================== */
     document.addEventListener('DOMContentLoaded', () => {
-        // Typing animation — DISABLED
+        // Typing animation disabled
         // if (!prefersReducedMotion) {
         //     setTimeout(typeEffect, TYPING_INITIAL_DELAY_MS);
         // } else {
