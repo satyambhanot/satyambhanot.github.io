@@ -733,6 +733,14 @@ body.loaded .cursor-dot.hovering {
     margin-left: auto;
     margin-right: auto;
 }
+.skills-context {
+    max-width: 720px;
+    margin: 0 auto 24px;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
 @keyframes floatOrb1 {
     0%, 100% { transform: translate(0, 0); }
     25% { transform: translate(30px, -20px); }
@@ -1045,6 +1053,7 @@ body.loaded .cursor-dot.hovering {
     .skill-card i { font-size: 22px; }
     .skill-card span { font-size: 0.65rem; }
     .skill-card-emoji { font-size: 20px; }
+    .skills-context { font-size: 0.9rem; margin-bottom: 20px; }
     .tab-buttons { flex-wrap: wrap; }
     .tab-btn { padding: 8px 18px; font-size: 0.82rem; cursor: auto; }
     .edu-header { flex-direction: column; }
