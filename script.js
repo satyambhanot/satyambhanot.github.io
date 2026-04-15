@@ -20,12 +20,6 @@
     const NAVBAR_SCROLL_THRESHOLD = 50;
     const BACK_TO_TOP_THRESHOLD = 600;
 
-    // const TYPING_SPEED = 80;
-    // const TYPING_DELETE_SPEED = 35;
-    // const TYPING_PAUSE_MS = 2200;
-    // const TYPING_NEXT_PHRASE_DELAY = 400;
-    // const TYPING_INITIAL_DELAY_MS = 2000;
-
     const PARALLAX_HERO_SPEED = 0.35;
     const PARALLAX_PARTICLE_SPEED = 0.15;
     const PARALLAX_FADE_FACTOR = 0.8;
@@ -35,6 +29,388 @@
 
     /* --- Computed helpers --- */
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 1024);
+
+    /* ===================================
+       Interactive & 3D Hover Effects Implementation
+       =================================== */
+    (function initInteractiveEffects() {
+        if (prefersReducedMotion || isMobile) return;
+
+        // 1. Initialize VanillaTilt on cards
+        const tiltCards = document.querySelectorAll('.education-card, .project-card, .skill-card, .timeline-content');
+        if (typeof VanillaTilt !== 'undefined') {
+            VanillaTilt.init(tiltCards, {
+                max: 12,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.2,
+                scale: 1.02,
+                perspective: 1000
+            });
+        }
+
+        // 2. Custom Cursor Logic
+        const cursor = document.getElementById('customCursor');
+        const dot = document.getElementById('cursorDot');
+        let cursorX = 0, cursorY = 0;
+        let dotX = 0, dotY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+        });
+
+        function animateCursor() {
+            // Smoothly move the outer circle
+            dotX += (cursorX - dotX) * 0.15;
+            dotY += (cursorY - dotY) * 0.15;
+            
+            cursor.style.transform = `translate3d(${cursorX - 6}px, ${cursorY - 6}px, 0)`;
+            dot.style.transform = `translate3d(${dotX - 2}px, ${dotY - 2}px, 0)`;
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor expansion on hover
+        const interactiveElements = document.querySelectorAll('a, button, .skill-card, .project-card, .tab-btn');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('cursor-expanded'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-expanded'));
+        });
+
+        // 3. Magnetic Buttons Logic
+        const magneticElements = document.querySelectorAll('.btn, .nav-links a, .theme-toggle, .nav-logo');
+        magneticElements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+    })();
+
+    /* ===================================
+       Scroll & Page Dynamics Implementation
+       =================================== */
+    (function initScrollDynamics() {
+        if (prefersReducedMotion) return;
+
+        // 1. Scroll Progress Bar logic
+        const progressBar = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (window.scrollY / windowHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+    })();
+
+    /* ===================================
+       Hero Section Enhancements
+       =================================== */
+    (function initHeroEnhancements() {
+        if (prefersReducedMotion) return;
+
+        // 1. Interactive Name Highlight (Mouse Tracking)
+        const highlight = document.querySelector('.hero-name-highlight');
+        if (highlight && !isMobile) {
+            window.addEventListener('mousemove', (e) => {
+                const rect = highlight.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                highlight.style.setProperty('--mouse-x', `${x}%`);
+                highlight.style.setProperty('--mouse-y', `${y}%`);
+            });
+        }
+
+        // 2. Text Scramble Effect
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar();
+                            this.queue[i].char = char;
+                        }
+                        output += `<span class="hero-cursor">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)];
+            }
+        }
+
+        const phrases = [
+            'building clean and performant systems.',
+            'solving complex CS problems.',
+            'mentoring the next generation of devs.',
+            'analyzing data with precision.',
+            'exploring the future of AI.',
+            'passionate about efficient software.'
+        ];
+
+        const el = document.getElementById('scrambleText');
+        if (el) {
+            const fx = new TextScramble(el);
+            let counter = 0;
+            const next = () => {
+                fx.setText(phrases[counter]).then(() => {
+                    setTimeout(next, 2500);
+                });
+                counter = (counter + 1) % phrases.length;
+            };
+            setTimeout(next, 1500);
+        }
+    })();
+
+    /* ===================================
+       Background & Background Interaction Implementation
+       =================================== */
+    (function initBackgroundInteraction() {
+        if (prefersReducedMotion || isMobile) return;
+
+        const spotlight = document.getElementById('spotlight');
+        if (spotlight) {
+            window.addEventListener('mousemove', (e) => {
+                spotlight.style.setProperty('--cursor-x', `${e.clientX}px`);
+                spotlight.style.setProperty('--cursor-y', `${e.clientY}px`);
+                
+                // Set initial opacity once the mouse is moved
+                spotlight.style.opacity = root.getAttribute('data-theme') === 'dark' ? '0.6' : '0.2';
+            });
+        }
+    })();
+
+    /* ===================================
+       Micro-Interactions Implementation
+       =================================== */
+    (function initMicroInteractions() {
+        // 1. Copy to Clipboard Email
+        const copyEmail = document.getElementById('copyEmail');
+        const emailText = document.getElementById('emailText');
+
+        if (copyEmail && emailText) {
+            copyEmail.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = emailText.innerText;
+                
+                navigator.clipboard.writeText(email).then(() => {
+                    const originalText = emailText.innerText;
+                    emailText.innerText = '✓ Copied to Clipboard!';
+                    copyEmail.style.color = 'var(--accent)';
+                    
+                    setTimeout(() => {
+                        emailText.innerText = originalText;
+                        copyEmail.style.color = '';
+                    }, 2000);
+                });
+            });
+        }
+    })();
+
+    /* ===================================
+       Active Nav Highlighting
+       =================================== */
+    const sections = document.querySelectorAll('.section, .hero');
+    const navLinkElements = document.querySelectorAll('.nav-links a:not(.nav-resume-btn)');
+
+    function highlightNav(id) {
+        navLinkElements.forEach(link => {
+            link.style.color = '';
+            link.style.background = '';
+            if (link.getAttribute('href') === `#${id}`) {
+                link.style.color = 'var(--accent)';
+                link.style.background = 'var(--accent-subtle)';
+            }
+        });
+    }
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                highlightNav(entry.target.getAttribute('id'));
+            }
+        });
+    }, {
+        threshold: [0.1, 0.5],
+        rootMargin: '-72px 0px -20% 0px'
+    });
+
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // Special check for bottom of page (Contact section)
+    window.addEventListener('scroll', () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 80) {
+            highlightNav('contact');
+        }
+    }, { passive: true });
+
+    /* ===================================
+       Terminal Easter Egg Implementation
+       =================================== */
+    (function initTerminalEasterEgg() {
+        const terminal = document.getElementById('terminalModal');
+        const input = document.getElementById('terminalInput');
+        const body = document.getElementById('terminalBody');
+        const closeBtn = document.getElementById('closeTerminal');
+
+        if (!terminal || !input) return;
+
+        const commands = {
+            help: 'Available commands: [ls, cd, cat, clear, contact, resume, theme]',
+            ls: 'about/  education/  experience/  projects/  skills/  contact/',
+            'cd about': () => scrollToSection('about'),
+            'cd education': () => scrollToSection('education'),
+            'cd experience': () => scrollToSection('experience'),
+            'cd projects': () => scrollToSection('projects'),
+            'cd skills': () => scrollToSection('skills'),
+            'cd contact': () => scrollToSection('contact'),
+            cat: 'Usage: cat [file_name]. Example: cat about',
+            'cat about': 'Satyam Bhanot: CS Honours student at UofM. Problem solver. Mentor.',
+            'cat skills': 'Java, Python, C/C++, JS, SQL, R, ML, Data Mining, NLP.',
+            clear: () => { body.innerHTML = ''; return ''; },
+            contact: () => { scrollToSection('contact'); return 'Navigating to contact...'; },
+            resume: () => { window.open('resume.pdf', '_blank'); return 'Opening resume...'; },
+            theme: () => { document.getElementById('themeToggle').click(); return 'Toggling theme...'; }
+        };
+
+        function scrollToSection(id) {
+            const target = document.getElementById(id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                toggleTerminal();
+                return `Navigating to ${id}...`;
+            }
+            return `Section ${id} not found.`;
+        }
+
+        function toggleTerminal() {
+            const isVisible = terminal.classList.contains('visible');
+            if (isVisible) {
+                terminal.classList.remove('visible');
+                setTimeout(() => terminal.style.display = 'none', 300);
+            } else {
+                terminal.style.display = 'flex';
+                setTimeout(() => {
+                    terminal.classList.add('visible');
+                    input.focus();
+                }, 10);
+            }
+        }
+
+        // Shortcut: Cmd+K or Ctrl+K
+        window.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                toggleTerminal();
+            }
+            if (e.key === 'Escape' && terminal.classList.contains('visible')) {
+                toggleTerminal();
+            }
+        });
+
+        // Mobile Secret: Triple-tap on footer
+        let tapCount = 0;
+        let lastTapTime = 0;
+        const footer = document.querySelector('.footer');
+        if (footer) {
+            footer.addEventListener('touchstart', (e) => {
+                const now = Date.now();
+                if (now - lastTapTime < 400) {
+                    tapCount++;
+                } else {
+                    tapCount = 1;
+                }
+                lastTapTime = now;
+                if (tapCount === 3) {
+                    toggleTerminal();
+                    tapCount = 0;
+                }
+            }, { passive: true });
+        }
+
+        closeBtn.addEventListener('click', toggleTerminal);
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = input.value.trim().toLowerCase();
+                input.value = '';
+                
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.innerHTML = `<span class="terminal-prompt">satyam@portfolio:~$</span> ${cmd}`;
+                body.appendChild(line);
+
+                let response = commands[cmd];
+                if (typeof response === 'function') {
+                    response = response();
+                } else if (!response) {
+                    // Try partial match for cd/cat
+                    if (cmd.startsWith('cd ') || cmd.startsWith('cat ')) {
+                        response = `Command error or path not found. Try 'help'.`;
+                    } else {
+                        response = `Command not found: ${cmd}. Type 'help' for assistance.`;
+                    }
+                }
+
+                if (response) {
+                    const respLine = document.createElement('div');
+                    respLine.className = 'terminal-line accent-text';
+                    respLine.innerText = response;
+                    body.appendChild(respLine);
+                }
+
+                body.scrollTop = body.scrollHeight;
+            }
+        });
+    })();
 
     /* ===================================
        Page Loader with Percentage Counter
@@ -212,59 +588,6 @@
     });
 
     /* ===================================
-       Typing Animation Disabled
-       =================================== */
-    // const typedElement = document.getElementById('typedText');
-    // const phrases = [
-    //     'build Android apps.',
-    //     'analyze data with Python.',
-    //     'solve real-world problems.',
-    //     'write clean, maintainable code.',
-    //     'love mentoring students.',
-    //     'explore AI & data science.'
-    // ];
-    //
-    // let phraseIndex = 0;
-    // let charIndex = 0;
-    // let isDeleting = false;
-    // let typeSpeed = TYPING_SPEED;
-    //
-    // function typeEffect() {
-    //     const currentPhrase = phrases[phraseIndex];
-    //     if (isDeleting) {
-    //         typedElement.textContent = currentPhrase.substring(0, charIndex - 1);
-    //         charIndex--;
-    //         typeSpeed = TYPING_DELETE_SPEED;
-    //     } else {
-    //         typedElement.textContent = currentPhrase.substring(0, charIndex + 1);
-    //         charIndex++;
-    //         typeSpeed = TYPING_SPEED;
-    //     }
-    //     if (!isDeleting && charIndex === currentPhrase.length) {
-    //         typeSpeed = TYPING_PAUSE_MS;
-    //         isDeleting = true;
-    //     } else if (isDeleting && charIndex === 0) {
-    //         isDeleting = false;
-    //         phraseIndex = (phraseIndex + 1) % phrases.length;
-    //         typeSpeed = TYPING_NEXT_PHRASE_DELAY;
-    //     }
-    //     setTimeout(typeEffect, typeSpeed);
-    // }
-
-    /* ===================================
-       DOMContentLoaded
-       =================================== */
-    document.addEventListener('DOMContentLoaded', () => {
-        // Typing animation disabled
-        // if (!prefersReducedMotion) {
-        //     setTimeout(typeEffect, TYPING_INITIAL_DELAY_MS);
-        // } else {
-        //     // Show first phrase immediately without animation
-        //     typedElement.textContent = phrases[0];
-        // }
-    });
-
-    /* ===================================
        Scroll Animations
        =================================== */
     const observerOptions = {
@@ -350,14 +673,24 @@
     });
 
     /* ===================================
-       Smooth Scroll
+       Smooth Scroll Implementation
        =================================== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return; // Do nothing for empty links
+
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+                const headerOffset = 72;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
     });
@@ -365,94 +698,6 @@
     /* ===================================
        Active Nav Highlighting
        =================================== */
-    const sections = document.querySelectorAll('.section, .hero');
-    const navLinkElements = document.querySelectorAll('.nav-links a:not(.nav-resume-btn)');
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navLinkElements.forEach(link => {
-                    link.style.color = '';
-                    link.style.background = '';
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.style.color = 'var(--accent)';
-                        link.style.background = 'var(--accent-subtle)';
-                    }
-                });
-            }
-        });
-    }, {
-        threshold: 0.3,
-        rootMargin: '-72px 0px -50% 0px'
-    });
-
-    sections.forEach(section => {
-        sectionObserver.observe(section);
-    });
-
-    /* ===================================
-       Contact Form Handler
-       =================================== */
-    const contactForm = document.getElementById('contactForm');
-
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        if (!name || !email || !message) return;
-
-        // Build mailto link with form data
-        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-
-        const btn = contactForm.querySelector('button');
-        const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<span>✓ Opening Email Client...</span>';
-        btn.style.background = '#22c55e';
-        btn.style.borderColor = '#22c55e';
-        btn.disabled = true;
-        contactForm.reset();
-
-        setTimeout(() => {
-            btn.innerHTML = originalHTML;
-            btn.style.background = '';
-            btn.style.borderColor = '';
-            btn.disabled = false;
-        }, FORM_SUCCESS_DISPLAY_MS);
-    });
-
-    /* ===================================
-       Back to Top Button
-       =================================== */
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    /* ===================================
-       Parallax Scrolling
-       =================================== */
-    if (!prefersReducedMotion) {
-        const heroContent = document.querySelector('.hero-content');
-        const particleCanvas = document.getElementById('particleCanvas');
-
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const windowHeight = window.innerHeight;
-
-            if (scrollY < windowHeight * 1.5) {
-                if (heroContent) {
-                    heroContent.style.transform = `translateY(${scrollY * PARALLAX_HERO_SPEED}px)`;
-                    heroContent.style.opacity = 1 - (scrollY / windowHeight) * PARALLAX_FADE_FACTOR;
-                }
-                if (particleCanvas) {
-                    particleCanvas.style.transform = `translateY(${scrollY * PARALLAX_PARTICLE_SPEED}px)`;
-                }
-            }
-        }, { passive: true });
-    }
+    // Logic integrated above with special bottom-of-page handling
 
 })();
