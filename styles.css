@@ -865,6 +865,35 @@ img {
 .skill-card-emoji { font-size: 26px; line-height: 1; display: block; }
 .skill-card span { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; text-align: center; color: var(--text-muted); transition: color 0.35s ease; line-height: 1.3; }
 
+/* Brand colors for skill icons (default state) */
+.skill-card .devicon-java-plain { color: #E76F00; }
+.skill-card .devicon-python-plain { color: #3776AB; }
+.skill-card .devicon-c-plain { color: #A8B9CC; }
+.skill-card .devicon-cplusplus-plain { color: #00599C; }
+.skill-card .devicon-postgresql-plain { color: #336791; }
+.skill-card .devicon-javascript-plain { color: #F0DB4F; }
+.skill-card .devicon-r-original { color: #276DC3; }
+.skill-card .devicon-rstudio-plain { color: #75AADB; }
+.skill-card .devicon-latex-original { color: #008080; }
+.skill-card .devicon-html5-plain { color: #E34F26; }
+.skill-card .devicon-css3-plain { color: #1572B6; }
+.skill-card .devicon-mongodb-plain { color: #47A248; }
+.skill-card .devicon-express-original { color: var(--text-secondary); }
+.skill-card .devicon-react-original { color: #61DAFB; }
+.skill-card .devicon-nodejs-plain { color: #339933; }
+.skill-card .devicon-tailwindcss-original { color: #06B6D4; }
+.skill-card .devicon-bootstrap-plain { color: #7952B3; }
+.skill-card .devicon-fastapi-plain { color: #009688; }
+.skill-card .devicon-git-plain { color: #F05032; }
+.skill-card .devicon-github-original { color: var(--text-secondary); }
+.skill-card .devicon-docker-plain { color: #2496ED; }
+.skill-card .devicon-kubernetes-plain { color: #326CE5; }
+.skill-card .devicon-webpack-plain { color: #8DD6F9; }
+.skill-card .devicon-jupyter-plain { color: #F37626; }
+.skill-card .devicon-vim-plain { color: #019733; }
+.skill-card .devicon-figma-plain { color: #F24E1E; }
+.skill-card .devicon-linux-plain { color: #FCC624; }
+
 .skill-card:hover {
     box-shadow: 0 8px 30px rgba(233, 116, 81, 0.1);
     transform: translateY(-2px);
