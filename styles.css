@@ -225,7 +225,13 @@ button:focus-visible {
 
 :root[data-theme="dark"] .theme-toggle-icon {
     background: var(--yellow);
-    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.18);
+    box-shadow:
+        0 0 0 3px rgba(245, 158, 11, 0.2),
+        0 -8px 0 0 var(--yellow),
+        0 8px 0 0 var(--yellow),
+        8px 0 0 0 var(--yellow),
+        -8px 0 0 0 var(--yellow);
+    border-radius: 50%;
 }
 
 .nav-toggle span {
