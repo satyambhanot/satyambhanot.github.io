@@ -49,10 +49,6 @@
             <span class="brand-mark">SB</span>
             <span>Satyam Bhanot</span>
         </a>
-        <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-controls="siteNav" aria-expanded="false">
-            <span></span>
-            <span></span>
-        </button>
         <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
@@ -62,6 +58,15 @@
             <a href="#contact">Contact</a>
             <a class="btn-resume" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
         </nav>
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">
+                <span class="theme-toggle-icon"></span>
+            </button>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-controls="siteNav" aria-expanded="false">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -329,14 +334,26 @@
 
         <section class="contact section-pad" id="contact" aria-labelledby="contact-title">
             <div class="contact-inner reveal">
-                <p class="eyebrow">Contact</p>
-                <h2 id="contact-title">Open to backend SWE, data engineering, and ML engineering roles.</h2>
-                <p>New grad, available now. If something here connects with the work you need done, send me a note.</p>
-                <div class="contact-actions">
-                    <a class="button button-primary" href="mailto:satyambhanot@gmail.com">satyambhanot@gmail.com</a>
-                    <a class="button button-secondary" href="https://github.com/satyambhanot" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a class="button button-secondary" href="https://linkedin.com/in/satyam-bhanot" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <div class="contact-copy">
+                    <p class="eyebrow">Contact</p>
+                    <h2 id="contact-title">Open to backend SWE, data engineering, and ML engineering roles.</h2>
+                    <p>New grad, available now. If something here connects with the work you need done, send me a note.</p>
+                    <div class="contact-actions">
+                        <a class="button button-secondary" href="https://github.com/satyambhanot" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a class="button button-secondary" href="https://linkedin.com/in/satyam-bhanot" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
                 </div>
+                <form class="contact-form" action="mailto:satyambhanot@gmail.com" method="post" enctype="text/plain">
+                    <label>
+                        <span>Name</span>
+                        <input type="text" name="name" placeholder="Your name" required>
+                    </label>
+                    <label>
+                        <span>Message</span>
+                        <textarea name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+                    </label>
+                    <button class="button button-primary" type="submit">Send message</button>
+                </form>
             </div>
         </section>
     </main>
