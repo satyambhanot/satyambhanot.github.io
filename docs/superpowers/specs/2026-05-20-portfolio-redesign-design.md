@@ -22,7 +22,9 @@ Redesign the personal portfolio at `satyambhanot.github.io` to better target tec
 
 ## Section 1: Navbar
 
-**Change:** Add a "Resume" button on the right side of the navbar.
+**Change:** Add a "Resume" button on the right side of the navbar. Note: the contact section currently says "Open to software roles, technical support work, tutoring, and practical projects" — update this to name the specific role types: backend SWE, data engineering, ML engineering.
+
+**Resume button details:**
 
 - Style: small pill, teal outline (`button-secondary` or a new `button-nav-resume` variant)
 - Links to `resume.pdf` in the repo root (user must add their PDF)
@@ -35,18 +37,18 @@ Redesign the personal portfolio at `satyambhanot.github.io` to better target tec
 
 **Headline rewrite:**
 - Current: "Computer science student building practical, reliable software."
-- New: Two-line, domain-forward headline — e.g. **"Backend engineer.\nData builder."** (exact wording can be adjusted but must signal the two target domains)
+- New: **"Backend developer and data/ML builder."** — signals both hiring buckets in one sentence
 
 **Subtitle:** Trim to 2 sentences max. Drop references to Rogers support work from the lead — move that context to the Experience section. Focus the subtitle on CS background + what Satyam builds.
 
 **CTA row:** Three buttons — `View Projects` (primary), `Download Resume` (secondary, links to resume.pdf), `GitHub` (quiet). Resume gets a dedicated CTA in the hero.
 
 **Hero-proof stats (3 cards):** Replace current stats with recruiter-relevant signals:
-- `4 Projects` + label "systems, backend, data, ML"
+- `6 Projects` + label "systems, backend, data, ML"
 - `Java · Python · C` + label "primary languages"
 - `3.90 GPA` + label "Dean's Honour List, Fall 2024"
 
-**Profile panel (right side):** Keep existing structure. The "Currently" card and signal chips (`debug`, `document`, `teach`) stay. Update graduation entry — `Apr 2026` is now past; update to reflect current status accurately.
+**Profile panel (right side):** Keep existing structure. Update "Currently" card to reflect graduation — change studying entry to "Graduated CS Honours, April 2026". Signal chips (`debug`, `document`, `teach`) stay.
 
 ---
 
@@ -58,7 +60,7 @@ Minor copy polish only. Structure and layout unchanged. The large dark bento car
 
 ## Section 4: Projects
 
-**Layout change:** Replace the vertical stack of 4 cards with a **2-column card grid** of 6 projects. Add a domain filter bar above the grid: `All · Systems · ML & Data · Apps`. Filter uses CSS class toggling — no library.
+**Layout change:** Replace the vertical stack of 4 cards with a **2-column card grid** of 6 projects. No filter bar — 6 cards are scannable without one. Clean grid only.
 
 **6 featured projects (in recommended display order):**
 
@@ -67,9 +69,10 @@ Minor copy polish only. Structure and layout unchanged. The large dark bento car
    - Description: Comparative analysis of ML classifiers for detecting fraudulent transactions in highly imbalanced datasets
    - Lead label: "Machine Learning"
 
-2. **Finding Waldo** (ML & Data)
-   - Stack: Python, ML models (computer vision)
-   - Description: Object detection across multiple model architectures; model comparison and evaluation
+2. **Where's Waldo? CNN-Based Character Detection** (ML & Data)
+   - Course: COMP 4360 Machine Learning, University of Manitoba (team project)
+   - Stack: Python, PyTorch, YOLOv8, RetinaNet ResNet50 FPN, Custom SSD MobileNetV2
+   - Description: Compared 4 CNN architectures for detecting Waldo in cluttered scenes. 458 annotated images (19 hand-labelled, 239 public dataset, 200 synthetic). 5 ablation studies across preprocessing, detection heads, tile resolution, color, and backbone. YOLOv8 achieved best F1 (0.762); RetinaNet hit 98.7% precision with only 3 false positives across 1770 negative tiles.
    - Lead label: "Computer Vision"
 
 3. **Winnipeg City Analysis** (ML & Data)
@@ -112,7 +115,7 @@ Minor copy polish only. Layout and structure unchanged.
 
 **Education panel:**
 - Move Dean's Honour List / GPA callout to the top of the card (currently buried at bottom)
-- Update graduation status — `Expected Apr 2026` is now past; change to `University of Manitoba · Graduated 2026` or appropriate current phrasing
+- Update graduation status — change `Expected Apr 2026` to `University of Manitoba · Graduated April 2026`
 
 **Skills panel — full redesign:**
 Replace plain text skill groups with a **4-card domain grid**. Each card has:
@@ -157,6 +160,6 @@ This gives recruiters landing directly on the contact section the context they n
 
 - Dark mode toggle
 - Animations beyond existing reveal pattern
-- Filterable project grid with JavaScript (filter is CSS class toggle only — no JS library)
+- Project filters (removed — 6 cards are scannable without a filter bar)
 - New fonts or icon libraries
 - Backend / contact form
