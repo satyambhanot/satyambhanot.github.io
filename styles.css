@@ -7,9 +7,9 @@
     --soft: #a1a1aa;
     --line: #e4e4e7;
     --line-strong: #d4d4d8;
-    --accent: #6366f1;
-    --accent-ink: #4338ca;
-    --accent-soft: #e0e7ff;
+    --accent: #3b82f6;
+    --accent-ink: #1d4ed8;
+    --accent-soft: #dbeafe;
     --rust: #f97316;
     --blue: #0891b2;
     --slate: #64748b;
@@ -19,11 +19,11 @@
     --nav-bg: rgba(250, 250, 250, 0.88);
     --profile-card-bg: #f4f4f5;
     --contact-start: #0f172a;
-    --contact-end: #312e81;
+    --contact-end: #1e3a8a;
     --button-primary-text: #ffffff;
-    --accent-wash: rgba(99, 102, 241, 0.1);
-    --accent-border: rgba(99, 102, 241, 0.2);
-    --chip-bg: rgba(224, 231, 255, 0.65);
+    --accent-wash: rgba(59, 130, 246, 0.1);
+    --accent-border: rgba(59, 130, 246, 0.2);
+    --chip-bg: rgba(219, 234, 254, 0.65);
     --radius: 12px;
     --max: 1180px;
     --font-body: "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -39,9 +39,9 @@
     --soft: #64748b;
     --line: #334155;
     --line-strong: #475569;
-    --accent: #818cf8;
-    --accent-ink: #c7d2fe;
-    --accent-soft: rgba(99, 102, 241, 0.18);
+    --accent: #60a5fa;
+    --accent-ink: #bfdbfe;
+    --accent-soft: rgba(59, 130, 246, 0.18);
     --rust: #fb923c;
     --blue: #22d3ee;
     --slate: #94a3b8;
@@ -51,11 +51,11 @@
     --nav-bg: rgba(15, 23, 42, 0.9);
     --profile-card-bg: #0f172a;
     --contact-start: #020617;
-    --contact-end: #312e81;
+    --contact-end: #1e3a8a;
     --button-primary-text: #ffffff;
-    --accent-wash: rgba(99, 102, 241, 0.15);
-    --accent-border: rgba(99, 102, 241, 0.28);
-    --chip-bg: rgba(99, 102, 241, 0.12);
+    --accent-wash: rgba(59, 130, 246, 0.15);
+    --accent-border: rgba(59, 130, 246, 0.28);
+    --chip-bg: rgba(59, 130, 246, 0.12);
 }
 
 * {
@@ -104,7 +104,7 @@ button {
 
 a:focus-visible,
 button:focus-visible {
-    outline: 3px solid rgba(99, 102, 241, 0.35);
+    outline: 3px solid rgba(59, 130, 246, 0.35);
     outline-offset: 3px;
 }
 
@@ -513,7 +513,7 @@ h3 {
     justify-content: flex-end;
     min-height: 454px;
     color: var(--surface-strong);
-    background: linear-gradient(135deg, #111827, #312e81);
+    background: linear-gradient(135deg, #111827, #1e3a8a);
     border-color: transparent;
 }
 
