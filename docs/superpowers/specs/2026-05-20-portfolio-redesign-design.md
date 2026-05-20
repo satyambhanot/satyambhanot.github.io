@@ -22,9 +22,7 @@ Redesign the personal portfolio at `satyambhanot.github.io` to better target tec
 
 ## Section 1: Navbar
 
-**Change:** Add a "Resume" button on the right side of the navbar. Note: the contact section currently says "Open to software roles, technical support work, tutoring, and practical projects" — update this to name the specific role types: backend SWE, data engineering, ML engineering.
-
-**Resume button details:**
+**Change:** Add a "Resume" button on the right side of the navbar.
 
 - Style: small pill, teal outline (`button-secondary` or a new `button-nav-resume` variant)
 - Links to `resume.pdf` in the repo root (user must add their PDF)
@@ -65,14 +63,18 @@ Minor copy polish only. Structure and layout unchanged. The large dark bento car
 **6 featured projects (in recommended display order):**
 
 1. **Credit Card Fraud Detection** (ML & Data)
-   - Stack: Python, scikit-learn (or similar ML stack)
-   - Description: Comparative analysis of ML classifiers for detecting fraudulent transactions in highly imbalanced datasets
+   - Stack: Python, pandas, NumPy, scikit-learn, XGBoost, LightGBM, imbalanced-learn (SMOTE), Matplotlib, Seaborn
+   - Models compared: Logistic Regression, Decision Tree, Random Forest, KNN, XGBoost, LightGBM
+   - Imbalance handling: SMOTE oversampling + class weighting
+   - Description: Comparative analysis of 6 ML classifiers for detecting fraudulent transactions in highly imbalanced datasets. Script-based pipeline with metrics CSVs, plots, and summary tables.
+   - **Card description (use this):** Compared 6 classifiers — Logistic Regression, Decision Tree, Random Forest, KNN, XGBoost, and LightGBM — for fraud detection on a highly imbalanced dataset. Used SMOTE and class weighting to handle class imbalance.
    - Lead label: "Machine Learning"
 
 2. **Where's Waldo? CNN-Based Character Detection** (ML & Data)
    - Course: COMP 4360 Machine Learning, University of Manitoba (team project)
    - Stack: Python, PyTorch, YOLOv8, RetinaNet ResNet50 FPN, Custom SSD MobileNetV2
-   - Description: Compared 4 CNN architectures for detecting Waldo in cluttered scenes. 458 annotated images (19 hand-labelled, 239 public dataset, 200 synthetic). 5 ablation studies across preprocessing, detection heads, tile resolution, color, and backbone. YOLOv8 achieved best F1 (0.762); RetinaNet hit 98.7% precision with only 3 false positives across 1770 negative tiles.
+   - Full detail (for copywriting reference): Compared 4 CNN architectures for detecting Waldo in cluttered scenes. 458 annotated images (19 hand-labelled, 239 public dataset, 200 synthetic). 5 ablation studies across preprocessing, detection heads, tile resolution, color, and backbone. YOLOv8 achieved best F1 (0.762); RetinaNet hit 98.7% precision with only 3 false positives across 1770 negative tiles.
+   - **Card description (use this):** Compared YOLOv8, RetinaNet, SSD MobileNetV2, and a custom CNN for Waldo detection across annotated and synthetic image data. YOLOv8 achieved the best F1 score; RetinaNet delivered the highest precision.
    - Lead label: "Computer Vision"
 
 3. **Winnipeg City Analysis** (ML & Data)
@@ -146,7 +148,7 @@ This gives recruiters landing directly on the contact section the context they n
 
 ## Section 8: Global Polish
 
-1. **Fix broken reveal animation:** The `.reveal` class currently sets `opacity: 1; transform: translateY(0)` as its initial state — identical to `.is-visible`. Fix: initial state should be `opacity: 0; transform: translateY(18px)`. The JS observer already handles adding `is-visible` correctly; only CSS needs updating.
+1. **Fix broken reveal animation:** The `.reveal` class currently sets `opacity: 1; transform: translateY(0)` as its initial state — identical to `.is-visible`. Fix: initial state should be `opacity: 0; transform: translateY(18px)`. The JS observer already handles adding `is-visible` correctly; only CSS needs updating. **Important:** the current JS calls `revealItems.forEach((item) => item.classList.add('is-visible'))` on line 14 before setting up the IntersectionObserver — this safeguard ensures items are visible when JS runs without the observer (e.g. no IntersectionObserver support). The implementation must preserve this fallback or replace it with an equivalent `noscript`/feature-detect path.
 
 2. **Skill card hover states:** Add subtle `translateY(-2px)` and `box-shadow` lift on hover for the new skill domain cards, consistent with project card hover behavior.
 
