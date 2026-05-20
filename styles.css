@@ -589,8 +589,9 @@ h3 {
 .achievement-list {
     display: grid;
     gap: 8px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
+    padding-bottom: 20px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--line);
 }
 
 .achievement-list p {
