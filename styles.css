@@ -747,6 +747,17 @@ h3 {
     max-width: 680px;
 }
 
+.contact-email {
+    display: inline-block;
+    margin: 12px 0 20px;
+    color: var(--surface-strong);
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0.9;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .contact-inner .button-secondary {
     color: var(--surface-strong);
     background: rgba(255,255,255,0.08);
