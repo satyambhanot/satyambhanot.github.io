@@ -141,84 +141,78 @@
         </section>
 
         <section class="projects section-pad" id="projects" aria-labelledby="projects-title">
-            <div class="section-heading reveal">
-                <p class="eyebrow">Selected Work</p>
-                <h2 id="projects-title">Projects that made abstract CS concepts concrete.</h2>
+    <div class="section-heading reveal">
+        <p class="eyebrow">Selected Work</p>
+        <h2 id="projects-title">Six projects across backend, data, ML, and systems.</h2>
+    </div>
+    <div class="project-stack">
+        <article class="project-card reveal">
+            <div class="project-copy">
+                <p class="project-label">Machine Learning</p>
+                <h3>Credit Card Fraud Detection</h3>
+                <p>Compared 6 classifiers — Logistic Regression, Decision Tree, Random Forest, KNN, XGBoost, and LightGBM — for fraud detection on a highly imbalanced dataset. Used SMOTE and class weighting to handle class imbalance.</p>
+                <p class="project-note">What stuck with me: how much the choice of evaluation metric matters when positive cases are less than 0.2% of your data.</p>
+                <div class="tag-row"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>LightGBM</span><span>SMOTE</span></div>
             </div>
-            <div class="project-stack">
-                <article class="project-card reveal">
-                    <div class="project-visual visual-shell" aria-hidden="true">
-                        <div class="terminal-window">
-                            <div class="terminal-bar"><span></span><span></span><span></span></div>
-                            <pre>$ mount exfat.img
-$ ls /projects
-gc.c  threads.c  notes/
-$ cat README</pre>
-                        </div>
-                    </div>
-                    <div class="project-copy">
-                        <p class="project-label">COMP 3430 · Operating Systems</p>
-                        <h3>ExFAT Shell</h3>
-                        <p>I built a custom shell in C for interacting with an ExFAT file system, including common UNIX-style commands, process execution, redirection, and piping.</p>
-                        <p class="project-note">What stuck with me: reliable tools feel simple only after the parsing, errors, and edge cases are handled carefully.</p>
-                        <div class="tag-row"><span>C</span><span>Linux</span><span>File Systems</span><span>Processes</span></div>
-                    </div>
-                </article>
+        </article>
 
-                <article class="project-card reveal">
-                    <div class="project-visual visual-threads" aria-hidden="true">
-                        <div class="thread-row"><span>T1</span><i></i><i></i><i></i></div>
-                        <div class="thread-row"><span>T2</span><i></i><i></i></div>
-                        <div class="thread-row"><span>T3</span><i></i><i></i><i></i><i></i></div>
-                        <div class="scheduler-line"></div>
-                    </div>
-                    <div class="project-copy">
-                        <p class="project-label">COMP 3430 · Operating Systems</p>
-                        <h3>Cooperative Threads Library</h3>
-                        <p>I implemented a C thread library modeled around pthread-style behavior, with mutex support and multiple scheduling policies including FIFO, round robin, and MLFQ.</p>
-                        <p class="project-note">What stuck with me: concurrency becomes easier to reason about when scheduling and synchronization rules are explicit.</p>
-                        <div class="tag-row"><span>C</span><span>Scheduling</span><span>Mutexes</span><span>Valgrind</span></div>
-                    </div>
-                </article>
-
-                <article class="project-card reveal">
-                    <div class="project-visual visual-memory" aria-hidden="true">
-                        <div class="memory-grid">
-                            <span class="live"></span><span></span><span class="live"></span><span></span>
-                            <span class="live"></span><span class="live"></span><span></span><span></span>
-                            <span></span><span class="live"></span><span></span><span class="live"></span>
-                        </div>
-                        <p>mark -> sweep -> reclaim</p>
-                    </div>
-                    <div class="project-copy">
-                        <p class="project-label">COMP 2160 · Systems Programming</p>
-                        <h3>Mark-and-Sweep Garbage Collector</h3>
-                        <p>I built a basic garbage collector in C to track allocations, mark reachable memory, and reclaim memory that was no longer in use.</p>
-                        <p class="project-note">What stuck with me: memory management is less mysterious when you have to build the bookkeeping yourself.</p>
-                        <div class="tag-row"><span>C</span><span>Memory</span><span>Makefile</span><span>lldb</span></div>
-                    </div>
-                </article>
-
-                <article class="project-card reveal">
-                    <div class="project-visual visual-app" aria-hidden="true">
-                        <div class="phone-frame">
-                            <div class="phone-top"></div>
-                            <div class="app-card"></div>
-                            <div class="app-line"></div>
-                            <div class="app-line short"></div>
-                            <div class="app-buttons"><span></span><span></span></div>
-                        </div>
-                    </div>
-                    <div class="project-copy">
-                        <p class="project-label">COMP 3350 · Team Project</p>
-                        <h3>PetObject</h3>
-                        <p>My team built an Android app for managing a virtual pet, with a focus on validation, navigation, editing flows, testing, and maintainable project structure.</p>
-                        <p class="project-note">What stuck with me: collaboration gets much easier when architecture and tests make the app predictable.</p>
-                        <div class="tag-row"><span>Java</span><span>Android</span><span>HSQLDB</span><span>JUnit</span></div>
-                    </div>
-                </article>
+        <article class="project-card reveal">
+            <div class="project-copy">
+                <p class="project-label">Computer Vision</p>
+                <h3>Where's Waldo? CNN Detection</h3>
+                <p>Compared YOLOv8, RetinaNet, SSD MobileNetV2, and a custom CNN for Waldo detection across annotated and synthetic image data. YOLOv8 achieved the best F1 score; RetinaNet delivered the highest precision.</p>
+                <p class="project-note">What stuck with me: the gap between precision and recall tells you something real about how each architecture reasons about ambiguous cases.</p>
+                <div class="tag-row"><span>Python</span><span>PyTorch</span><span>YOLOv8</span><span>RetinaNet</span><span>SSD</span></div>
+                <p class="project-course">COMP 4360 · Machine Learning · University of Manitoba</p>
             </div>
-        </section>
+        </article>
+
+        <article class="project-card reveal">
+            <div class="project-copy">
+                <p class="project-label">Data Engineering</p>
+                <h3>Winnipeg City Analysis</h3>
+                <p>Analyzed best Winnipeg neighbourhoods using multi-source civic data — transit stops, parks, hospitals, and 911 incidents — fetched via the City of Winnipeg open data API and joined across inconsistent schemas.</p>
+                <p class="project-note">What stuck with me: joining across data sources forces you to make explicit decisions about what "same location" actually means.</p>
+                <div class="tag-row"><span>Java</span><span>SQL</span><span>REST API</span></div>
+                <p class="project-course">COMP 3380 · Databases · University of Manitoba</p>
+            </div>
+        </article>
+
+        <article class="project-card reveal">
+            <div class="project-copy">
+                <p class="project-label">Systems Programming</p>
+                <h3>ExFAT Shell</h3>
+                <p>Built a custom shell in C for interacting with an ExFAT file system, including UNIX-style commands, process execution, I/O redirection, and piping.</p>
+                <p class="project-note">What stuck with me: reliable tools feel simple only after the parsing, errors, and edge cases are handled carefully.</p>
+                <div class="tag-row"><span>C</span><span>Linux</span><span>File Systems</span><span>Processes</span></div>
+                <p class="project-course">COMP 3430 · Operating Systems · University of Manitoba</p>
+            </div>
+        </article>
+
+        <article class="project-card reveal">
+            <div class="project-copy">
+                <p class="project-label">Concurrency</p>
+                <h3>Cooperative Threads Library</h3>
+                <p>Implemented a C thread library modeled on pthread-style behavior, with mutex support and FIFO, round-robin, and MLFQ scheduling policies.</p>
+                <p class="project-note">What stuck with me: concurrency becomes easier to reason about when scheduling and synchronization rules are explicit.</p>
+                <div class="tag-row"><span>C</span><span>Scheduling</span><span>Mutexes</span><span>Valgrind</span></div>
+                <p class="project-course">COMP 3430 · Operating Systems · University of Manitoba</p>
+            </div>
+        </article>
+
+        <article class="project-card reveal">
+            <div class="project-copy">
+                <p class="project-label">Software Engineering</p>
+                <h3>PetObject</h3>
+                <p>Built an Android app with a team for managing a virtual pet, with a focus on validation, navigation, editing flows, testing, and maintainable project structure.</p>
+                <p class="project-note">What stuck with me: collaboration gets much easier when architecture and tests make the app predictable.</p>
+                <div class="tag-row"><span>Java</span><span>Android</span><span>HSQLDB</span><span>JUnit</span></div>
+                <p class="project-course">COMP 3350 · Software Engineering 1 · University of Manitoba</p>
+            </div>
+        </article>
+    </div>
+    <p class="github-more">More on <a href="https://github.com/satyambhanot" target="_blank" rel="noopener noreferrer">GitHub →</a></p>
+</section>
 
         <section class="experience section-pad" id="experience" aria-labelledby="experience-title">
             <div class="section-heading reveal">

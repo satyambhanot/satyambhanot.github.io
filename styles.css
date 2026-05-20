@@ -458,13 +458,13 @@ h3 {
 
 .project-stack {
     display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 18px;
 }
 
 .project-card {
-    display: grid;
-    grid-template-columns: 390px minmax(0, 1fr);
-    gap: 0;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
@@ -473,13 +473,6 @@ h3 {
     transform: translateY(-3px);
     border-color: rgba(15, 118, 110, 0.24);
     box-shadow: 0 22px 50px rgba(16, 24, 40, 0.1);
-}
-
-.project-visual {
-    display: grid;
-    place-items: center;
-    min-height: 310px;
-    border-right: 1px solid var(--line);
 }
 
 .project-copy {
@@ -518,189 +511,27 @@ h3 {
     font-weight: 600;
 }
 
-.visual-shell {
-    background:
-        linear-gradient(135deg, rgba(15, 118, 110, 0.16), transparent),
-        #111827;
-}
-
-.terminal-window {
-    width: 78%;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.16);
-    border-radius: 8px;
-    background: #0f1513;
-    box-shadow: 0 18px 50px rgba(0,0,0,0.25);
-}
-
-.terminal-bar {
-    display: flex;
-    gap: 6px;
-    padding: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.terminal-bar span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--rust);
-}
-
-.terminal-bar span:nth-child(2) {
-    background: var(--yellow);
-}
-
-.terminal-bar span:nth-child(3) {
-    background: #76a88d;
-}
-
-pre {
-    margin: 0;
-    padding: 18px;
-    color: #d7e8df;
+.project-course {
+    margin-top: 12px;
+    margin-bottom: 0;
+    color: var(--soft);
     font-family: var(--font-mono);
-    font-size: 0.84rem;
-    line-height: 1.7;
-    white-space: pre-wrap;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
 }
 
-.visual-threads {
-    position: relative;
-    gap: 18px;
-    align-content: center;
-    background:
-        linear-gradient(90deg, rgba(37, 99, 235, 0.1) 0 34%, transparent 34% 100%),
-        #eef4ff;
+.github-more {
+    margin-top: 12px;
+    text-align: right;
+    color: var(--muted);
+    font-size: 0.92rem;
 }
 
-.thread-row {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 74%;
+.github-more a {
+    color: var(--accent-ink);
+    font-weight: 750;
 }
 
-.thread-row span {
-    width: 38px;
-    color: var(--blue);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 700;
-}
-
-.thread-row i {
-    display: block;
-    height: 20px;
-    flex: 1;
-    border-radius: 4px;
-    background: var(--blue);
-}
-
-.thread-row:nth-child(2) i {
-    background: var(--rust);
-}
-
-.thread-row:nth-child(3) i {
-    background: var(--accent);
-}
-
-.scheduler-line {
-    position: absolute;
-    left: 22%;
-    right: 14%;
-    bottom: 56px;
-    height: 2px;
-    background: repeating-linear-gradient(90deg, rgba(49,93,121,0.3) 0 12px, transparent 12px 20px);
-}
-
-.visual-memory {
-    gap: 18px;
-    background:
-        linear-gradient(135deg, rgba(194, 65, 12, 0.1), transparent 54%),
-        #fff7ed;
-}
-
-.memory-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 48px);
-    gap: 8px;
-}
-
-.memory-grid span {
-    aspect-ratio: 1;
-    border: 1px solid rgba(23,26,22,0.18);
-    border-radius: 6px;
-    background: rgba(255,255,255,0.75);
-}
-
-.memory-grid span.live {
-    background: var(--rust);
-}
-
-.visual-memory p {
-    color: var(--rust);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 700;
-}
-
-.visual-app {
-    background:
-        linear-gradient(135deg, rgba(15, 118, 110, 0.1), rgba(37, 99, 235, 0.08)),
-        #f0fdfa;
-}
-
-.phone-frame {
-    width: 148px;
-    min-height: 244px;
-    padding: 16px;
-    border: 8px solid #20231e;
-    border-radius: 26px;
-    background: var(--surface-strong);
-    box-shadow: 0 22px 60px rgba(43,47,38,0.18);
-}
-
-.phone-top {
-    width: 44px;
-    height: 5px;
-    margin: 0 auto 20px;
-    border-radius: 999px;
-    background: #20231e;
-}
-
-.app-card {
-    height: 68px;
-    margin-bottom: 16px;
-    border-radius: 8px;
-    background: var(--accent-soft);
-}
-
-.app-line {
-    height: 9px;
-    margin-bottom: 9px;
-    border-radius: 999px;
-    background: rgba(23,26,22,0.16);
-}
-
-.app-line.short {
-    width: 68%;
-}
-
-.app-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 24px;
-}
-
-.app-buttons span {
-    height: 30px;
-    border-radius: 6px;
-    background: var(--accent);
-}
 
 .timeline {
     display: grid;
@@ -884,9 +715,12 @@ pre {
     }
 
     .hero,
-    .project-card,
     .timeline-item,
     .education-skills {
+        grid-template-columns: 1fr;
+    }
+
+    .project-stack {
         grid-template-columns: 1fr;
     }
 
@@ -913,12 +747,6 @@ pre {
 
     .bento-large {
         min-height: 360px;
-    }
-
-    .project-visual {
-        min-height: 260px;
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
     }
 
     .timeline-item {
@@ -976,18 +804,6 @@ pre {
 
     .bento-large h3 {
         font-size: 2.3rem;
-    }
-
-    .memory-grid {
-        grid-template-columns: repeat(4, 38px);
-    }
-
-    .terminal-window {
-        width: 86%;
-    }
-
-    pre {
-        font-size: 0.74rem;
     }
 
     .site-footer {
