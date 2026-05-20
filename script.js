@@ -3,11 +3,71 @@
 (function () {
     const navToggle = document.getElementById('navToggle');
     const siteNav = document.getElementById('siteNav');
+    const themeToggle = document.getElementById('themeToggle');
+    const contactForm = document.getElementById('contactForm');
+    const backToTop = document.getElementById('backToTop');
     const navLinks = Array.from(document.querySelectorAll('.site-nav a'));
+    const sectionLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
     const revealItems = document.querySelectorAll('.reveal');
-    const sections = navLinks
+    const sections = sectionLinks
         .map((link) => document.querySelector(link.getAttribute('href')))
         .filter(Boolean);
+
+    let storedTheme = null;
+    let prefersDark = false;
+
+    try {
+        storedTheme = localStorage.getItem('theme');
+        prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch (error) {
+        storedTheme = null;
+        prefersDark = false;
+    }
+
+    const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+    function applyTheme(theme) {
+        document.documentElement.dataset.theme = theme;
+        if (themeToggle) {
+            const nextTheme = theme === 'dark' ? 'light' : 'dark';
+            themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
+        }
+    }
+
+    applyTheme(initialTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+            const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            try {
+                localStorage.setItem('theme', nextTheme);
+            } catch (error) {
+                // Theme still changes for the current page even if persistence is unavailable.
+            }
+            applyTheme(nextTheme);
+        });
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = String(formData.get('name') || '').trim();
+            const email = String(formData.get('email') || '').trim();
+            const message = String(formData.get('message') || '').trim();
+            const subject = encodeURIComponent(`Portfolio inquiry from ${name || 'website visitor'}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+            window.location.href = `mailto:satyambhanot@gmail.com?subject=${subject}&body=${body}`;
+        });
+    }
+
+    if (backToTop) {
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        });
+    }
 
     if (!siteNav || !navLinks.length) return;
 
@@ -20,7 +80,7 @@
     }
 
     function setActiveLink(sectionId) {
-        navLinks.forEach((link) => {
+        sectionLinks.forEach((link) => {
             link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
         });
     }
@@ -33,13 +93,19 @@
         });
     }
 
-    navLinks.forEach((link) => {
+    sectionLinks.forEach((link) => {
         link.addEventListener('click', () => {
             closeNav();
             const targetId = link.getAttribute('href').slice(1);
             setActiveLink(targetId);
         });
     });
+
+    navLinks
+        .filter((link) => !link.getAttribute('href').startsWith('#'))
+        .forEach((link) => {
+            link.addEventListener('click', closeNav);
+        });
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
