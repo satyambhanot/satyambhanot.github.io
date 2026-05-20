@@ -127,6 +127,26 @@ button:focus-visible {
     background: rgba(15, 118, 110, 0.1);
 }
 
+.site-nav .btn-resume {
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 14px;
+    margin-left: 6px;
+    color: var(--accent-ink);
+    background: rgba(15, 118, 110, 0.1);
+    border: 1px solid rgba(15, 118, 110, 0.22);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition: background 160ms ease;
+}
+
+.site-nav .btn-resume:hover {
+    background: rgba(15, 118, 110, 0.18);
+    color: var(--accent-ink);
+}
+
 .nav-toggle {
     display: none;
     width: 42px;
@@ -852,6 +872,15 @@ pre {
 
     .site-nav a {
         padding: 14px;
+    }
+
+    .site-nav .btn-resume {
+        margin-left: 0;
+        height: auto;
+        padding: 14px;
+        border-radius: 6px;
+        text-align: center;
+        justify-content: center;
     }
 
     .hero,

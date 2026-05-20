@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<!-- HEAD / META -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satyam Bhanot | CS Student and Developer</title>
-    <meta name="description"
-        content="Portfolio of Satyam Bhanot, a Computer Science Honours student at the University of Manitoba focused on software, support, and problem solving.">
+    <title>Satyam Bhanot | Computer Science Student &amp; Developer</title>
+    <meta name="description" content="Portfolio of Satyam Bhanot, a Computer Science Honours student focused on practical software, systems, technical support, and mentoring.">
     <meta name="author" content="Satyam Bhanot">
     <meta property="og:title" content="Satyam Bhanot | Portfolio">
-    <meta property="og:description" content="CS Honours student at UofM. Explore my projects, skills, and experience.">
+    <meta property="og:description" content="CS Honours student, developer, tutor, and technical support specialist.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://satyambhanot.github.io">
     <meta property="og:image" content="https://satyambhanot.github.io/og-image.png">
@@ -17,30 +15,27 @@
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Satyam Bhanot | Portfolio">
-    <meta name="twitter:description" content="CS Honours student at UofM. Explore my projects, skills, and experience.">
+    <meta name="twitter:description" content="CS Honours student, developer, tutor, and technical support specialist.">
     <meta name="twitter:image" content="https://satyambhanot.github.io/og-image.png">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://satyambhanot.github.io/">
     <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Satyam Bhanot",
         "url": "https://satyambhanot.github.io",
-        "jobTitle": "Computer Science Student & Developer",
+        "jobTitle": "Computer Science Student and Developer",
         "alumniOf": {
             "@type": "CollegeOrUniversity",
             "name": "University of Manitoba"
         },
-        "knowsAbout": ["Java", "Python", "C", "C++", "SQL", "JavaScript", "R", "Machine Learning", "Data Mining", "NLP"],
+        "knowsAbout": ["Java", "Python", "C", "C++", "SQL", "JavaScript", "Machine Learning", "Operating Systems", "Databases", "Technical Support", "Tutoring"],
         "sameAs": [
             "https://github.com/satyambhanot",
             "https://linkedin.com/in/satyam-bhanot"
@@ -49,669 +44,298 @@
     </script>
 </head>
 <body>
-    <div class="scroll-progress-bar" id="scrollProgress"></div>
-    <div class="spotlight-overlay" id="spotlight"></div>
-    <div class="custom-cursor" id="customCursor"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="page-loader" id="pageLoader">
-        <div class="loader-content">
-            <div class="loader-logo">S</div>
-            <div class="loader-percent" id="loaderPercent">0%</div>
-            <div class="loader-bar">
-                <div class="loader-bar-fill" id="loaderBarFill"></div>
-            </div>
-        </div>
-    </div>
-    <div class="noise-overlay"></div>
-    <canvas id="particleCanvas"></canvas>
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">Satyam Bhanot</a>
-            <div class="nav-right">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <!-- Icon: Sun -->
-                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                    </svg>
-                    <!-- Icon: Moon -->
-                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
-                </button>
-                <button class="nav-toggle" id="navToggle"
-                    aria-label="Toggle navigation"><span></span><span></span><span></span></button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="resume.pdf" class="nav-resume-btn" download>Resume <!-- Icon: Download --> <svg
-                                width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                <polyline points="7 10 12 15 17 10" />
-                                <line x1="12" y1="15" x2="12" y2="3" />
-                            </svg></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- HERO -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <p class="hero-kicker animate-on-scroll">Satyam Bhanot | CS student, tech support, mentoring</p>
-            <h1 class="hero-name animate-on-scroll">
-                <span class="hero-line">I like solving the kind of problems</span>
-                <span class="hero-name-highlight">that make life easier for people.</span>
-            </h1>
-            <div class="hero-typing-wrapper animate-on-scroll">
-                <span class="hero-typed" id="scrambleText"></span><span class="hero-cursor">|</span>
-            </div>
-            <p class="hero-description animate-on-scroll">I study computer science at the University of Manitoba, work in tech support at Rogers, and spend a lot of time helping students understand tough material. The common thread is simple: find the real problem, explain it clearly, and fix it well.</p>
-            <p class="hero-note animate-on-scroll">That can mean debugging a system, helping someone through recursion, or making a new student feel less lost on campus.</p>
-            <div class="hero-buttons animate-on-scroll">
-                <a href="#projects" class="btn btn-primary"><span>View My Work</span><!-- Icon: Arrow Right --><svg
-                        width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                    </svg></a>
-                <a href="#contact" class="btn btn-outline">Get In Touch</a>
-                <a href="resume.pdf" class="btn btn-ghost" download><!-- Icon: Download --><svg width="16" height="16"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="7 10 12 15 17 10" />
-                        <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg><span>Resume</span></a>
-            </div>
-        </div>
-    </section>
-    <!-- ABOUT -->
-    <section class="section about" id="about">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">About
-                    Me</span><span class="title-line"></span></h2>
-            <div class="about-grid">
-                <div class="about-photo-wrapper animate-on-scroll">
-                    <div class="about-photo">
-                        <img src="my-photo.jpg" alt="Portrait of Satyam Bhanot">
-                        <div class="photo-border"></div>
-                    </div>
-                    <div class="about-photo-decoration"></div>
+    <header class="site-header" id="top">
+        <a class="brand" href="#hero" aria-label="Satyam Bhanot home">
+            <span class="brand-mark">SB</span>
+            <span>Satyam Bhanot</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-controls="siteNav" aria-expanded="false">
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <a class="btn-resume" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero section-pad" id="hero">
+            <div class="hero-copy reveal">
+                <p class="eyebrow">Satyam Bhanot · Computer Science Honours</p>
+                <h1>Computer science student building practical, reliable software.</h1>
+                <p class="hero-text">I am a CS Honours student with a Math and Statistics minor, a tech support specialist at Rogers, and a tutor and mentor for students working through difficult coursework. My work sits where systems, debugging, and communication meet.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#projects">View Projects</a>
+                    <a class="button button-secondary" href="mailto:satyambhanot@gmail.com">Contact Me</a>
+                    <a class="button button-quiet" href="https://github.com/satyambhanot" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
-                <div class="about-text animate-on-scroll">
-                    <p>I'm a fourth-year <strong>Computer Science Honours</strong> student at the <strong>University of Manitoba</strong> with a minor in <strong>Mathematics and Statistics</strong>. I like work that asks for patience, good judgment, and a clear head.</p>
-                    <p>Right now that shows up in a few places. At <strong>Rogers Communications</strong>, I troubleshoot technical issues and help people get back to work. On campus, I mentor and tutor students who need someone to slow things down and make hard topics feel manageable.</p>
-                    <p>I care about thoughtful software, honest communication, and work that actually helps someone on the other side of the screen. That is the kind of developer I am trying to become.</p>
-                    <div class="about-details-row">
-                        <div class="detail-chip"><span class="chip-icon">🎓</span><span>CS Honours at U of M</span></div>
-                        <div class="detail-chip"><span class="chip-icon">💼</span><span>Tech support at Rogers</span></div>
-                        <div class="detail-chip"><span class="chip-icon">🧠</span><span>Tutor and mentor</span></div>
-                        <div class="detail-chip"><span class="chip-icon">📊</span><span>Math and stats minor</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- EDUCATION -->
-    <section class="section education" id="education">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span
-                    class="title-text">Education</span><span class="title-line"></span></h2>
-            <div class="education-card animate-on-scroll">
-                <div class="edu-header">
-                    <div class="edu-icon">🎓</div>
+                <div class="hero-proof" aria-label="Profile highlights">
                     <div>
-                        <h3>Foundation for Problem-Solving</h3>
-                        <p class="edu-school">Bachelor of Science, Computer Science Honours, University of Manitoba</p>
+                        <strong>50+</strong>
+                        <span>support issues handled weekly</span>
                     </div>
-                    <span class="edu-date">Apr 2026</span>
-                </div>
-                <div class="edu-body">
-                    <p class="edu-intro">I chose this path because I like understanding how things work, where they break, and how to make them better. My coursework gave me a strong base in systems, databases, machine learning, security, and statistics. The Dean's Honour List matters to me because it reflects consistency, not one good semester.</p>
-                    <p class="edu-minor">Minor: Mathematics and Statistics</p>
-                    <div class="edu-achievements">
-                        <div class="edu-achievement"><span class="achievement-badge">🏆</span>
-                            <div><strong>Dean's Honour List</strong>
-                                <p>Fall 2024, GPA 3.90 with 15 credit hours</p>
-                            </div>
-                        </div>
-                        <div class="edu-achievement"><span class="achievement-badge">🏆</span>
-                            <div><strong>University 1 Honour List</strong>
-                                <p>Winter 2021, GPA 3.83 with 12 credit hours</p>
-                            </div>
-                        </div>
+                    <div>
+                        <strong>C / Java / SQL</strong>
+                        <span>systems, apps, and data work</span>
                     </div>
-                    <div class="edu-coursework">
-                        <span class="coursework-label">Relevant Coursework:</span>
-                        <div class="tab-buttons tab-buttons-sm" id="courseworkTabs">
-                            <button class="tab-btn tab-btn-sm active" data-tab="courses-comp">Computer Science</button>
-                            <button class="tab-btn tab-btn-sm" data-tab="courses-math">Mathematics</button>
-                            <button class="tab-btn tab-btn-sm" data-tab="courses-stat">Statistics</button>
-                        </div>
-                        <div class="tab-content active" id="tab-courses-comp">
-                            <div class="skill-tags">
-                                <span class="skill-tag">COMP 4710 · Intro to Data Mining</span>
-                                <span class="skill-tag">COMP 4620 · Professional Practice in CS</span>
-                                <span class="skill-tag">COMP 4380 · Databases Implementation</span>
-                                <span class="skill-tag">COMP 4360 · Machine Learning</span>
-                                <span class="skill-tag">COMP 4062 · Natural Language Processing</span>
-                                <span class="skill-tag">COMP 4018 · Distributed DB Systems & Tuning</span>
-                                <span class="skill-tag">COMP 4000 · Computer & Network Security</span>
-                                <span class="skill-tag">COMP 3430 · Operating Systems</span>
-                                <span class="skill-tag">COMP 3380 · Databases Concepts & Usage</span>
-                                <span class="skill-tag">COMP 3370 · Computer Organization</span>
-                                <span class="skill-tag">COMP 3350 · Software Engineering 1</span>
-                                <span class="skill-tag">COMP 3190 · Intro to Artificial Intelligence</span>
-                                <span class="skill-tag">COMP 3170 · Analysis of Algorithms & DS</span>
-                                <span class="skill-tag">COMP 3030 · Automata Theory & Formal Languages</span>
-                                <span class="skill-tag">COMP 2280 · Intro to Computer Systems</span>
-                                <span class="skill-tag">COMP 2160 · Programming Practices</span>
-                                <span class="skill-tag">COMP 2150 · Object Orientation</span>
-                                <span class="skill-tag">COMP 2140 · Data Structures & Algorithms</span>
-                                <span class="skill-tag">COMP 2080 · Analysis of Algorithms</span>
-                                <span class="skill-tag">COMP 1020 · Intro to CS 2</span>
-                                <span class="skill-tag">COMP 1010 · Intro to CS 1</span>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="tab-courses-math">
-                            <div class="skill-tags">
-                                <span class="skill-tag">MATH 2740 · Mathematics of Data Science</span>
-                                <span class="skill-tag">MATH 2150 · Multivariable Calculus</span>
-                                <span class="skill-tag">MATH 1700 · Calculus 2</span>
-                                <span class="skill-tag">MATH 1500 · Introduction to Calculus</span>
-                                <span class="skill-tag">MATH 1300 · Vector Geometry & Linear Algebra</span>
-                                <span class="skill-tag">MATH 1240 · Elementary Discrete Mathematics</span>
-                            </div>
-                        </div>
-                        <div class="tab-content" id="tab-courses-stat">
-                            <div class="skill-tags">
-                                <span class="skill-tag">STAT 4000 · Applied Statistical Modelling</span>
-                                <span class="skill-tag">STAT 3000 · Applied Linear Statistical Models</span>
-                                <span class="skill-tag">STAT 2400 · Introduction to Probability 1</span>
-                                <span class="skill-tag">STAT 2300 · Principles of Data Collection</span>
-                                <span class="skill-tag">STAT 2150 · Statistics and Computing</span>
-                                <span class="skill-tag">STAT 1150 · Intro to Statistics & Computing</span>
-                            </div>
-                        </div>
+                    <div>
+                        <strong>2026</strong>
+                        <span>expected graduation</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- EXPERIENCE -->
-    <section class="section experience" id="experience">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span
-                    class="title-text">Experience</span><span class="title-line"></span></h2>
-            <div class="tab-buttons animate-on-scroll" id="experienceTabs">
-                <button class="tab-btn active" data-tab="work">Work</button>
-                <button class="tab-btn" data-tab="volunteering">Volunteering</button>
-                <button class="tab-btn" data-tab="leadership">Leadership</button>
-            </div>
-            <div class="tab-content active" id="tab-work">
-                <div class="timeline">
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">May 2023 to Present</span>
-                            <h3>Tech Support Specialist</h3>
-                            <p class="timeline-place">Rogers Communications · Remote</p>
-                            <p class="timeline-impact">When a customer loses connectivity, work slows down fast. I handle more than 50 incidents a week across hardware, software, and network issues, and I try to be the person who finds the real cause instead of guessing. Good support is not just fixing a ticket. It is helping someone get back to normal.</p>
-                            <ul class="timeline-points">
-                                <li>Resolve 50+ technical incidents and service requests weekly across hardware, software, and network systems, ensuring minimal downtime for enterprise and consumer clients.</li>
-                                <li>Perform detailed issue identification, logging, and categorization using ticketing systems, maintaining thorough documentation to support knowledge base development and trend analysis.</li>
-                                <li>Collaborate with cross-functional teams including network engineering and field operations to escalate and resolve complex multi-tier issues within established SLA timelines.</li>
-                                <li>Maintain and audit 200+ IT asset records monthly, tracking device lifecycles, warranty statuses, and deployment histories to support procurement and inventory planning.</li>
-                            </ul>
-                        </div>
-                    </div>
+            <aside class="profile-panel reveal" aria-label="Profile summary">
+                <div class="portrait-wrap">
+                    <img src="my-photo.jpg" alt="Portrait of Satyam Bhanot">
                 </div>
-            </div>
-            <div class="tab-content" id="tab-volunteering">
-                <div class="timeline">
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">Sep 2023 to Aug 2025</span>
-                            <h3>Peer Tutor</h3>
-                            <p class="timeline-place">UofM Science Students' Association · Nimbus Learning</p>
-                            <p class="timeline-impact">A lot of students think they are bad at math or computer science when the real issue is that nobody has explained it in a way that clicks. I work one on one to find the gap, slow things down, and rebuild confidence from there. Seeing that shift happen is still one of the most rewarding parts of my work.</p>
-                            <ul class="timeline-points">
-                                <li>Delivered personalized one-on-one and group tutoring sessions in computer science, mathematics, and statistics courses, adapting teaching strategies to diverse learning styles.</li>
-                                <li>Developed and shared supplementary study materials including practice problems, concept maps, and step-by-step solution guides to reinforce understanding of complex topics.</li>
-                                <li>Mentored students through challenging coursework such as data structures, calculus, and probability, resulting in measurable improvements in academic performance and confidence.</li>
-                                <li>Upheld academic integrity standards by guiding students toward independent problem-solving rather than providing direct answers, fostering critical thinking and self-reliance.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">Aug 2025 to Sep 2025</span>
-                            <h3>Orientation Ambassador, International Centre</h3>
-                            <p class="timeline-place">University of Manitoba</p>
-                            <p class="timeline-impact">Starting university in a new country comes with a lot at once: classes, paperwork, culture, and simple day to day questions. I helped students get their footing early so they could spend less energy feeling overwhelmed and more energy settling in.</p>
-                            <ul class="timeline-points">
-                                <li>Coordinated and facilitated international student orientation sessions, guiding groups of 20+ incoming students through campus resources, academic expectations, and cultural integration.</li>
-                                <li>Managed event logistics including room bookings, signage, information packages, and volunteer scheduling to ensure smooth execution of multi-day orientation programming.</li>
-                                <li>Created an inclusive and welcoming environment by proactively engaging with students from diverse cultural backgrounds, addressing language barriers, and offering personalized support.</li>
-                                <li>Collaborated with International Centre staff to collect post-event feedback and identify areas for improvement, contributing to enhanced orientation delivery in subsequent sessions.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">Aug 2024 to Sep 2024</span>
-                            <h3>Orientation Volunteer</h3>
-                            <p class="timeline-place">University of Manitoba</p>
-                            <p class="timeline-impact">The first few weeks of university can be messy and confusing. I helped new students with practical questions, campus routines, and the small interactions that make a place feel less intimidating.</p>
-                            <ul class="timeline-points">
-                                <li>Welcomed and supported over 100 new students during fall orientation week, providing campus tours, directions, and introductions to key academic and social resources.</li>
-                                <li>Shared first-year experiences and practical advice on course selection, study habits, and campus life, helping incoming students feel prepared and connected.</li>
-                                <li>Assisted with the setup and facilitation of orientation events including icebreaker activities, resource fairs, and faculty-specific information sessions.</li>
-                                <li>Demonstrated strong interpersonal and communication skills by engaging with diverse groups of students and parents, ensuring a positive and memorable first impression of the university.</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="signal-card" aria-hidden="true">
+                    <span>debug</span>
+                    <span>document</span>
+                    <span>teach</span>
                 </div>
-            </div>
-            <div class="tab-content" id="tab-leadership">
-                <div class="timeline">
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">Sep 2025 to Present</span>
-                            <h3>Mentor, Science Students' Association</h3>
-                            <p class="timeline-place">University of Manitoba</p>
-                            <p class="timeline-impact">Science programs can be demanding very quickly. I try to be a steady point of contact for students who need advice, encouragement, or just someone who remembers what that first year feels like.</p>
-                            <ul class="timeline-points">
-                                <li>Provide personalized academic and social mentorship to incoming Science students through structured biweekly check-ins, campus tours, and tailored resource introductions.</li>
-                                <li>Develop individualized support plans based on each mentee's academic goals, challenges, and interests, fostering a strong and trusting mentor-mentee relationship.</li>
-                                <li>Organize and lead group mentorship events including study sessions, networking workshops, and peer support circles to build community among first-year students.</li>
-                                <li>Serve as a liaison between students and faculty resources, proactively connecting mentees with academic advising, tutoring services, and mental health support as needed.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">Aug 2025 to Present</span>
-                            <h3>Welcome Mentor, International Centre</h3>
-                            <p class="timeline-place">University of Manitoba</p>
-                            <p class="timeline-impact">International students are balancing academic work with a completely new environment. I help with both. That means practical guidance, regular check-ins, and helping people feel like they belong here.</p>
-                            <ul class="timeline-points">
-                                <li>Guide international students through academic and cultural transitions by providing ongoing support with course registration, campus navigation, and community integration.</li>
-                                <li>Conduct regular one-on-one check-ins to monitor mentee well-being, address concerns, and celebrate milestones, building meaningful connections grounded in active listening.</li>
-                                <li>Facilitate intercultural communication and understanding by organizing social events and cultural exchange activities that promote inclusivity and belonging on campus.</li>
-                                <li>Collaborate with the International Centre team to identify at-risk students early and connect them with appropriate support services including counseling and academic accommodations.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">Sep 2024 to Aug 2025</span>
-                            <h3>Treasurer, Statistics Club</h3>
-                            <p class="timeline-place">University of Manitoba</p>
-                            <p class="timeline-impact">Student clubs work best when the basics are handled well. I managed the budget carefully so the team could focus on events that were actually useful to students.</p>
-                            <ul class="timeline-points">
-                                <li>Managed the club's annual budget of $2,000+, overseeing all financial transactions, reimbursements, and expense tracking to ensure transparent and responsible fiscal management.</li>
-                                <li>Prepared monthly financial reports and presented budget summaries to the executive team, enabling data-driven decision-making for event planning and resource allocation.</li>
-                                <li>Collaborated with the executive team to plan and fund academic events including guest lectures, data science workshops, and networking sessions that boosted club membership by 20%.</li>
-                                <li>Negotiated sponsorship deals and coordinated with university administration to secure funding for club initiatives, strengthening the club's financial sustainability for future terms.</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="profile-card">
+                    <p class="mono-label">Currently</p>
+                    <ul>
+                        <li><span>Studying</span> CS Honours, Math and Stats</li>
+                        <li><span>Working</span> Tech support at Rogers</li>
+                        <li><span>Helping</span> Students as tutor and mentor</li>
+                        <li><span>Focused</span> Systems, databases, ML, reliability</li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- PROJECTS -->
-    <section class="section projects" id="projects">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span
-                    class="title-text">Projects</span><span class="title-line"></span></h2>
-            <div class="tab-buttons animate-on-scroll" id="projectTabs">
-                <button class="tab-btn active" data-tab="personal">Personal</button>
-                <button class="tab-btn" data-tab="academic">Academic</button>
-            </div>
+            </aside>
+        </section>
 
-            <!-- PERSONAL TAB -->
-            <div class="tab-content active" id="tab-personal">
-                <div class="projects-grid">
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🌐</span></div>
-                            <div class="project-overlay"><a
-                                    href="https://github.com/satyambhanot/satyambhanot.github.io" class="project-link"
-                                    target="_blank" rel="noopener noreferrer" title="View on GitHub"><svg width="20"
-                                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2">
-                                        <path
-                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                    </svg></a><a href="https://satyambhanot.github.io" class="project-link"
-                                    title="Live Site"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                        <polyline points="15 3 21 3 21 9" />
-                                        <line x1="10" y1="14" x2="21" y2="3" />
-                                    </svg></a></div>
-                        </div>
-                        <div class="project-info"><span class="project-label">Personal</span>
-                            <h3 class="project-title">Portfolio Website</h3>
-                            <p class="project-problem"><strong>Problem:</strong> Generic templates make it impossible to show who you really are. Recruiters see the same layouts everywhere.</p>
-                            <p class="project-desc">I built this site from scratch with HTML, CSS, and JavaScript so I could control the writing, layout, motion, and overall tone. It gave me room to make something that feels personal instead of assembled from a starter template.</p>
-                            <p class="project-impact"><strong>Result:</strong> The site works as both a portfolio and a design exercise. It shows how I write, how I organize information, and how I think about details.</p>
-                            <div class="project-tech">
-                                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span>
-                            </div>
+        <section class="snapshot section-pad" id="about" aria-labelledby="snapshot-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Personalized Snapshot</p>
+                <h2 id="snapshot-title">The through-line is useful problem solving.</h2>
+            </div>
+            <div class="bento-grid">
+                <article class="bento-card bento-large reveal">
+                    <p class="mono-label">How I Work</p>
+                    <h3>Find the real issue, make it understandable, then fix it carefully.</h3>
+                    <p>That can mean isolating a connectivity failure, walking someone through recursion, or reasoning about memory, threads, and file systems until the behavior makes sense.</p>
+                </article>
+                <article class="bento-card reveal">
+                    <p class="mono-label">Systems</p>
+                    <h3>C, Linux, OS concepts, debugging tools.</h3>
+                    <p>I like projects where the machine's behavior is visible and precision matters.</p>
+                </article>
+                <article class="bento-card reveal">
+                    <p class="mono-label">Support</p>
+                    <h3>50+ incidents handled weekly.</h3>
+                    <p>Support taught me to stay calm, document clearly, and solve problems under real user pressure.</p>
+                </article>
+                <article class="bento-card reveal">
+                    <p class="mono-label">Teaching</p>
+                    <h3>One-on-one tutoring and mentorship.</h3>
+                    <p>Good technical communication starts by finding the exact point where someone got lost.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="projects section-pad" id="projects" aria-labelledby="projects-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Selected Work</p>
+                <h2 id="projects-title">Projects that made abstract CS concepts concrete.</h2>
+            </div>
+            <div class="project-stack">
+                <article class="project-card reveal">
+                    <div class="project-visual visual-shell" aria-hidden="true">
+                        <div class="terminal-window">
+                            <div class="terminal-bar"><span></span><span></span><span></span></div>
+                            <pre>$ mount exfat.img
+$ ls /projects
+gc.c  threads.c  notes/
+$ cat README</pre>
                         </div>
                     </div>
+                    <div class="project-copy">
+                        <p class="project-label">COMP 3430 · Operating Systems</p>
+                        <h3>ExFAT Shell</h3>
+                        <p>I built a custom shell in C for interacting with an ExFAT file system, including common UNIX-style commands, process execution, redirection, and piping.</p>
+                        <p class="project-note">What stuck with me: reliable tools feel simple only after the parsing, errors, and edge cases are handled carefully.</p>
+                        <div class="tag-row"><span>C</span><span>Linux</span><span>File Systems</span><span>Processes</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-visual visual-threads" aria-hidden="true">
+                        <div class="thread-row"><span>T1</span><i></i><i></i><i></i></div>
+                        <div class="thread-row"><span>T2</span><i></i><i></i></div>
+                        <div class="thread-row"><span>T3</span><i></i><i></i><i></i><i></i></div>
+                        <div class="scheduler-line"></div>
+                    </div>
+                    <div class="project-copy">
+                        <p class="project-label">COMP 3430 · Operating Systems</p>
+                        <h3>Cooperative Threads Library</h3>
+                        <p>I implemented a C thread library modeled around pthread-style behavior, with mutex support and multiple scheduling policies including FIFO, round robin, and MLFQ.</p>
+                        <p class="project-note">What stuck with me: concurrency becomes easier to reason about when scheduling and synchronization rules are explicit.</p>
+                        <div class="tag-row"><span>C</span><span>Scheduling</span><span>Mutexes</span><span>Valgrind</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-visual visual-memory" aria-hidden="true">
+                        <div class="memory-grid">
+                            <span class="live"></span><span></span><span class="live"></span><span></span>
+                            <span class="live"></span><span class="live"></span><span></span><span></span>
+                            <span></span><span class="live"></span><span></span><span class="live"></span>
+                        </div>
+                        <p>mark -> sweep -> reclaim</p>
+                    </div>
+                    <div class="project-copy">
+                        <p class="project-label">COMP 2160 · Systems Programming</p>
+                        <h3>Mark-and-Sweep Garbage Collector</h3>
+                        <p>I built a basic garbage collector in C to track allocations, mark reachable memory, and reclaim memory that was no longer in use.</p>
+                        <p class="project-note">What stuck with me: memory management is less mysterious when you have to build the bookkeeping yourself.</p>
+                        <div class="tag-row"><span>C</span><span>Memory</span><span>Makefile</span><span>lldb</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-visual visual-app" aria-hidden="true">
+                        <div class="phone-frame">
+                            <div class="phone-top"></div>
+                            <div class="app-card"></div>
+                            <div class="app-line"></div>
+                            <div class="app-line short"></div>
+                            <div class="app-buttons"><span></span><span></span></div>
+                        </div>
+                    </div>
+                    <div class="project-copy">
+                        <p class="project-label">COMP 3350 · Team Project</p>
+                        <h3>PetObject</h3>
+                        <p>My team built an Android app for managing a virtual pet, with a focus on validation, navigation, editing flows, testing, and maintainable project structure.</p>
+                        <p class="project-note">What stuck with me: collaboration gets much easier when architecture and tests make the app predictable.</p>
+                        <div class="tag-row"><span>Java</span><span>Android</span><span>HSQLDB</span><span>JUnit</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="experience section-pad" id="experience" aria-labelledby="experience-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Experience</p>
+                <h2 id="experience-title">Technical work, support, and mentorship.</h2>
+            </div>
+            <div class="timeline">
+                <article class="timeline-item reveal">
+                    <div>
+                        <p class="date">May 2023 to Present</p>
+                        <h3>Tech Support Specialist</h3>
+                        <p class="place">Rogers Communications · Remote</p>
+                    </div>
+                    <div>
+                        <p>I troubleshoot hardware, software, and network issues while keeping documentation clear enough for future support and escalation work.</p>
+                        <ul>
+                            <li>Resolve 50+ incidents and service requests weekly.</li>
+                            <li>Document issue patterns, asset records, escalations, and service outcomes.</li>
+                            <li>Coordinate with network engineering and field operations on complex issues.</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="timeline-item reveal">
+                    <div>
+                        <p class="date">Sep 2023 to Aug 2025</p>
+                        <h3>Peer Tutor</h3>
+                        <p class="place">UofM Science Students' Association · Nimbus Learning</p>
+                    </div>
+                    <div>
+                        <p>I helped students work through computer science, mathematics, and statistics by slowing concepts down and rebuilding confidence from first principles.</p>
+                        <ul>
+                            <li>Delivered one-on-one and group tutoring sessions.</li>
+                            <li>Created practice problems and step-by-step explanations.</li>
+                            <li>Guided students toward independent problem solving and academic integrity.</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="timeline-item reveal">
+                    <div>
+                        <p class="date">2024 to Present</p>
+                        <h3>Student Mentor and Campus Leader</h3>
+                        <p class="place">University of Manitoba</p>
+                    </div>
+                    <div>
+                        <p>I support incoming and international students through orientation, mentorship, resource navigation, and student community work.</p>
+                        <ul>
+                            <li>Mentor Science students through academic and social transitions.</li>
+                            <li>Help international students settle into university systems and campus life.</li>
+                            <li>Previously managed budgeting and reporting as Treasurer for the Statistics Club.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="education-skills section-pad">
+            <div class="education-panel reveal" id="education">
+                <p class="eyebrow">Education</p>
+                <h2>Computer Science Honours with a Math and Statistics minor.</h2>
+                <p class="degree">Bachelor of Science · University of Manitoba · Expected Apr 2026</p>
+                <div class="focus-grid">
+                    <span>Operating Systems</span>
+                    <span>Databases</span>
+                    <span>Machine Learning</span>
+                    <span>Security</span>
+                    <span>Algorithms</span>
+                    <span>Statistics</span>
+                </div>
+                <div class="achievement-list">
+                    <p><strong>Dean's Honour List</strong> · Fall 2024, GPA 3.90</p>
+                    <p><strong>University 1 Honour List</strong> · Winter 2021, GPA 3.83</p>
                 </div>
             </div>
 
-            <!-- ACADEMIC TAB -->
-            <div class="tab-content" id="tab-academic">
-                <!-- Individual Projects -->
-                <h3 class="projects-subheading animate-on-scroll">Individual Projects</h3>
-                <div class="projects-grid">
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🗑️</span></div>
-                        </div>
-                        <div class="project-info"><span class="project-label">COMP 2160 · Systems Programming</span>
-                            <h3 class="project-title">Garbage Collector</h3>
-                            <p class="project-problem"><strong>Problem:</strong> Manual memory management is error-prone. Programs crash, leak memory, run out of resources.</p>
-                            <p class="project-desc">I built a basic mark and sweep garbage collector in C to track allocations and reclaim memory that was no longer being used. It was a good exercise in understanding what higher-level tools usually hide.</p>
-                            <p class="project-impact"><strong>Result:</strong> The project gave me a much better feel for memory management and the tradeoffs involved in keeping low-level programs stable.</p>
-                            <div class="project-tech">
-                                <span>C</span><span>Makefile</span><span>Valgrind</span><span>lldb</span>
-                            </div>
-                        </div>
+            <div class="skills-panel reveal" id="skills">
+                <p class="eyebrow">Skills</p>
+                <h2>Grouped by how I actually use them.</h2>
+                <div class="skill-groups">
+                    <div>
+                        <h3>Build</h3>
+                        <p>Java, Python, JavaScript, React, Node.js, FastAPI</p>
                     </div>
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>💻</span></div>
-                        </div>
-                        <div class="project-info"><span class="project-label">COMP 3430 · Operating Systems</span>
-                            <h3 class="project-title">ExFAT Shell</h3>
-                            <p class="project-problem"><strong>Problem:</strong> File systems are opaque. Users need a way to interact with their files securely.</p>
-                            <p class="project-desc">I built a custom shell in C for the ExFAT file system with support for common UNIX-style commands and executable handling. The project pushed me to think carefully about parsing, process behavior, and predictable system interaction.</p>
-                            <ul class="project-features">
-                                <li>Supports cd, pwd, ls, redirection, and piping</li>
-                                <li>Launches secure independent processes for executables from mounted file system</li>
-                                <li>Supports POSIX-like error codes and shell features</li>
-                                <li>Designed for ExFAT file system only</li>
-                            </ul>
-                            <p class="project-impact"><strong>Result:</strong> I came away with a stronger understanding of shells, file systems, and what it takes to make low-level tools feel reliable.</p>
-                            <div class="project-tech">
-                                <span>C</span><span>Makefile</span><span>lldb</span><span>gdb</span><span>Valgrind</span><span>Linux</span>
-                            </div>
-                        </div>
+                    <div>
+                        <h3>Systems</h3>
+                        <p>C, C++, Linux, gdb, lldb, Valgrind, Makefile</p>
                     </div>
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🧵</span></div>
-                        </div>
-                        <div class="project-info"><span class="project-label">COMP 3430 · Operating Systems</span>
-                            <h3 class="project-title">Cooperative Threads Library</h3>
-                            <p class="project-problem"><strong>Problem:</strong> Concurrency is hard to reason about. Programs stall, deadlock, or run unpredictably when threads compete.</p>
-                            <p class="project-desc">I built a thread library in C for a single-core cooperative system, modeled loosely on pthreads. It includes mutex support and multiple scheduling policies, which made it a solid way to learn where concurrency becomes hard to control.</p>
-                            <ul class="project-features">
-                                <li>Supports up to 1,000 threads per process</li>
-                                <li>Enables preemptive scheduling of threads</li>
-                                <li>Mutex support included with the library</li>
-                                <li>4 scheduling policies: FIFO, 2-Thread, Round Robin, and MLFQ</li>
-                            </ul>
-                            <p class="project-impact"><strong>Result:</strong> The project made scheduling and synchronization feel much more concrete. It also forced me to be precise about edge cases instead of hand-waving them away.</p>
-                            <p class="project-note">Published under a restrictive license. Source code available upon request.</p>
-                            <div class="project-tech">
-                                <span>C</span><span>Makefile</span><span>lldb</span><span>gdb</span><span>Atomics</span><span>Valgrind</span><span>Linux</span>
-                            </div>
-                        </div>
+                    <div>
+                        <h3>Data</h3>
+                        <p>SQL, PostgreSQL, MongoDB, R, Jupyter, statistics</p>
+                    </div>
+                    <div>
+                        <h3>Workflow</h3>
+                        <p>Git, GitHub, Docker, testing, documentation, Figma</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Group Projects -->
-                <h3 class="projects-subheading animate-on-scroll">Group Projects</h3>
-                <div class="projects-grid">
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-image">
-                            <div class="project-placeholder"><span>🐾</span></div>
-                            <div class="project-overlay"><a href="https://github.com/satyambhanot" class="project-link"
-                                    target="_blank" rel="noopener noreferrer" title="View on GitHub"><svg width="20"
-                                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2">
-                                        <path
-                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                    </svg></a></div>
-                        </div>
-                        <div class="project-info"><span class="project-label">COMP 3350 · Team Project</span>
-                            <h3 class="project-title">PetObject</h3>
-                            <p class="project-problem"><strong>Problem:</strong> Managing state in a mobile app is hard. Users expect clean validation, intuitive navigation, and reliable data persistence. Teams struggle to build maintainable architecture.</p>
-                            <p class="project-desc">PetObject is an Android app built as a team project for managing a virtual pet. We focused on validation, navigation, editing flows, and a structure that stayed manageable as the app grew.</p>
-                            <p class="project-impact"><strong>Result:</strong> It was a useful lesson in collaborative development. Good structure made the app easier to test, easier to extend, and easier for teammates to work on without stepping on each other.</p>
-                            <div class="project-tech">
-                                <span>Java</span><span>Android</span><span>HSQLDB</span><span>JUnit</span><span>Git</span>
-                            </div>
-                        </div>
-                    </div>
+        <section class="contact section-pad" id="contact" aria-labelledby="contact-title">
+            <div class="contact-inner reveal">
+                <p class="eyebrow">Contact</p>
+                <h2 id="contact-title">Open to software roles, technical support work, tutoring, and practical projects.</h2>
+                <p>If something here connects with the kind of work you need done, send me a note.</p>
+                <div class="contact-actions">
+                    <a class="button button-primary" href="mailto:satyambhanot@gmail.com">satyambhanot@gmail.com</a>
+                    <a class="button button-secondary" href="https://github.com/satyambhanot" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a class="button button-secondary" href="https://linkedin.com/in/satyam-bhanot" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- SKILLS -->
-    <section class="section skills" id="skills">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">Skills
-                    & Technologies</span><span class="title-line"></span></h2>
-            <p class="skills-intro animate-on-scroll">I do not think about skills as badges. I think about them as working tools. Some help me build systems, some help me explain ideas clearly, and some help me debug when things stop making sense.</p>
-            <div class="tab-buttons animate-on-scroll" id="skillsTabs">
-                <button class="tab-btn active" data-tab="languages">Programming Languages</button>
-                <button class="tab-btn" data-tab="frameworks">Frameworks</button>
-                <button class="tab-btn" data-tab="devtools">Developer Tools</button>
-            </div>
-            <div class="tab-content active" id="tab-languages">
-                <p class="skills-context animate-on-scroll">These are the languages I have used most often in class projects, technical problem solving, and day to day practice. I tend to care less about collecting languages and more about knowing when one is a better fit than another.</p>
-                <div class="skill-cards-grid animate-on-scroll">
-                    <a href="https://www.java.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-java-plain"></i>
-                        <span>Java</span>
-                    </a>
-                    <a href="https://www.python.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-python-plain"></i>
-                        <span>Python</span>
-                    </a>
-                    <a href="https://en.cppreference.com/w/c" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-c-plain"></i>
-                        <span>C</span>
-                    </a>
-                    <a href="https://isocpp.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-cplusplus-plain"></i>
-                        <span>C++</span>
-                    </a>
-                    <a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-postgresql-plain"></i>
-                        <span>PostgreSQL</span>
-                    </a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-javascript-plain"></i>
-                        <span>JavaScript</span>
-                    </a>
-                    <a href="https://www.r-project.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-r-original"></i>
-                        <span>R</span>
-                    </a>
-                    <a href="https://en.wikipedia.org/wiki/Little_Computer_3" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <span class="skill-card-emoji">⚙</span>
-                        <span>LC3 Assembly</span>
-                    </a>
-                    <a href="https://rmarkdown.rstudio.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-rstudio-plain"></i>
-                        <span>Rmd</span>
-                    </a>
-                    <a href="https://www.latex-project.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-latex-original"></i>
-                        <span>LaTeX</span>
-                    </a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-html5-plain"></i>
-                        <span>HTML</span>
-                    </a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-css3-plain"></i>
-                        <span>CSS</span>
-                    </a>
-                </div>
-            </div>
-            <div class="tab-content" id="tab-frameworks">
-                <p class="skills-context animate-on-scroll">These are tools I use when I need to move from raw code into something people can actually use. I am still building depth here, but I care a lot about clean structure and readable work.</p>
-                <div class="skill-cards-grid animate-on-scroll">
-                    <a href="https://www.mongodb.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-mongodb-plain"></i>
-                        <span>MongoDB</span>
-                    </a>
-                    <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-express-original"></i>
-                        <span>Express.js</span>
-                    </a>
-                    <a href="https://react.dev" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-react-original"></i>
-                        <span>React</span>
-                    </a>
-                    <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-nodejs-plain"></i>
-                        <span>Node.js</span>
-                    </a>
-                    <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-tailwindcss-original"></i>
-                        <span>Tailwind</span>
-                    </a>
-                    <a href="https://getbootstrap.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-bootstrap-plain"></i>
-                        <span>Bootstrap</span>
-                    </a>
-                    <a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-fastapi-plain"></i>
-                        <span>FastAPI</span>
-                    </a>
-                </div>
-            </div>
-            <div class="tab-content" id="tab-devtools">
-                <p class="skills-context animate-on-scroll">This is the part of the stack I lean on when I need to inspect, debug, test, or organize work. A lot of the confidence I have with technical problems comes from learning how to use these tools patiently.</p>
-                <div class="skill-cards-grid animate-on-scroll">
-                    <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-git-plain"></i>
-                        <span>Git</span>
-                    </a>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-github-original"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.docker.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-docker-plain"></i>
-                        <span>Docker</span>
-                    </a>
-                    <a href="https://kubernetes.io" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-kubernetes-plain"></i>
-                        <span>Kubernetes</span>
-                    </a>
-                    <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <span class="skill-card-emoji">📦</span>
-                        <span>Parcel</span>
-                    </a>
-                    <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-webpack-plain"></i>
-                        <span>Webpack</span>
-                    </a>
-                    <a href="https://jupyter.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-jupyter-plain"></i>
-                        <span>Jupyter</span>
-                    </a>
-                    <a href="https://www.vim.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-vim-plain"></i>
-                        <span>Vim</span>
-                    </a>
-                    <a href="https://lldb.llvm.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <span class="skill-card-emoji">🔍</span>
-                        <span>lldb</span>
-                    </a>
-                    <a href="https://sourceware.org/gdb" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <span class="skill-card-emoji">🔍</span>
-                        <span>gdb</span>
-                    </a>
-                    <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-figma-plain"></i>
-                        <span>Figma</span>
-                    </a>
-                    <a href="https://kernel.org" target="_blank" rel="noopener noreferrer" class="skill-card">
-                        <i class="devicon-linux-plain"></i>
-                        <span>Linux</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- CONTACT -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="title-line"></span><span class="title-text">Get In
-                    Touch</span><span class="title-line"></span></h2>
-            <div class="contact-wrapper animate-on-scroll">
-                <div class="contact-text">
-                    <p>If you want to talk about a role, a project, or just reach out because something on the site caught your attention, send me a message. I like thoughtful conversations and practical work.</p>
-                    <div class="contact-links">
-                        <a href="mailto:satyambhanot@gmail.com" class="contact-link-item" id="copyEmail"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span id="emailText">satyambhanot@gmail.com</span></a>
-                        <a href="https://github.com/satyambhanot" target="_blank" rel="noopener noreferrer" class="contact-link-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span>GitHub</span></a>
-                        <a href="https://linkedin.com/in/satyam-bhanot" target="_blank" rel="noopener noreferrer" class="contact-link-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><span>LinkedIn</span></a>
-                    </div>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group"><input type="text" id="name" name="name" placeholder="Your Name" required aria-label="Your Name"></div>
-                    <div class="form-group"><input type="email" id="email" name="email" placeholder="Your Email" required aria-label="Your Email"></div>
-                    <div class="form-group"><textarea id="message" name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea></div>
-                    <button type="submit" class="btn btn-primary btn-full"><span>Send Message</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <p>Designed and built by <strong>Satyam Bhanot</strong> &copy; 2025-2026</p>
-            <p class="footer-note">Built with HTML, CSS, and JavaScript.</p>
-        </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Designed and built by Satyam Bhanot.</p>
+        <a href="#top">Back to top</a>
     </footer>
-    <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
-    <!-- TERMINAL MODAL -->
-    <div class="terminal-modal" id="terminalModal">
-        <div class="terminal-header">
-            <div class="terminal-dots"><span></span><span></span><span></span></div>
-            <div class="terminal-title">satyam@portfolio: ~</div>
-            <button class="terminal-close" id="closeTerminal">&times;</button>
-        </div>
-        <div class="terminal-body" id="terminalBody">
-            <div class="terminal-line">Type <span class="accent-text">'help'</span> to see available commands.</div>
-        </div>
-        <div class="terminal-input-line">
-            <span class="terminal-prompt">satyam@portfolio:~$</span>
-            <input type="text" id="terminalInput" autofocus spellcheck="false" autocomplete="off">
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>
