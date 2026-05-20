@@ -1,23 +1,60 @@
 :root {
-    --bg: #f7f8fb;
+    --bg: #fafafa;
     --surface: #ffffff;
     --surface-strong: #ffffff;
-    --ink: #101828;
-    --muted: #667085;
-    --soft: #98a2b3;
-    --line: rgba(16, 24, 40, 0.1);
-    --line-strong: rgba(16, 24, 40, 0.16);
-    --accent: #0f766e;
-    --accent-ink: #115e59;
-    --accent-soft: #ccfbf1;
-    --rust: #c2410c;
-    --blue: #2563eb;
+    --ink: #18181b;
+    --muted: #52525b;
+    --soft: #a1a1aa;
+    --line: rgba(24, 24, 27, 0.1);
+    --line-strong: rgba(24, 24, 27, 0.16);
+    --accent: #10b981;
+    --accent-ink: #047857;
+    --accent-soft: #d1fae5;
+    --rust: #f97316;
+    --blue: #6366f1;
+    --slate: #64748b;
     --yellow: #f59e0b;
-    --shadow: 0 18px 50px rgba(16, 24, 40, 0.08);
+    --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    --page-start: #ffffff;
+    --nav-bg: rgba(250, 250, 250, 0.88);
+    --profile-card-bg: #f4f4f5;
+    --contact-start: #0f172a;
+    --contact-end: #064e3b;
+    --button-primary-text: #ffffff;
+    --accent-wash: rgba(16, 185, 129, 0.1);
+    --accent-border: rgba(16, 185, 129, 0.2);
+    --chip-bg: rgba(209, 250, 229, 0.65);
     --radius: 12px;
     --max: 1180px;
     --font-body: "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:root[data-theme="dark"] {
+    --bg: #0f172a;
+    --surface: #111827;
+    --surface-strong: #f8fafc;
+    --ink: #f8fafc;
+    --muted: #cbd5e1;
+    --soft: #94a3b8;
+    --line: rgba(226, 232, 240, 0.13);
+    --line-strong: rgba(226, 232, 240, 0.22);
+    --accent: #60a5fa;
+    --accent-ink: #bfdbfe;
+    --accent-soft: rgba(96, 165, 250, 0.18);
+    --rust: #fbbf24;
+    --blue: #22d3ee;
+    --yellow: #fbbf24;
+    --shadow: 0 18px 52px rgba(0, 0, 0, 0.34);
+    --page-start: #111827;
+    --nav-bg: rgba(17, 24, 39, 0.88);
+    --profile-card-bg: #0f172a;
+    --contact-start: #020617;
+    --contact-end: #1d4ed8;
+    --button-primary-text: #07111f;
+    --accent-wash: rgba(96, 165, 250, 0.16);
+    --accent-border: rgba(96, 165, 250, 0.28);
+    --chip-bg: rgba(96, 165, 250, 0.12);
 }
 
 * {
@@ -34,7 +71,7 @@ body {
     font-family: var(--font-body);
     color: var(--ink);
     background:
-        linear-gradient(180deg, #ffffff 0, var(--bg) 680px),
+        linear-gradient(180deg, var(--page-start) 0, var(--bg) 680px),
         var(--bg);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -80,7 +117,7 @@ button:focus-visible {
     height: 72px;
     margin: 14px auto 0;
     padding: 0 12px 0 18px;
-    background: rgba(255, 255, 255, 0.86);
+    background: var(--nav-bg);
     border: 1px solid var(--line);
     border-radius: 999px;
     box-shadow: 0 12px 34px rgba(16, 24, 40, 0.08);
@@ -113,6 +150,12 @@ button:focus-visible {
     gap: 4px;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .site-nav a {
     padding: 9px 12px;
     border-radius: 6px;
@@ -124,7 +167,7 @@ button:focus-visible {
 .site-nav a:hover,
 .site-nav a.active {
     color: var(--accent-ink);
-    background: rgba(15, 118, 110, 0.1);
+    background: var(--accent-wash);
 }
 
 .site-nav .btn-resume {
@@ -134,8 +177,8 @@ button:focus-visible {
     padding: 0 14px;
     margin-left: 6px;
     color: var(--accent-ink);
-    background: rgba(15, 118, 110, 0.1);
-    border: 1px solid rgba(15, 118, 110, 0.22);
+    background: var(--accent-wash);
+    border: 1px solid var(--accent-border);
     border-radius: 999px;
     font-size: 0.88rem;
     font-weight: 700;
@@ -143,7 +186,7 @@ button:focus-visible {
 }
 
 .site-nav .btn-resume:hover {
-    background: rgba(15, 118, 110, 0.18);
+    background: var(--accent-soft);
     color: var(--accent-ink);
 }
 
@@ -155,6 +198,31 @@ button:focus-visible {
     border: 1px solid var(--line);
     border-radius: 50%;
     background: var(--surface);
+}
+
+.theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.theme-toggle-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ink);
+    box-shadow: inset -6px -4px 0 var(--surface);
+}
+
+:root[data-theme="dark"] .theme-toggle-icon {
+    background: var(--yellow);
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.18);
 }
 
 .nav-toggle span {
@@ -262,7 +330,7 @@ h3 {
 }
 
 .button-primary {
-    color: var(--surface-strong);
+    color: var(--button-primary-text);
     background: var(--accent);
 }
 
@@ -272,13 +340,13 @@ h3 {
 
 .button-secondary {
     color: var(--accent-ink);
-    background: rgba(15, 118, 110, 0.1);
-    border-color: rgba(15, 118, 110, 0.16);
+    background: var(--accent-wash);
+    border-color: var(--accent-border);
 }
 
 .button-quiet {
     color: var(--ink);
-    background: var(--surface-strong);
+    background: var(--surface);
     border-color: var(--line-strong);
 }
 
@@ -350,7 +418,7 @@ h3 {
     position: static;
     width: auto;
     padding: 18px;
-    background: #f8fafc;
+    background: var(--profile-card-bg);
     border: 1px solid var(--line);
     border-radius: var(--radius);
     box-shadow: none;
@@ -370,7 +438,7 @@ h3 {
 
 .signal-card span {
     padding: 5px 9px;
-    background: rgba(15, 118, 110, 0.1);
+    background: var(--accent-soft);
     border-radius: 999px;
 }
 
@@ -433,7 +501,7 @@ h3 {
     justify-content: flex-end;
     min-height: 454px;
     color: var(--surface-strong);
-    background: linear-gradient(135deg, #0f172a, #115e59);
+    background: linear-gradient(135deg, #111827, #1e3a8a);
     border-color: transparent;
 }
 
@@ -471,7 +539,7 @@ h3 {
 
 .project-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(15, 118, 110, 0.24);
+    border-color: var(--accent-border);
     box-shadow: 0 22px 50px rgba(16, 24, 40, 0.1);
 }
 
@@ -502,10 +570,10 @@ h3 {
     align-items: center;
     min-height: 28px;
     padding: 5px 10px;
-    border: 1px solid rgba(15, 118, 110, 0.18);
+    border: 1px solid var(--accent-border);
     border-radius: 999px;
     color: var(--accent-ink);
-    background: rgba(204, 251, 241, 0.52);
+    background: var(--chip-bg);
     font-family: var(--font-mono);
     font-size: 0.76rem;
     font-weight: 600;
@@ -564,8 +632,8 @@ h3 {
 
 .education-skills {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    grid-template-columns: 1fr;
+    gap: 22px;
     align-items: start;
 }
 
@@ -643,9 +711,13 @@ h3 {
 }
 
 .contact-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(340px, 0.7fr);
+    gap: 36px;
+    align-items: start;
     padding: clamp(32px, 6vw, 64px);
     color: var(--surface-strong);
-    background: linear-gradient(135deg, #0f172a, #134e4a);
+    background: linear-gradient(135deg, var(--contact-start), var(--contact-end));
     border-color: transparent;
     box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
 }
@@ -659,10 +731,54 @@ h3 {
     max-width: 900px;
 }
 
+.contact-copy {
+    max-width: 680px;
+}
+
 .contact-inner .button-secondary {
     color: var(--surface-strong);
     background: rgba(255,255,255,0.08);
     border-color: rgba(255,255,255,0.18);
+}
+
+.contact-form {
+    display: grid;
+    gap: 14px;
+    padding: 22px;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-form label {
+    display: grid;
+    gap: 7px;
+}
+
+.contact-form span {
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 750;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 13px;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    outline: none;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-wash);
 }
 
 .site-footer {
@@ -683,6 +799,15 @@ h3 {
 
 .site-footer a {
     color: var(--accent-ink);
+    font-weight: 750;
+}
+
+.back-to-top {
+    padding: 0;
+    color: var(--accent-ink);
+    background: none;
+    border: 0;
+    cursor: pointer;
     font-weight: 750;
 }
 
@@ -740,6 +865,7 @@ h3 {
 
     .hero,
     .timeline-item,
+    .contact-inner,
     .education-skills {
         grid-template-columns: 1fr;
     }
@@ -822,7 +948,8 @@ h3 {
     .project-copy,
     .timeline-item,
     .education-panel,
-    .skills-panel {
+    .skills-panel,
+    .contact-form {
         padding: 22px;
     }
 
