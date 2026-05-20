@@ -32,29 +32,30 @@
 
 :root[data-theme="dark"] {
     --bg: #0f172a;
-    --surface: #111827;
+    --surface: #1e293b;
     --surface-strong: #f8fafc;
     --ink: #f8fafc;
     --muted: #cbd5e1;
-    --soft: #94a3b8;
-    --line: rgba(226, 232, 240, 0.13);
-    --line-strong: rgba(226, 232, 240, 0.22);
-    --accent: #60a5fa;
-    --accent-ink: #bfdbfe;
-    --accent-soft: rgba(96, 165, 250, 0.18);
-    --rust: #fbbf24;
-    --blue: #22d3ee;
+    --soft: #64748b;
+    --line: rgba(148, 163, 184, 0.15);
+    --line-strong: rgba(148, 163, 184, 0.25);
+    --accent: #10b981;
+    --accent-ink: #6ee7b7;
+    --accent-soft: rgba(16, 185, 129, 0.18);
+    --rust: #fb923c;
+    --blue: #818cf8;
+    --slate: #94a3b8;
     --yellow: #fbbf24;
     --shadow: 0 18px 52px rgba(0, 0, 0, 0.34);
     --page-start: #111827;
-    --nav-bg: rgba(17, 24, 39, 0.88);
+    --nav-bg: rgba(15, 23, 42, 0.9);
     --profile-card-bg: #0f172a;
     --contact-start: #020617;
-    --contact-end: #1d4ed8;
-    --button-primary-text: #07111f;
-    --accent-wash: rgba(96, 165, 250, 0.16);
-    --accent-border: rgba(96, 165, 250, 0.28);
-    --chip-bg: rgba(96, 165, 250, 0.12);
+    --contact-end: #064e3b;
+    --button-primary-text: #ffffff;
+    --accent-wash: rgba(16, 185, 129, 0.15);
+    --accent-border: rgba(16, 185, 129, 0.28);
+    --chip-bg: rgba(16, 185, 129, 0.12);
 }
 
 * {
