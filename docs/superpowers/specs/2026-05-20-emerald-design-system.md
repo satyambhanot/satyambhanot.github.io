@@ -6,9 +6,11 @@
 
 ## Goal
 
-Replace the generic blue (`#2563eb`) color system with a distinctive emerald (`#10b981`) palette across both light and dark themes. Apply six targeted UI improvements that were missed during the initial redesign. The result should feel premium, memorable, and consistent across both themes.
+Replace the generic blue (`#2563eb`) color system with a distinctive emerald (`#10b981`) palette across both light and dark themes. Apply targeted UI improvements that were missed during the initial redesign. The result should feel premium, memorable, and consistent across both themes.
 
-**Stack:** CSS custom properties only — no new HTML structure needed except the LinkedIn button and about heading text change.
+**Domain accent principle:** Emerald is the brand/action color only. Each skill domain keeps a distinct accent — Backend/general: emerald (`--accent`), Data/ML: orange (`--rust`), Tools: indigo (`--blue`), Systems: slate (`--slate`). This prevents the site from reading as "too green."
+
+**Stack:** CSS custom properties only — no new HTML structure needed except the about heading text change.
 
 ---
 
@@ -146,20 +148,9 @@ The four cardinal rays make it read as a sun at 18px without needing SVG.
 
 ---
 
-## 6. Education + Skills Side-by-Side Layout
+## 6. Education + Skills Layout
 
-`.education-skills` currently has `grid-template-columns: 1fr` (fully stacked). Restore side-by-side:
-
-```css
-.education-skills {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-    align-items: start;
-}
-```
-
-At `max-width: 920px`, keep the existing responsive rule that collapses it to `1fr`.
+Keep `.education-skills` stacked as `grid-template-columns: 1fr` on all viewports. No change needed — this is the current state and the desired state. Each section gets full width for better readability of the skill domain cards.
 
 ---
 
@@ -173,12 +164,7 @@ At `max-width: 920px`, keep the existing responsive rule that collapses it to `1
 
 ## 8. LinkedIn in Contact Section
 
-Add LinkedIn button to the contact actions alongside the existing GitHub button.
-
-**HTML addition** — add after the GitHub button in the contact actions:
-```html
-<a class="button button-secondary" href="https://linkedin.com/in/satyam-bhanot" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-```
+**Already implemented** — LinkedIn button exists at `index.html:355`. No action needed.
 
 ---
 
