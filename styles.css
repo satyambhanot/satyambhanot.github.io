@@ -138,19 +138,36 @@ button:focus-visible {
 .brand-mark {
     display: grid;
     place-items: center;
-    width: 38px;
-    height: 38px;
-    color: #ffffff;
-    background: var(--accent);
-    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    color: var(--accent-ink);
+    background: var(--accent-wash);
+    border: 1.5px solid var(--accent-border);
+    border-radius: 9px;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
 }
 
 .site-nav {
     display: flex;
     align-items: center;
     gap: 4px;
+    position: relative;
+}
+
+.nav-cursor {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 220ms ease, width 220ms ease, opacity 160ms ease;
 }
 
 .header-actions {
@@ -292,6 +309,7 @@ h1 {
     font-size: clamp(3.1rem, 6.4vw, 6.2rem);
     line-height: 0.95;
     letter-spacing: 0;
+    font-weight: 800;
 }
 
 h2 {
@@ -299,12 +317,14 @@ h2 {
     font-size: clamp(2rem, 3.4vw, 3.35rem);
     line-height: 1.05;
     letter-spacing: 0;
+    font-weight: 800;
 }
 
 h3 {
     margin-bottom: 10px;
     font-size: 1.28rem;
     line-height: 1.2;
+    font-weight: 700;
 }
 
 .hero-text {
@@ -387,6 +407,7 @@ h3 {
     font-family: var(--font-mono);
     font-size: clamp(1.2rem, 2.4vw, 1.55rem);
     line-height: 1.1;
+    font-variant-numeric: tabular-nums;
 }
 
 .hero-proof span {
@@ -845,7 +866,12 @@ h3 {
     transform: translateY(0);
 }
 
+
 @media (max-width: 920px) {
+    .nav-cursor {
+        display: none;
+    }
+
     .site-header {
         height: 64px;
     }
@@ -998,5 +1024,9 @@ h3 {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+
+    .nav-cursor {
+        transition: none;
     }
 }
