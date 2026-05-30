@@ -3,7 +3,6 @@
 Personal portfolio site built with HTML, CSS, and JavaScript.
 
 Live site: [satyambhanot.com](https://satyambhanot.com)
-Live site: [satyambhanot.github.io](https://satyambhanot.github.io)
 
 ## About
 
