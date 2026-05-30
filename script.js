@@ -6,6 +6,7 @@
     const themeToggle = document.getElementById('themeToggle');
     const contactForm = document.getElementById('contactForm');
     const backToTop = document.getElementById('backToTop');
+    const hero = document.getElementById('hero');
     const navLinks = Array.from(document.querySelectorAll('.site-nav a'));
     const sectionLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
     const revealItems = document.querySelectorAll('.reveal');
@@ -35,6 +36,40 @@
     }
 
     applyTheme(initialTheme);
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (hero && !prefersReducedMotion) {
+        let animationFrame = null;
+
+        function resetHeroMotion() {
+            hero.style.setProperty('--tilt-x', '0deg');
+            hero.style.setProperty('--tilt-y', '0deg');
+            hero.style.setProperty('--hero-shift-x', '0px');
+            hero.style.setProperty('--hero-shift-y', '0px');
+        }
+
+        hero.addEventListener('pointermove', (event) => {
+            if (window.innerWidth <= 920) return;
+            const rect = hero.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - 0.5;
+            const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+            if (animationFrame) {
+                window.cancelAnimationFrame(animationFrame);
+            }
+
+            animationFrame = window.requestAnimationFrame(() => {
+                hero.style.setProperty('--tilt-x', `${(-y * 4).toFixed(2)}deg`);
+                hero.style.setProperty('--tilt-y', `${(x * 5).toFixed(2)}deg`);
+                hero.style.setProperty('--hero-shift-x', `${(x * 18).toFixed(1)}px`);
+                hero.style.setProperty('--hero-shift-y', `${(y * 18).toFixed(1)}px`);
+            });
+        });
+
+        hero.addEventListener('pointerleave', resetHeroMotion);
+        window.addEventListener('blur', resetHeroMotion);
+    }
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
