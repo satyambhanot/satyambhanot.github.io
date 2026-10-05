@@ -1,0 +1,23 @@
+---
+import Layout from '../components/Layout.astro';
+import Icon from '../components/Icon.astro';
+---
+<Layout title="Page not found" description="This page doesn't exist.">
+  <div class="bento">
+    <div class="tile lost c-3 r-2">
+      <p class="label">404</p>
+      <h1>Lost the<br />light.</h1>
+      <p class="tile-text">This page doesn't exist, or it moved when the site was rebuilt.</p>
+    </div>
+    <a class="tile tile--accent closing" href="/">
+      <p class="label">Start over</p>
+      <p class="tile-title">Home</p>
+      <span class="arrow"><Icon name="arrow" /></span>
+    </a>
+    <a class="tile tile--inverse closing" href="/#projects">
+      <p class="label">Browse</p>
+      <p class="tile-title">Projects</p>
+      <span class="arrow"><Icon name="arrow" /></span>
+    </a>
+  </div>
+</Layout>

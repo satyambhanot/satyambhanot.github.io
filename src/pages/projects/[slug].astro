@@ -1,0 +1,85 @@
+---
+// One page per project that has a written body in src/projects/.
+import { Image } from 'astro:assets';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from '../../components/Layout.astro';
+import Icon from '../../components/Icon.astro';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('projects'))
+    .filter((project) => project.body?.trim())
+    .sort((a, b) => a.data.order - b.data.order);
+  return projects.map((project, i) => ({
+    params: { slug: project.id },
+    props: { project, next: projects[(i + 1) % projects.length] },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  next: CollectionEntry<'projects'>;
+}
+
+const { project, next } = Astro.props;
+const { title, summary, type, period, context, team, role, stack, cover, repo, demo } = project.data;
+const { Content } = await render(project);
+const hasNext = next.id !== project.id;
+
+const facts = [
+  ['Context', context],
+  ['Team', team],
+  ['My part', role],
+  ['Stack', stack.join(', ')],
+].filter(([, value]) => value) as [string, string][];
+---
+<Layout title={title} description={summary}>
+  <a class="back-link" href="/#projects"><Icon name="back" />Back to projects</a>
+
+  <article class="bento">
+    <header class="tile project-head c-3">
+      <p class="label">{[type, period].filter(Boolean).join(' · ')}</p>
+      <h1>{title}</h1>
+      <p class="tile-text">{summary}</p>
+    </header>
+    <aside class="tile tile--inverse" aria-label="Project details">
+      <dl class="meta">
+        {facts.map(([term, value]) => (
+          <div>
+            <dt>{term}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
+      </dl>
+      {(repo || demo) && (
+        <p class="actions">
+          {repo && <a class="button button--accent" href={repo}>View code <Icon name="external" /></a>}
+          {demo && <a class="button" href={demo}>Live demo <Icon name="external" /></a>}
+        </p>
+      )}
+    </aside>
+    {cover && (
+      <figure class="tile tile--flush c-4">
+        <Image src={cover.src} alt={cover.alt} widths={[800, 1280, 1920, 2400]} sizes="(max-width: 1240px) 100vw, 1240px" loading="eager" />
+      </figure>
+    )}
+    <div class="tile c-4">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <nav class="bento page-nav" aria-label="More projects">
+    <a class:list={['tile', 'closing', hasNext ? 'c-2' : 'c-4']} href="/#projects">
+      <p class="label"><Icon name="back" class="label-icon" />Back</p>
+      <p class="tile-title">All projects</p>
+    </a>
+    {hasNext && (
+      <a class="tile tile--inverse closing c-2" href={`/projects/${next.id}/`}>
+        <p class="label">Next case study</p>
+        <p class="tile-title">{next.data.title}</p>
+        <span class="arrow"><Icon name="arrow" /></span>
+      </a>
+    )}
+  </nav>
+</Layout>

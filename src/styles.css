@@ -1,0 +1,1014 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+/* ==========================================================================
+   Colors and sizes. Change a value here and it updates everywhere.
+   ========================================================================== */
+
+:root {
+  --page: #e9e9e4;
+  --tile: #ffffff;
+  --ink: #1b1c1e;
+  --muted: #5b5d63;
+  --line: #dcdcd5;
+  --inverse: #1b1c1e;
+  --inverse-ink: #f2f2ee;
+  --inverse-muted: #a3a5aa;
+  --inverse-line: #34363b;
+  --accent: #cff24a;
+  --accent-hover: #dcf87a;
+  --on-accent: #1b1c1e;
+  --focus: #1b1c1e;
+  --figure-bg: #ffffff;
+
+  --font: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --gap: 12px;
+  --radius: 22px;
+  --radius-sm: 12px;
+  --pad: clamp(18px, 2.2vw, 28px);
+  --max: 1240px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --page: #0d0e10;
+  --tile: #18191c;
+  --ink: #edede8;
+  --muted: #9ea0a6;
+  --line: #2a2c31;
+  --inverse: #26282d;
+  --inverse-ink: #f2f2ee;
+  --inverse-muted: #a9abb0;
+  --inverse-line: #3a3d43;
+  --focus: #cff24a;
+  --figure-bg: #f4f4f1;
+
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Leaves room for the pinned header when jumping to a section. */
+  scroll-padding-top: 84px;
+}
+
+/* Smooth scrolling only for jumps within the page. Applying it on page load
+   stops the browser from jumping to /#projects when arriving from another page. */
+@media (prefers-reduced-motion: no-preference) {
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+figure {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 10;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--max));
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   Header and footer
+   ========================================================================== */
+
+/* The header stays pinned to the top, so navigation is always one tap away. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding-block: 12px;
+  background: var(--page);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.site-nav a,
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 160ms var(--ease), color 160ms var(--ease);
+}
+
+.site-nav a:hover,
+.theme-toggle:hover {
+  color: var(--ink);
+  background: var(--tile);
+}
+
+.site-nav .nav-resume {
+  margin-left: 4px;
+  background: var(--ink);
+  color: var(--page);
+}
+
+.site-nav .nav-resume:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.theme-toggle {
+  justify-content: center;
+  width: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle .icon-sun,
+:root[data-theme='dark'] .theme-toggle .icon-moon {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-toggle .icon-sun {
+  display: block;
+}
+
+/* On phones the logo stands in for the name (the page title already shows it),
+   so the links fit on one row. The name stays readable to screen readers. */
+@media (max-width: 520px) {
+  .site-header .wrap {
+    gap: 8px;
+  }
+
+  .brand-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .site-nav a {
+    padding: 0 8px;
+  }
+}
+
+/* Very narrow screens: let the links wrap and stop pinning the header. */
+@media (max-width: 340px) {
+  .site-header {
+    position: static;
+  }
+
+  .site-header .wrap {
+    flex-wrap: wrap;
+  }
+}
+
+.site-footer {
+  padding-block: 32px 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-footer a {
+  text-underline-offset: 3px;
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   The bento grid: 4 columns on desktop, 2 on tablets, 1 on phones.
+   c-2 / c-3 / c-4 = how many columns a tile spans; r-2 = two rows tall.
+   ========================================================================== */
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.c-2 {
+  grid-column: span 2;
+}
+
+.c-3 {
+  grid-column: span 3;
+}
+
+.c-4 {
+  grid-column: 1 / -1;
+}
+
+.r-2 {
+  grid-row: span 2;
+}
+
+.section-label {
+  margin: calc(var(--gap) * 4) 6px var(--gap);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+#contact,
+.page-nav {
+  margin-top: var(--gap);
+}
+
+@media (max-width: 960px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .c-3 {
+    grid-column: span 2;
+  }
+
+  .r-2 {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --gap: 10px;
+    --radius: 18px;
+  }
+
+  .bento {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bento > * {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* ==========================================================================
+   Tiles
+   ========================================================================== */
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: var(--pad);
+  border-radius: var(--radius);
+  background: var(--tile);
+  color: var(--ink);
+  --tile-muted: var(--muted);
+  --tile-line: var(--line);
+}
+
+.tile > * {
+  min-width: 0;
+}
+
+.tile--inverse {
+  background: var(--inverse);
+  color: var(--inverse-ink);
+  --tile-muted: var(--inverse-muted);
+  --tile-line: var(--inverse-line);
+}
+
+.tile--accent {
+  background: var(--accent);
+  color: var(--on-accent);
+  --tile-muted: #3d4a0e;
+  --tile-line: rgba(27, 28, 30, 0.18);
+}
+
+/* A tile's own focus ring sits on the page, so it keeps the page colour.
+   Controls inside coloured tiles get a ring that shows on that tile. */
+.tile--inverse :focus-visible {
+  outline-color: var(--accent);
+}
+
+.tile--accent :focus-visible {
+  outline-color: var(--on-accent);
+}
+
+.tile--flush {
+  padding: 0;
+  overflow: hidden;
+}
+
+a.tile {
+  text-decoration: none;
+  transition: transform 200ms var(--ease);
+}
+
+a.tile:hover {
+  transform: translateY(-3px);
+}
+
+.label {
+  color: var(--tile-muted, var(--muted));
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.label-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: -2px;
+}
+
+.tile-title {
+  font-size: clamp(20px, 1.9vw, 24px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.tile-text {
+  color: var(--tile-muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  color: var(--tile-muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.arrow {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--page);
+  color: var(--ink);
+  transition: transform 200ms var(--ease), background-color 200ms var(--ease);
+}
+
+.tile--inverse .arrow {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+a.tile:hover .arrow {
+  transform: rotate(-45deg);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.tile,
+  a.tile:hover,
+  a.tile:hover .arrow {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--tile-line, var(--line));
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease);
+}
+
+.button:hover {
+  border-color: currentColor;
+}
+
+.button--accent {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.button--accent:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
+}
+
+.button--ink {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--tile);
+}
+
+.button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-bottom: var(--gap);
+  padding: 0 18px 0 14px;
+  border-radius: 999px;
+  background: var(--tile);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 160ms var(--ease), color 160ms var(--ease);
+}
+
+.back-link:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.back-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================================================
+   Home: introduction
+   ========================================================================== */
+
+.intro {
+  justify-content: space-between;
+  gap: 20px;
+  min-height: clamp(280px, 34vw, 400px);
+}
+
+.intro h1 {
+  font-size: clamp(52px, 8.4vw, 116px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.intro-foot {
+  display: grid;
+  gap: 18px;
+}
+
+.intro .tile-text {
+  max-width: 44ch;
+  color: var(--ink);
+  font-size: clamp(17px, 1.5vw, 19px);
+}
+
+.fact {
+  justify-content: space-between;
+}
+
+.fact-value {
+  font-size: clamp(19px, 1.8vw, 23px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.fact-detail {
+  color: var(--tile-muted);
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   Home: project tiles
+   ========================================================================== */
+
+.project-tile {
+  min-height: 240px;
+}
+
+.project-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-body .stack {
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.project-tile--big {
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-tile--big .project-body {
+  padding: var(--pad);
+}
+
+.project-tile--big .tile-title {
+  font-size: clamp(26px, 2.8vw, 36px);
+}
+
+.project-cover {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin: var(--pad) var(--pad) 0;
+  border-radius: var(--radius-sm);
+  background: var(--figure-bg);
+}
+
+.project-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.read-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--tile-line);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.takeaway {
+  display: grid;
+  gap: 2px;
+  padding-top: 12px;
+  border-top: 1px solid var(--tile-line);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  text-underline-offset: 3px;
+}
+
+.text-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.closing {
+  justify-content: space-between;
+  min-height: 140px;
+}
+
+.closing .arrow {
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   Home: experience, education, tools
+   ========================================================================== */
+
+.entries {
+  padding: 0;
+  list-style: none;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 16px;
+  padding-block: 16px;
+  border-top: 1px solid var(--tile-line);
+}
+
+.entry:first-child {
+  padding-top: 4px;
+  border-top: 0;
+}
+
+.entry-title {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.entry-meta {
+  grid-column: 1;
+  color: var(--tile-muted);
+  font-size: 15px;
+}
+
+.entry-when {
+  grid-column: 2;
+  grid-row: 1;
+  padding-top: 3px;
+  color: var(--tile-muted);
+  font-family: var(--mono);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.entry-detail {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  color: var(--tile-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+ul.entry-detail {
+  padding-left: 18px;
+}
+
+@media (max-width: 420px) {
+  .entry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .entry-when {
+    grid-column: 1;
+    grid-row: auto;
+    padding-top: 0;
+  }
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  vertical-align: 2px;
+  white-space: nowrap;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px 24px;
+}
+
+.tools dt {
+  margin-bottom: 4px;
+  color: var(--tile-muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.tools dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Home: contact
+   ========================================================================== */
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px 40px;
+}
+
+@media (max-width: 960px) {
+  .contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.contact-title {
+  max-width: 18ch;
+  margin-top: 12px;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.copy-status {
+  min-height: 1.4em;
+  margin-top: 6px;
+  color: var(--tile-muted);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-size: 15px;
+}
+
+.contact-links a {
+  text-underline-offset: 3px;
+}
+
+.contact-links a:hover {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Project pages
+   ========================================================================== */
+
+.project-head h1 {
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.project-head .tile-text {
+  max-width: 52ch;
+  color: var(--ink);
+  font-size: clamp(17px, 1.5vw, 20px);
+}
+
+.meta {
+  display: grid;
+  gap: 14px;
+}
+
+.meta dt {
+  color: var(--tile-muted);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.meta dd {
+  margin: 2px 0 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.meta + .actions {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+figure.tile img {
+  width: 100%;
+  height: auto;
+}
+
+/* Long-form writing from the project's Markdown file. */
+.prose {
+  width: 100%;
+  max-width: 68ch;
+  margin-inline: auto;
+  padding-block: clamp(8px, 2vw, 24px);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.prose > * + * {
+  margin-top: 1em;
+}
+
+.prose h2 {
+  margin-top: 2em;
+  font-size: clamp(22px, 2.2vw, 26px);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.3em;
+}
+
+.prose li + li {
+  margin-top: 0.5em;
+}
+
+.prose li::marker {
+  color: var(--muted);
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+.prose a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.prose code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--page);
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+.prose img {
+  width: 100%;
+  margin-block: 1.5em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--figure-bg);
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.prose th,
+.prose td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ==========================================================================
+   404
+   ========================================================================== */
+
+.lost {
+  justify-content: space-between;
+  min-height: 320px;
+}
+
+.lost h1 {
+  font-size: clamp(64px, 12vw, 160px);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+}

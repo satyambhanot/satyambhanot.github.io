@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../components/Layout.astro';
+import Icon from '../components/Icon.astro';
+import ProjectTile from '../components/ProjectTile.astro';
+import { profile, education, experience, tools } from '../site';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const [first, ...rest] = projects;
+// The first project's big tile fills 4 grid cells. The GitHub tile stretches to
+// fill whatever is left of the last row, so the grid always ends flush.
+const githubSpan = (4 - ((4 + rest.length) % 4)) % 4 || 4;
+const [firstName, lastName] = profile.name.split(' ');
+const dates = (start?: string, end?: string) => (end ? (start ? `${start} to ${end}` : end) : `${start} to now`);
+---
+<Layout>
+  <section class="bento" aria-label="Introduction">
+    <div class="tile intro c-3 r-2">
+      <p class="label">{profile.role} · {profile.location}</p>
+      <h1>{firstName}<br />{lastName}</h1>
+      <div class="intro-foot">
+        <p class="tile-text">{profile.intro}</p>
+        <div class="actions">
+          <a class="button button--accent" href={`mailto:${profile.email}`}><Icon name="mail" />Email me</a>
+          {profile.resume && <a class="button button--ink" href={profile.resume}><Icon name="file" />Résumé</a>}
+          <a class="button" href={profile.linkedin}>LinkedIn</a>
+          <a class="button" href={profile.github}>GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="tile tile--accent fact">
+      <p class="label">Now</p>
+      <div>
+        <p class="fact-value">{profile.now.title}</p>
+        <p class="fact-detail">{profile.now.detail}</p>
+      </div>
+    </div>
+    <div class="tile tile--inverse fact">
+      <p class="label">Open to</p>
+      <p class="fact-value">{profile.openTo}</p>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="projects-title">
+    <h2 class="section-label" id="projects-title">Projects</h2>
+    <div class="bento">
+      {first && <ProjectTile project={first} big />}
+      {rest.map((project) => <ProjectTile project={project} />)}
+      <a class:list={['tile', 'closing', githubSpan > 1 && `c-${githubSpan}`]} href={profile.github}>
+        <p class="label">GitHub</p>
+        <p class="tile-title">More code on GitHub</p>
+        <span class="arrow"><Icon name="external" /></span>
+      </a>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="experience-title">
+    <h2 class="section-label" id="experience-title">Experience and education</h2>
+    <div class="bento">
+      <div class="tile c-2 r-2">
+        <h3 class="label">Experience</h3>
+        <ul class="entries">
+          {experience.map((role) => (
+            <li class="entry">
+              <p class="entry-title">{role.title}</p>
+              <p class="entry-when">{dates(role.start, role.end)}</p>
+              <p class="entry-meta">{role.org}</p>
+              <p class="entry-detail">{role.summary}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="tile c-2" id="education">
+        <h3 class="label">Education</h3>
+        <ul class="entries">
+          {education.map((degree) => (
+            <li class="entry">
+              <p class="entry-title">
+                {degree.degree}
+                {!degree.end && <span class="badge">In progress</span>}
+              </p>
+              <p class="entry-when">{dates(degree.start, degree.end)}</p>
+              <p class="entry-meta">{degree.school}</p>
+              {degree.notes && <ul class="entry-detail">{degree.notes.map((note) => <li>{note}</li>)}</ul>}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="tile c-2" id="skills">
+        <h3 class="label">Tools I use</h3>
+        <dl class="tools">
+          {tools.map((t) => (
+            <div>
+              <dt>{t.group}</dt>
+              <dd>{t.items}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="tile tile--inverse contact" id="contact" aria-labelledby="contact-title">
+    <div>
+      <p class="label">Contact</p>
+      <h2 class="contact-title" id="contact-title">Have a role or a project in mind? Say hello.</h2>
+    </div>
+    <div>
+      <div class="actions">
+        <a class="button button--accent" href={`mailto:${profile.email}`}><Icon name="mail" />{profile.email}</a>
+        <button class="button" type="button" id="copy-email" hidden><Icon name="copy" />Copy</button>
+        {profile.resume && <a class="button" href={profile.resume}><Icon name="file" />Résumé</a>}
+      </div>
+      <p class="copy-status" id="copy-status" role="status"></p>
+      <p class="contact-links">
+        <a href={profile.linkedin}>LinkedIn</a>
+        <a href={profile.github}>GitHub</a>
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline define:vars={{ email: profile.email }}>
+  // The Copy button only appears in browsers that can copy.
+  const copy = document.getElementById('copy-email');
+  const status = document.getElementById('copy-status');
+  if (navigator.clipboard) {
+    copy.hidden = false;
+    copy.addEventListener('click', () =>
+      navigator.clipboard.writeText(email).then(
+        () => (status.textContent = 'Email copied'),
+        () => (status.textContent = 'Couldn’t copy. Select the address instead.'),
+      ),
+    );
+  }
+</script>
