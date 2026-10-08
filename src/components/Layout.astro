@@ -25,6 +25,17 @@ const person = {
   alumniOf: education.map((d) => ({ '@type': 'CollegeOrUniversity', name: d.school })),
   sameAs: [profile.github, profile.linkedin],
 };
+
+// On the home page only: tells Google the site's name, so results show "Satyam Bhanot"
+// instead of the domain.
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: profile.name,
+  alternateName: `${profile.name} Portfolio`,
+  url: Astro.site,
+};
+const isHome = Astro.url.pathname === '/';
 ---
 <!doctype html>
 <html lang="en">
@@ -46,6 +57,7 @@ const person = {
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
+    {isHome && <script type="application/ld+json" set:html={JSON.stringify(website)} />}
     <!-- Pick the theme before the page paints, so it never flashes the wrong colours. -->
     <script is:inline>
       {
