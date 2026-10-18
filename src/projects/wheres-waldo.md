@@ -7,7 +7,7 @@ context: COMP 4360 Machine Learning, University of Manitoba
 team: Team of 3
 stack: [Python, PyTorch, MobileNet V3, SSD, OpenCV]
 order: 2
-repo: https://github.com/satyambhanot/wheres-waldo-comp4360
+repo: https://github.com/satyambhanot/wheres-waldo-ssd-mobilenet-prototype
 ---
 
 ## The problem
