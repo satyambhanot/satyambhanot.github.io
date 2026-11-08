@@ -8,22 +8,7 @@ team: Team of 3
 role: Training and evaluation code, the data pipeline, and the experiment suite
 stack: [Python, PyTorch, torchvision, YOLOv8, SSD, RetinaNet]
 order: 2
-highlight: 4 models, 5 ablations
-repo: https://github.com/satyambhanot/wheres-waldo-model-comparison
-comparison:
-  title: Which detector finds Waldo best?
-  note: Final test results from the project's README. Precision is how often a detection is right, and recall is how many Waldos were found. YOLOv8 looks at whole images, and the other three look at tiles.
-  display: value
-  default: yolo
-  metrics:
-    - { id: f1, label: F1 score, decimals: 3 }
-    - { id: precision, label: Precision, decimals: 1, suffix: "%" }
-    - { id: recall, label: Recall, decimals: 1, suffix: "%" }
-  options:
-    - { id: yolo, label: YOLOv8 Nano, values: { f1: 0.762, precision: 89.8, recall: 66.2 } }
-    - { id: ssd, label: Custom SSD, values: { f1: 0.610, precision: 93.5, recall: 45.3 } }
-    - { id: retina, label: RetinaNet, values: { f1: 0.583, precision: 98.7, recall: 41.4 } }
-    - { id: pretrained, label: Pretrained SSD, values: { f1: 0.392, precision: 24.4, recall: 100 } }
+repo: https://github.com/satyambhanot/wheres-waldo-ssd-mobilenet-prototype
 ---
 
 ## The problem
