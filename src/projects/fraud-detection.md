@@ -6,5 +6,4 @@ type: Machine learning
 stack: [Python, scikit-learn, XGBoost, LightGBM, SMOTE]
 repo: https://github.com/satyambhanot/credit-card-fraud-detection
 takeaway: Accuracy can hide a model that barely catches fraud. Precision and recall tell the real story.
-repo: https://github.com/satyambhanot/credit-card-fraud-detection
 ---
