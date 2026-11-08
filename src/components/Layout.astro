@@ -36,6 +36,7 @@ const website = {
   url: Astro.site,
 };
 const isHome = Astro.url.pathname === '/';
+const city = profile.location.split(',')[0];
 ---
 <!doctype html>
 <html lang="en">
@@ -45,9 +46,9 @@ const isHome = Astro.url.pathname === '/';
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.ico?v=4" sizes="48x48" />
-    <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml" sizes="any" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
+    <link rel="icon" href="/favicon.ico?v=5" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg?v=5" type="image/svg+xml" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -58,30 +59,43 @@ const isHome = Astro.url.pathname === '/';
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
     {isHome && <script type="application/ld+json" set:html={JSON.stringify(website)} />}
-    <!-- Pick the theme before the page paints, so it never flashes the wrong colours. -->
+    <!-- Pick the theme before the page paints, so it never flashes the wrong colours.
+         Also marks the page as script-enabled, and shows everything if the main script never starts. -->
     <script is:inline>
       {
         let saved;
         try { saved = localStorage.getItem('theme'); } catch {}
         document.documentElement.dataset.theme =
           saved === 'light' || saved === 'dark' ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.classList.add('js');
+        setTimeout(function () {
+          if (!window.__siteReady) document.documentElement.classList.add('no-reveal');
+        }, 3000);
       }
     </script>
   </head>
   <body id="top">
     <a class="skip-link" href="#main">Skip to content</a>
 
+    <div class="ambient" aria-hidden="true">
+      <div class="dots"></div>
+      <div class="lamp"></div>
+    </div>
+    <div class="progress" aria-hidden="true"></div>
+
     <header class="site-header">
-      <div class="wrap">
-        <a class="brand" href="/">
+      <div class="bar">
+        <a class="brand" href="/" aria-label={`${profile.name}, home`}>
           <Icon name="brand" class="brand-mark" />
           <span class="brand-name">{profile.name}</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
-          <a href="/#projects">Projects</a>
+          <a href="/#projects">Work</a>
+          <a class="nav-optional" href="/#approach">Approach</a>
           <a href="/#experience">Experience</a>
           <a href="/#contact">Contact</a>
-          {profile.resume && <a class="nav-resume" href={profile.resume}>Résumé</a>}
+          {profile.resume && <a class="nav-optional" href={profile.resume}>Résumé</a>}
+          <a class="btn btn--primary btn--sm nav-cta" href={`mailto:${profile.email}`}>Email me</a>
           <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">
             <Icon name="moon" class="icon-moon" />
             <Icon name="sun" class="icon-sun" />
@@ -90,14 +104,19 @@ const isHome = Astro.url.pathname === '/';
       </div>
     </header>
 
-    <main id="main" class="wrap">
+    <main id="main">
       <slot />
     </main>
 
     <footer class="site-footer">
       <div class="wrap">
         <p>© {new Date().getFullYear()} {profile.name}</p>
-        <a href="#top">Back to top ↑</a>
+        <span class="clock" data-clock data-tz={profile.timezone} data-city={city} hidden></span>
+        <p class="footer-links">
+          <a href={profile.linkedin}>LinkedIn</a>
+          <a href={profile.github}>GitHub</a>
+          <a href="#top">Back to top ↑</a>
+        </p>
       </div>
     </footer>
 
@@ -107,6 +126,9 @@ const isHome = Astro.url.pathname === '/';
         document.documentElement.dataset.theme = next;
         try { localStorage.setItem('theme', next); } catch {}
       });
+    </script>
+    <script>
+      import '../scripts/site';
     </script>
   </body>
 </html>

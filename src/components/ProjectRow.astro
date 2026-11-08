@@ -1,0 +1,35 @@
+---
+// One line in the "More work" list on the home page: compact, so the strongest
+// projects get the big panels and the rest stay easy to scan.
+// If the project has a write-up its title links there. Otherwise the code link, if any, is on the right.
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const { title, summary, type, period, context, stack, takeaway, repo, highlight } = project.data;
+const hasPage = Boolean(project.body?.trim());
+const number = String(index + 1).padStart(2, '0');
+const when = [period, context].filter(Boolean).join(' · ');
+---
+<li class="row" data-project data-type={type} data-reveal style={`--d: ${(index % 4) * 60}ms`}>
+  <span class="row-num" aria-hidden="true">{number}</span>
+  <div class="row-main">
+    <h4 class="row-title">{hasPage ? <a href={`/projects/${project.id}/`}>{title}</a> : title}</h4>
+    <p class="row-summary">{summary}</p>
+    {takeaway && <p class="row-note">{takeaway}</p>}
+    <p class="row-stack">{stack.join(' · ')}</p>
+  </div>
+  <div class="row-meta">
+    <span class="chip">{type}</span>
+    {highlight && <span class="chip chip--accent">{highlight}</span>}
+    {when && <span class="label">{when}</span>}
+  </div>
+  <div class="row-link">
+    {repo && <a class="text-link" href={repo} aria-label={`${title}, code on GitHub`}>Code <Icon name="external" /></a>}
+  </div>
+</li>

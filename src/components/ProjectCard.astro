@@ -1,0 +1,70 @@
+---
+// A large project panel on the home page.
+// The first project is the "featured" panel: a wide card with its screenshot in a browser
+// frame, its headline result, and my part. The next two are "half" panels with generated artwork.
+// If the project's Markdown file has a write-up, the whole panel links to its page.
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import ProjectArt from './ProjectArt.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index: number;
+  layout?: 'featured' | 'half';
+}
+
+const { project, index, layout = 'half' } = Astro.props;
+const featured = layout === 'featured';
+const { title, summary, type, period, context, stack, cover, takeaway, repo, highlight, result, role } = project.data;
+const hasPage = Boolean(project.body?.trim());
+const Tag = hasPage ? 'a' : 'article';
+const titleId = `${project.id}-title`;
+const number = String(index + 1).padStart(2, '0');
+const when = [period, context].filter(Boolean).join(' · ');
+---
+<div
+  class:list={['card-cell', `card-cell--${layout}`]}
+  data-project
+  data-type={type}
+  data-reveal
+  style={`--d: ${featured ? 0 : (index - 1) * 100}ms`}
+>
+  <Tag
+    class:list={['card', 'spot', featured && 'card--featured']}
+    href={hasPage ? `/projects/${project.id}/` : undefined}
+    aria-labelledby={titleId}
+  >
+    <div class="card-media">
+      <span class="card-num" aria-hidden="true">{number}</span>
+      {highlight && !result && <span class="chip chip--accent card-badge">{highlight}</span>}
+      {featured && cover ? (
+        <div class="browser" data-tilt>
+          <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <Image src={cover.src} alt="" widths={[640, 960, 1280]} sizes="(max-width: 1000px) 100vw, 760px" />
+        </div>
+      ) : (
+        <ProjectArt type={type} seed={project.id} />
+      )}
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="chip">{type}</span>
+        {when && <span class="label">{when}</span>}
+      </div>
+      <h3 class="card-title" id={titleId}>{title}</h3>
+      <p class="card-summary">{summary}</p>
+      {result && (
+        <div class="result">
+          <p class="result-value">{result.value}</p>
+          <p class="result-label">{result.label}</p>
+        </div>
+      )}
+      {featured && role && <p class="card-role"><span class="label">My part</span>{role}</p>}
+      {!hasPage && takeaway && <p class="takeaway"><span class="label">What it taught me</span>{takeaway}</p>}
+      <ul class="stack" aria-label="Built with">{(featured ? stack : stack.slice(0, 4)).map((item) => <li class="chip">{item}</li>)}</ul>
+      {hasPage && <p class="card-link">Read the case study <span class="arrow-circle"><Icon name="arrow" /></span></p>}
+      {!hasPage && repo && <a class="text-link" href={repo}>View code <Icon name="external" /></a>}
+    </div>
+  </Tag>
+</div>

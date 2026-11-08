@@ -1,0 +1,109 @@
+---
+// An interactive comparison for a case study: a few options measured on the same
+// metrics, with a bar for the headline metric and a full table underneath.
+// It either shows each option's change from a baseline, or the headline score itself.
+// The data comes from the project's Markdown front matter (`comparison`), so every
+// number here is one the project itself produced. The table shows everything even
+// without JavaScript. With scripts on, the buttons switch which option is highlighted.
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  data: NonNullable<CollectionEntry<'projects'>['data']['comparison']>;
+}
+
+const { data } = Astro.props;
+const headline = data.metrics[0];
+const showValue = data.display === 'value';
+const baseline = data.options.find((option) => option.id === data.baseline) ?? data.options[0];
+const selected = data.options.find((option) => option.id === data.default) ?? data.options[data.options.length - 1];
+const max = Math.max(...data.options.map((option) => option.values[headline.id]));
+
+const format = (n: number, metric: (typeof data.metrics)[number]) =>
+  n.toLocaleString('en-CA', { minimumFractionDigits: metric.decimals ?? 0, maximumFractionDigits: metric.decimals ?? 0 }) +
+  (metric.suffix ?? '');
+
+// What the big number says for an option. Either its change from the baseline on the
+// headline metric, like "−25.2%", or the headline score itself, like "0.762".
+const change = (option: (typeof data.options)[number]) => {
+  if (showValue) return { value: format(option.values[headline.id], headline), label: `${headline.label}, ${option.label}` };
+  if (option.id === baseline.id) return { value: 'Baseline', label: `${baseline.label.toLowerCase()} is the starting point` };
+  const pct = ((option.values[headline.id] - baseline.values[headline.id]) / baseline.values[headline.id]) * 100;
+  const word = pct < 0 ? 'fewer' : 'more';
+  return {
+    value: `${pct < 0 ? '−' : '+'}${Math.abs(pct).toFixed(1)}%`,
+    label: `${word} ${headline.label.toLowerCase()} than ${baseline.label.toLowerCase()}`,
+  };
+};
+const current = change(selected);
+---
+<section class="compare" data-compare data-reveal aria-labelledby="compare-title">
+  <div class="compare-head">
+    <div>
+      <p class="eyebrow">Key result</p>
+      <h2 id="compare-title">{data.title}</h2>
+    </div>
+    <fieldset class="compare-switch" data-compare-switch hidden>
+      <legend class="sr-only">Choose which option to highlight</legend>
+      {data.options.map((option) => (
+        <label>
+          <input type="radio" name="compare-option" value={option.id} checked={option.id === selected.id} />
+          <span>{option.label}</span>
+        </label>
+      ))}
+    </fieldset>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-result" aria-live="polite">
+      <p class="compare-value" data-compare-value>{current.value}</p>
+      <p class="compare-label" data-compare-label>{current.label}</p>
+    </div>
+
+    <ul class="compare-bars" aria-label={headline.label}>
+      {data.options.map((option) => {
+        const c = change(option);
+        return (
+          <li
+            class:list={['cmp-row', option.id === selected.id && 'is-selected']}
+            data-option={option.id}
+            data-value={c.value}
+            data-label={c.label}
+            style={`--w: ${(option.values[headline.id] / max) * 100}`}
+          >
+            <span class="cmp-name">{option.label}</span>
+            <span class="cmp-track"><span class="cmp-fill"></span></span>
+            <span class="cmp-num">{format(option.values[headline.id], headline)}</span>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+  <div class="compare-table-wrap">
+    <table class="compare-table">
+      <caption class="sr-only">{data.title}: every metric for every option</caption>
+      <thead>
+        <tr>
+          <th scope="col">Metric</th>
+          {data.options.map((option) => (
+            <th scope="col" data-option={option.id} class:list={[option.id === selected.id && 'is-selected']}>{option.label}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.metrics.map((metric) => (
+          <tr>
+            <th scope="row">{metric.label}</th>
+            {data.options.map((option) => (
+              <td data-option={option.id} class:list={[option.id === selected.id && 'is-selected']}>
+                {format(option.values[metric.id], metric)}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="compare-note">{data.note}</p>
+</section>

@@ -1,7 +1,7 @@
 ---
 title: ExFAT shell
 summary: A C shell for working with an ExFAT file system, with UNIX-style commands, redirection, and piping.
-order: 3
+order: 7
 type: Systems
 context: COMP 3430 Operating Systems
 stack: [C, Linux, File systems, Processes]
