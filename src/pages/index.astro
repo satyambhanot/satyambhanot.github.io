@@ -2,135 +2,222 @@
 import { getCollection } from 'astro:content';
 import Layout from '../components/Layout.astro';
 import Icon from '../components/Icon.astro';
-import ProjectTile from '../components/ProjectTile.astro';
-import { profile, education, experience, tools } from '../site';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import { profile, highlights, principles, education, experience, tools } from '../site';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const [first, ...rest] = projects;
-// The first project's big tile fills 4 grid cells. The GitHub tile stretches to
-// fill whatever is left of the last row, so the grid always ends flush.
-const githubSpan = (4 - ((4 + rest.length) % 4)) % 4 || 4;
+const types = [...new Set(projects.map((project) => project.data.type))];
+// Three tiers, by `order`: 1 is the wide featured panel, 2 and 3 are the next two panels,
+// and everything after that goes in the compact list.
+const featured = projects[0];
+const panels = projects.slice(1, 3);
+const rest = projects.slice(3);
 const [firstName, lastName] = profile.name.split(' ');
 const dates = (start?: string, end?: string) => (end ? (start ? `${start} to ${end}` : end) : `${start} to now`);
+// The scrolling tool strip: every tool from site.ts, in order.
+const toolNames = tools.flatMap((group) => group.items.split(', '));
+const pad = (n: number) => String(n).padStart(2, '0');
 ---
 <Layout>
-  <section class="bento" aria-label="Introduction">
-    <div class="tile intro c-3 r-2">
-      <p class="label">{profile.role} · {profile.location}</p>
-      <h1>{firstName}<br />{lastName}</h1>
-      <div class="intro-foot">
-        <p class="tile-text">{profile.intro}</p>
-        <div class="actions">
-          <a class="button button--accent" href={`mailto:${profile.email}`}><Icon name="mail" />Email me</a>
-          {profile.resume && <a class="button button--ink" href={profile.resume}><Icon name="file" />Résumé</a>}
-          <a class="button" href={profile.linkedin}>LinkedIn</a>
-          <a class="button" href={profile.github}>GitHub</a>
+  <!-- Hero -->
+  <section class="hero wrap" aria-label="Introduction">
+    <div class="hero-grid">
+      <div>
+        <p class="status" data-hero style="--d: 0ms">
+          <span class="dot" aria-hidden="true"></span>
+          Open to {profile.openTo} · {profile.location}
+        </p>
+        <h1 class="hero-name">
+          <span class="line"><span style="--d: 150ms">{firstName}</span></span>
+          <span class="line"><span class="serif" style="--d: 320ms">{lastName}</span></span>
+        </h1>
+        <p class="hero-tagline" data-hero style="--d: 600ms">{profile.tagline}</p>
+        <p class="hero-intro" data-hero style="--d: 700ms">{profile.intro}</p>
+        <div class="actions" data-hero style="--d: 820ms">
+          <a class="btn btn--primary" href="#projects">Explore my work <Icon name="arrow" class="icon-down" /></a>
+          {profile.resume ? (
+            <a class="btn" href={profile.resume}><Icon name="file" />Résumé</a>
+          ) : (
+            <a class="btn" href={`mailto:${profile.email}`}><Icon name="mail" />Email me</a>
+          )}
+        </div>
+        <p class="hero-links" data-hero style="--d: 920ms">
+          {profile.resume && <a href={`mailto:${profile.email}`}>Email</a>}
+          <a href={profile.linkedin}>LinkedIn <Icon name="external" /></a>
+          <a href={profile.github}>GitHub <Icon name="external" /></a>
+        </p>
+      </div>
+
+      <div class="terminal" data-hero style="--d: 500ms" role="group" aria-label="At a glance">
+        <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>~/{profile.name.split(' ')[0].toLowerCase()}</span></div>
+        <div class="term-body">
+          <p class="term-cmd"><span class="prompt" aria-hidden="true">$</span><span class="typed" style="--n: 6; --t: 1s">whoami</span></p>
+          <p class="term-out" style="--t: 1.6s"><strong>{profile.name}</strong> · {profile.role}<br />{profile.location}</p>
+
+          <p class="term-cmd"><span class="prompt" aria-hidden="true">$</span><span class="typed" style="--n: 3; --t: 2.3s">now</span></p>
+          <p class="term-out" style="--t: 2.7s"><strong>{profile.now.title}</strong><br />{profile.now.detail}</p>
+
+          <p class="term-cmd"><span class="prompt" aria-hidden="true">$</span><span class="typed" style="--n: 7; --t: 3.3s">open-to</span></p>
+          <p class="term-out" style="--t: 3.8s"><strong>{profile.openTo}</strong></p>
+
+          <p class="term-cmd"><span class="prompt" aria-hidden="true">$</span><span class="typed" style="--n: 7; --t: 4.4s">contact</span></p>
+          <p class="term-out" style="--t: 4.9s"><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+
+          <p class="term-cmd term-last" style="--t: 5.4s" aria-hidden="true"><span class="prompt">$</span><span class="caret"></span></p>
         </div>
       </div>
     </div>
-    <div class="tile tile--accent fact">
-      <p class="label">Now</p>
+  </section>
+
+  <!-- Projects: one featured, two panels, then a compact list -->
+  <section class="section wrap" id="projects" aria-labelledby="projects-title">
+    <div class="section-head" data-reveal>
       <div>
-        <p class="fact-value">{profile.now.title}</p>
-        <p class="fact-detail">{profile.now.detail}</p>
+        <p class="eyebrow">01 · Work</p>
+        <h2 id="projects-title">Selected <em>work</em></h2>
+      </div>
+      <div class="filters" data-filters role="group" aria-label="Filter projects by type" hidden>
+        <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+        {types.map((type) => <button type="button" class="filter" data-filter={type} aria-pressed="false">{type}</button>)}
       </div>
     </div>
-    <div class="tile tile--inverse fact">
-      <p class="label">Open to</p>
-      <p class="fact-value">{profile.openTo}</p>
+    <p class="sr-only" role="status" data-filter-status></p>
+
+    <div class="panels" data-group>
+      <ProjectCard project={featured} index={0} layout="featured" />
+      {panels.map((project, i) => <ProjectCard project={project} index={i + 1} layout="half" />)}
+    </div>
+
+    {rest.length > 0 && (
+      <div class="more" data-group>
+        <div class="more-head" data-reveal>
+          <h3>More work</h3>
+          <a class="text-link" href={profile.github}>All code on GitHub <Icon name="external" /></a>
+        </div>
+        <ol class="rows">
+          {rest.map((project, i) => <ProjectRow project={project} index={i + 3} />)}
+        </ol>
+      </div>
+    )}
+  </section>
+
+  <!-- Numbers -->
+  <section class="numbers wrap" aria-label="Highlights">
+    <div class="stats">
+      {highlights.map((item, i) => {
+        const Tag = item.href ? 'a' : 'div';
+        const decimals = item.decimals ?? 0;
+        const shown = item.value.toFixed(decimals);
+        return (
+          <Tag class="stat" href={item.href} data-reveal style={`--d: ${i * 90}ms`}>
+            <p class="stat-value">
+              <span aria-hidden="true">
+                {item.prefix && <span class="unit">{item.prefix}</span>}<span data-count={item.value} data-decimals={decimals}>{shown}</span>{item.suffix && <span class="unit">{item.suffix}</span>}
+              </span>
+              <span class="sr-only">{item.prefix}{shown}{item.suffix}</span>
+            </p>
+            <p class="stat-label">{item.label}</p>
+            <p class="stat-source">{item.source}</p>
+          </Tag>
+        );
+      })}
     </div>
   </section>
 
-  <section id="projects" aria-labelledby="projects-title">
-    <h2 class="section-label" id="projects-title">Projects</h2>
-    <div class="bento">
-      {first && <ProjectTile project={first} big />}
-      {rest.map((project) => <ProjectTile project={project} />)}
-      <a class:list={['tile', 'closing', githubSpan > 1 && `c-${githubSpan}`]} href={profile.github}>
-        <p class="label">GitHub</p>
-        <p class="tile-title">More code on GitHub</p>
-        <span class="arrow"><Icon name="external" /></span>
-      </a>
+  <!-- Tools, scrolling -->
+  <div class="marquee" role="group" aria-label="Tools I use">
+    <div class="marquee-track">
+      <ul class="marquee-group">{toolNames.map((name) => <li>{name}</li>)}</ul>
+      <ul class="marquee-group" aria-hidden="true">{toolNames.map((name) => <li>{name}</li>)}</ul>
+    </div>
+  </div>
+
+  <!-- Approach -->
+  <section class="section wrap" id="approach" aria-labelledby="approach-title">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="eyebrow">02 · Approach</p>
+        <h2 id="approach-title">How I <em>work</em></h2>
+      </div>
+      <p class="section-lede">Habits that show up across my projects, each linked to the case study where it happened.</p>
+    </div>
+    <div class="principles">
+      {principles.map((item, i) => (
+        <a class="principle spot" href={item.href} data-reveal style={`--d: ${(i % 2) * 100}ms`}>
+          <span class="num" aria-hidden="true">{pad(i + 1)}</span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <span class="go">See where it happened <span class="arrow-circle"><Icon name="arrow" /></span></span>
+        </a>
+      ))}
     </div>
   </section>
 
-  <section id="experience" aria-labelledby="experience-title">
-    <h2 class="section-label" id="experience-title">Experience and education</h2>
-    <div class="bento">
-      <div class="tile c-2 r-2">
-        <h3 class="label">Experience</h3>
-        <ul class="entries">
-          {experience.map((role) => (
-            <li class="entry">
-              <p class="entry-title">{role.title}</p>
-              <p class="entry-when">{dates(role.start, role.end)}</p>
-              <p class="entry-meta">{role.org}</p>
-              <p class="entry-detail">{role.summary}</p>
-            </li>
-          ))}
-        </ul>
+  <!-- Experience and education -->
+  <section class="section wrap" id="experience" aria-labelledby="experience-title">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="eyebrow">03 · Path</p>
+        <h2 id="experience-title">Experience and <em>education</em></h2>
       </div>
-      <div class="tile c-2" id="education">
-        <h3 class="label">Education</h3>
-        <ul class="entries">
+    </div>
+    <div class="path">
+      <ol class="timeline" data-timeline aria-label="Experience">
+        {experience.map((role) => (
+          <li class:list={['t-item', !role.end && 'is-now']} data-reveal>
+            <p class="t-when">{dates(role.start, role.end)}</p>
+            <h3 class="t-title">{role.title}</h3>
+            <p class="t-org">{role.org}</p>
+            <p class="t-text">{role.summary}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div>
+        <div class="panel" id="education" data-reveal>
+          <h3 class="label">Education</h3>
           {education.map((degree) => (
-            <li class="entry">
-              <p class="entry-title">
+            <div class="edu">
+              <p class="edu-title">
                 {degree.degree}
-                {!degree.end && <span class="badge">In progress</span>}
+                {!degree.end && <span class="chip chip--accent">In progress</span>}
               </p>
-              <p class="entry-when">{dates(degree.start, degree.end)}</p>
-              <p class="entry-meta">{degree.school}</p>
-              {degree.notes && <ul class="entry-detail">{degree.notes.map((note) => <li>{note}</li>)}</ul>}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="tile c-2" id="skills">
-        <h3 class="label">Tools I use</h3>
-        <dl class="tools">
-          {tools.map((t) => (
-            <div>
-              <dt>{t.group}</dt>
-              <dd>{t.items}</dd>
+              <p class="edu-meta">{degree.school}</p>
+              <p class="edu-when">{dates(degree.start, degree.end)}</p>
+              {degree.notes && <ul class="edu-notes">{degree.notes.map((note) => <li>{note}</li>)}</ul>}
             </div>
           ))}
-        </dl>
+        </div>
+        <div class="panel" id="skills" data-reveal>
+          <h3 class="label">Tools I use</h3>
+          <dl>
+            {tools.map((group) => (
+              <div class="toolgroup">
+                <dt class="label">{group.group}</dt>
+                <dd>{group.items.split(', ').map((name) => <span class="tool">{name}</span>)}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="tile tile--inverse contact" id="contact" aria-labelledby="contact-title">
-    <div>
-      <p class="label">Contact</p>
-      <h2 class="contact-title" id="contact-title">Have a role or a project in mind? Say hello.</h2>
-    </div>
-    <div>
+  <!-- Contact -->
+  <section class="section wrap" id="contact" aria-labelledby="contact-title">
+    <div class="contact" data-reveal>
+      <p class="eyebrow">04 · Contact</p>
+      <h2 class="contact-title" id="contact-title">Have a role or a project in mind? <em>Say hello.</em></h2>
+      <a class="contact-mail" href={`mailto:${profile.email}`}><span class="u">{profile.email}</span></a>
       <div class="actions">
-        <a class="button button--accent" href={`mailto:${profile.email}`}><Icon name="mail" />{profile.email}</a>
-        <button class="button" type="button" id="copy-email" hidden><Icon name="copy" />Copy</button>
-        {profile.resume && <a class="button" href={profile.resume}><Icon name="file" />Résumé</a>}
+        <a class="btn btn--primary" href={`mailto:${profile.email}`}><Icon name="mail" />Send an email</a>
+        <button class="btn" type="button" data-copy={profile.email} hidden><Icon name="copy" />Copy address</button>
+        {profile.resume && <a class="btn" href={profile.resume}><Icon name="file" />Résumé</a>}
+        <a class="btn" href={profile.linkedin}>LinkedIn <Icon name="external" class="nudge" /></a>
+        <a class="btn" href={profile.github}>GitHub <Icon name="external" class="nudge" /></a>
       </div>
-      <p class="copy-status" id="copy-status" role="status"></p>
-      <p class="contact-links">
-        <a href={profile.linkedin}>LinkedIn</a>
-        <a href={profile.github}>GitHub</a>
-      </p>
+      <p class="copy-status" data-copy-status role="status"></p>
     </div>
   </section>
 </Layout>
-
-<script is:inline define:vars={{ email: profile.email }}>
-  // The Copy button only appears in browsers that can copy.
-  const copy = document.getElementById('copy-email');
-  const status = document.getElementById('copy-status');
-  if (navigator.clipboard) {
-    copy.hidden = false;
-    copy.addEventListener('click', () =>
-      navigator.clipboard.writeText(email).then(
-        () => (status.textContent = 'Email copied'),
-        () => (status.textContent = 'Couldn’t copy. Select the address instead.'),
-      ),
-    );
-  }
-</script>

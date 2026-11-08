@@ -1,7 +1,7 @@
 ---
 title: PetObject
 summary: A team-built Android app for managing virtual pets. I worked on validation, navigation, edit flows, and tests.
-order: 7
+order: 11
 type: Mobile
 team: Team project
 stack: [Java, Android, JUnit]

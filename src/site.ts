@@ -5,12 +5,15 @@ export const profile = {
   name: 'Satyam Bhanot',
   role: 'Software engineer',
   location: 'Calgary, Alberta',
-  intro:
-    'I build backend services, data pipelines, and the occasional systems tool, and I like knowing why they behave the way they do.',
+  // The big line under your name, then a supporting sentence.
+  tagline: 'I build software that makes complex systems easier to reason about.',
+  intro: 'Backend services, data pipelines, and the occasional systems tool. I like knowing why they behave the way they do.',
   // Shown in Google results and link previews.
   description: 'Software engineer in Calgary building backend, data, and machine learning projects.',
   now: { title: 'MEng, Software Engineering', detail: 'University of Calgary' },
   openTo: 'Backend, data, and ML roles',
+  // Used for the live local-time clock in the footer.
+  timezone: 'America/Edmonton',
   email: 'satyambhanot@gmail.com',
   github: 'https://github.com/satyambhanot',
   linkedin: 'https://www.linkedin.com/in/satyam-bhanot/',
@@ -18,6 +21,62 @@ export const profile = {
   // While it's empty, résumé buttons stay hidden instead of linking to a missing file.
   resume: '',
 };
+
+// The big numbers on the home page. Each one counts up when it scrolls into view.
+// Only put numbers here that a project page or your résumé backs up.
+export const highlights = [
+  {
+    value: 25.2,
+    decimals: 1,
+    prefix: '−',
+    suffix: '%',
+    label: 'risk-weighted dark nights vs oldest-first',
+    source: 'Lamplighter, tuned policy',
+    href: '/projects/lamplighter/',
+  },
+  {
+    value: 774,
+    label: 'real 311 street-light tickets replayed',
+    source: 'Lamplighter',
+    href: '/projects/lamplighter/',
+  },
+  {
+    value: 50,
+    suffix: '+',
+    label: 'incidents handled every week',
+    source: 'Rogers Communications',
+  },
+  {
+    value: 4,
+    label: 'detectors compared, plus five ablation studies',
+    source: "Where's Waldo? detector",
+    href: '/projects/wheres-waldo/',
+  },
+];
+
+// Habits that show up across the case studies. Each links to where it happened.
+export const principles = [
+  {
+    title: 'One source of truth',
+    text: 'Lamplighter’s offline replay and its live API call the same score(), so the reported results describe the logic dispatchers actually use.',
+    href: '/projects/lamplighter/',
+  },
+  {
+    title: 'Split where leakage hides',
+    text: 'Where’s Waldo? splits by image, not by tile. Overlapping tiles in both training and test would flatter the scores.',
+    href: '/projects/wheres-waldo/',
+  },
+  {
+    title: 'Change one thing at a time',
+    text: 'Five ablation studies on the Waldo detector: preprocessing, detection heads, tile size, colour, and backbone. Each varies a single factor so a change in score has one explanation.',
+    href: '/projects/wheres-waldo/',
+  },
+  {
+    title: 'Keep the goalposts fixed',
+    text: 'In Lamplighter the cost of a dark night is set in config and never tuned, so the tuner can only change policy, not the scoring of success.',
+    href: '/projects/lamplighter/',
+  },
+];
 
 // Newest first. Leave out `end` while a degree is in progress.
 export const education = [

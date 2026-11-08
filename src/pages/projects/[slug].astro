@@ -1,9 +1,12 @@
 ---
 // One page per project that has a written body in src/projects/.
+// Order of the page: title and links, who/what/my part, the picture and key result,
+// then the write-up with a contents list beside it. The full stack comes last.
 import { Image } from 'astro:assets';
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Layout from '../../components/Layout.astro';
 import Icon from '../../components/Icon.astro';
+import Comparison from '../../components/Comparison.astro';
 
 export async function getStaticPaths() {
   const projects = (await getCollection('projects'))
@@ -21,65 +24,93 @@ interface Props {
 }
 
 const { project, next } = Astro.props;
-const { title, summary, type, period, context, team, role, stack, cover, repo, demo } = project.data;
-const { Content } = await render(project);
+const { title, summary, type, period, context, team, role, stack, cover, repo, demo, highlight, comparison } = project.data;
+const { Content, headings } = await render(project);
 const hasNext = next.id !== project.id;
+const contents = headings.filter((heading) => heading.depth === 2);
 
 const facts = [
   ['Context', context],
   ['Team', team],
   ['My part', role],
-  ['Stack', stack.join(', ')],
 ].filter(([, value]) => value) as [string, string][];
 ---
 <Layout title={title} description={summary}>
-  <a class="back-link" href="/#projects"><Icon name="back" />Back to projects</a>
+  <div class="wrap">
+    <a class="back-link" href="/#projects"><Icon name="back" />All projects</a>
 
-  <article class="bento">
-    <header class="tile project-head c-3">
-      <p class="label">{[type, period].filter(Boolean).join(' · ')}</p>
-      <h1>{title}</h1>
-      <p class="tile-text">{summary}</p>
-    </header>
-    <aside class="tile tile--inverse" aria-label="Project details">
-      <dl class="meta">
-        {facts.map(([term, value]) => (
-          <div>
-            <dt>{term}</dt>
-            <dd>{value}</dd>
-          </div>
-        ))}
-      </dl>
+    <header class="case-hero">
+      <div class="case-meta-row" data-hero style="--d: 0ms">
+        <span class="chip">{type}</span>
+        {period && <span class="label">{period}</span>}
+        {highlight && <span class="chip chip--accent">{highlight}</span>}
+      </div>
+      <h1 data-hero style="--d: 100ms">{title}</h1>
+      <p class="lede" data-hero style="--d: 220ms">{summary}</p>
       {(repo || demo) && (
-        <p class="actions">
-          {repo && <a class="button button--accent" href={repo}>View code <Icon name="external" /></a>}
-          {demo && <a class="button" href={demo}>Live demo <Icon name="external" /></a>}
-        </p>
+        <div class="actions" data-hero style="--d: 340ms">
+          {repo && <a class="btn btn--primary" href={repo}>View code <Icon name="external" class="nudge" /></a>}
+          {demo && <a class="btn" href={demo}>Live demo <Icon name="external" class="nudge" /></a>}
+        </div>
       )}
-    </aside>
+      {facts.length > 0 && (
+        <dl class="case-facts" data-hero style="--d: 440ms">
+          {facts.map(([term, value]) => (
+            <div>
+              <dt class="label">{term}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+    </header>
+
     {cover && (
-      <figure class="tile tile--flush c-4">
-        <Image src={cover.src} alt={cover.alt} widths={[800, 1280, 1920, 2400]} sizes="(max-width: 1240px) 100vw, 1240px" loading="eager" />
+      <figure class="case-cover" data-reveal>
+        <div class="frame">
+          <Image src={cover.src} alt={cover.alt} widths={[800, 1280, 1920, 2400]} sizes="(max-width: 1280px) 100vw, 1200px" loading="eager" />
+        </div>
       </figure>
     )}
-    <div class="tile c-4">
+
+    {comparison && <Comparison data={comparison} />}
+
+    <div class="case-layout">
+      <aside class="case-aside" aria-label="On this page">
+        {contents.length > 1 && (
+          <nav class="toc" aria-label="Contents">
+            <p class="label">On this page</p>
+            <ol>
+              {contents.map((heading) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}
+            </ol>
+          </nav>
+        )}
+        <div class="aside-stack">
+          <p class="label">Built with</p>
+          <ul>{stack.map((item) => <li class="chip">{item}</li>)}</ul>
+        </div>
+      </aside>
       <div class="prose">
         <Content />
       </div>
     </div>
-  </article>
 
-  <nav class="bento page-nav" aria-label="More projects">
-    <a class:list={['tile', 'closing', hasNext ? 'c-2' : 'c-4']} href="/#projects">
-      <p class="label"><Icon name="back" class="label-icon" />Back</p>
-      <p class="tile-title">All projects</p>
-    </a>
-    {hasNext && (
-      <a class="tile tile--inverse closing c-2" href={`/projects/${next.id}/`}>
-        <p class="label">Next case study</p>
-        <p class="tile-title">{next.data.title}</p>
-        <span class="arrow"><Icon name="arrow" /></span>
-      </a>
-    )}
-  </nav>
+    <section class="case-stack" aria-label="Built with">
+      <p class="label">Built with</p>
+      <ul>{stack.map((item) => <li class="chip">{item}</li>)}</ul>
+    </section>
+
+    <nav class="next" aria-label="More projects">
+      {hasNext && (
+        <a class="next-link spot" href={`/projects/${next.id}/`} data-reveal>
+          <p class="label">Next case study</p>
+          <p class="next-title">{next.data.title}</p>
+          <span class="go">Read it <span class="arrow-circle"><Icon name="arrow" /></span></span>
+        </a>
+      )}
+      <div class="next-all">
+        <a class="btn" href="/#projects"><Icon name="back" />All projects</a>
+      </div>
+    </nav>
+  </div>
 </Layout>

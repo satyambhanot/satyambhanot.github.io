@@ -8,6 +8,25 @@ team: Team of 5
 role: Decision engine, API, and dispatch dashboard
 stack: [Python, FastAPI, SQLite, pandas, scikit-learn, Streamlit, pytest]
 order: 1
+highlight: "−25.2% dark nights"
+result:
+  value: "−25.2%"
+  label: risk-weighted dark nights vs oldest-first, in a held-out simulation
+comparison:
+  title: Oldest-first vs tuned prioritization
+  note: Simulated July to August test weeks at the full crew budget, from the project's results/summary.csv. Precomputed numbers, not live data.
+  baseline: fifo
+  metrics:
+    - { id: risk, label: Risk-weighted dark nights, decimals: 1 }
+    - { id: dark, label: Total dark nights }
+    - { id: median, label: Median days dark, decimals: 1 }
+    - { id: fixed, label: Lights fixed }
+    - { id: perhour, label: Fixes per crew-hour, decimals: 3 }
+    - { id: still, label: Still dark at end }
+  options:
+    - { id: fifo, label: Oldest first, values: { risk: 4018.5, dark: 2262, median: 18, fixed: 167, perhour: 1.452, still: 29 } }
+    - { id: hand, label: Hand-set weights, values: { risk: 3357.2, dark: 2205, median: 18, fixed: 167, perhour: 1.47, still: 28 } }
+    - { id: tuned, label: Tuned weights, values: { risk: 3006, dark: 2158, median: 16.5, fixed: 166, perhour: 1.474, still: 27 } }
 cover:
   src: ../images/lamplighter/dashboard-live.png
   alt: "Lamplighter's live dispatch dashboard: this week's plan with 21 planned visits, 14 of 14 crew-hours allocated, an urgent hazard report, and the proposed route summary."
@@ -45,9 +64,11 @@ On the July to August test weeks, at the full crew budget:
 | --- | --- | --- | --- | --- |
 | Oldest first | 4,018.5 | | 167 | 18.0 |
 | Hand-set weights | 3,357.2 | −16.5% | 167 | 18.0 |
-| Tuned weights | 3,006.0 | −25.2% | 166 | 16.5 |
+| **Tuned weights** | 3,006.0 | −25.2% | 166 | 16.5 |
 
 The crew fixes about the same number of lights either way. The gain comes from fixing the right ones first. The tuned policy also had the fewest risk-weighted dark nights at 70% and 85% of the crew budget.
+
+![Risk-weighted dark nights for the three policies at 70%, 85%, and 100% of the crew budget. The tuned policy is lowest at every level.](../images/lamplighter/sensitivity.png)
 
 ## Limits
 
